@@ -13,7 +13,6 @@ import {
   Video,
   Share2,
   TrendingUp,
-  Sparkles,
 } from 'lucide-react';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
@@ -57,7 +56,6 @@ export const Batch2DetailModal: React.FC<Batch2DetailModalProps> = ({
   const footerActions = (
     <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-3">
       <div className="flex items-center gap-2 text-[12px] text-[#7686AB]">
-        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
         <span className="font-medium">Pendaftaran Batch 2 Sedang Dibuka</span>
       </div>
       <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto justify-end">
@@ -163,13 +161,10 @@ export const Batch2DetailModal: React.FC<Batch2DetailModalProps> = ({
 
         {/* Verified Fee Scheme Callout */}
         <div className="bg-[#EDF4F9] border-l-4 border-[#054FBF] p-3.5 rounded-r-[4px]">
-          <div className="flex items-start gap-2.5">
-            <Sparkles size={18} className="text-[#054FBF] mt-0.5 shrink-0" />
-            <div className="text-[12px] text-[#123049] leading-relaxed">
-              <span className="font-bold">Skema Kompensasi Terverifikasi: </span>
-              {BATCH2_DETAILS.feeScheme}. Seluruh anggota tim pelaksana yang terlibat langsung
-              dalam delivery klien komersial berhak memperoleh bagi hasil transparan.
-            </div>
+          <div className="text-[12px] text-[#123049] leading-relaxed">
+            <span className="font-bold">Skema Kompensasi Terverifikasi: </span>
+            {BATCH2_DETAILS.feeScheme}. Seluruh anggota tim pelaksana yang terlibat langsung
+            dalam delivery klien komersial berhak memperoleh bagi hasil transparan.
           </div>
         </div>
 
@@ -291,8 +286,8 @@ export const Batch2DetailModal: React.FC<Batch2DetailModalProps> = ({
                   </div>
 
                   <div className="bg-[#F7FCFF] p-3.5 rounded-[4px] border border-[#EDF4F9]">
-                    <h4 className="text-[11px] font-bold text-[#054FBF] uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-                      <Sparkles size={14} /> Keterampilan & Tech Stack
+                    <h4 className="text-[11px] font-bold text-[#054FBF] uppercase tracking-wider mb-2.5">
+                      Keterampilan &amp; Tech Stack
                     </h4>
                     <div className="flex flex-wrap gap-1.5">
                       {selectedDivision.skillsGained.map((skill, idx) => (
