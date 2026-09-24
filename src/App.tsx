@@ -1,45 +1,19 @@
-import { ArrowRight, Compass, ShieldCheck, Sparkles, Building2, Layers } from 'lucide-react';
+import { useState } from 'react';
+import { Compass, ShieldCheck, Building2, Layers } from 'lucide-react';
+import { TopAnnouncementStrip } from './components/layout/TopAnnouncementStrip';
+import { Navbar } from './components/layout/Navbar';
+import { Batch2DetailModal } from './components/modals/Batch2DetailModal';
 
 export default function App() {
+  const [isBatch2ModalOpen, setIsBatch2ModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white font-sans text-midtrans-slate flex flex-col">
       {/* Top Announcement Strip */}
-      <div className="bg-midtrans-azure text-white text-xs font-semibold px-4 py-2.5 text-center flex items-center justify-center gap-2">
-        <Sparkles size={14} className="text-white" />
-        <span>
-          Mahreen Indonesia Internship Batch 2 Telah Dibuka — Periode 1 Okt 2026 – 31 Jan 2027 (Remote WFH/WFA)
-        </span>
-        <ArrowRight size={14} className="hidden sm:inline" />
-      </div>
+      <TopAnnouncementStrip onOpenBatch2Modal={() => setIsBatch2ModalOpen(true)} />
 
       {/* Navigation Header */}
-      <header className="bg-midtrans-navy text-white sticky top-0 z-50 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-sm bg-midtrans-blue flex items-center justify-center font-bold text-white text-lg tracking-wider border border-white/20">
-              M
-            </div>
-            <div>
-              <div className="font-bold text-lg tracking-tight leading-none text-white">MAHREEN</div>
-              <div className="text-[10px] tracking-widest text-midtrans-azure font-medium">INDONESIA</div>
-            </div>
-          </div>
-
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-white/90">
-            <a href="#ekosistem" className="hover:text-midtrans-azure transition-colors">Ekosistem</a>
-            <a href="#pathfinder" className="hover:text-midtrans-azure transition-colors">Temukan Ruangmu</a>
-            <a href="#internship" className="hover:text-midtrans-azure transition-colors">Perjalanan Internship</a>
-            <a href="#portofolio" className="hover:text-midtrans-azure transition-colors">Portofolio</a>
-            <a href="#legalitas" className="hover:text-midtrans-azure transition-colors">Legalitas</a>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <button className="btn-midtrans-primary">
-              Daftar Internship
-            </button>
-          </div>
-        </div>
-      </header>
+      <Navbar onOpenBatch2Modal={() => setIsBatch2ModalOpen(true)} />
 
       {/* Main Content Showcase */}
       <main className="flex-1">
@@ -64,7 +38,11 @@ export default function App() {
                   <button className="btn-midtrans-primary">
                     Temukan Ruangmu
                   </button>
-                  <button className="btn-midtrans-outline-light">
+                  <button
+                    type="button"
+                    onClick={() => setIsBatch2ModalOpen(true)}
+                    className="btn-midtrans-outline-light"
+                  >
                     Pelajari Internship
                   </button>
                 </div>
@@ -186,6 +164,12 @@ export default function App() {
           <p className="text-xs mt-2 text-gray-500">© 2026 Mahreen Indonesia. Berkarya Untuk Indonesia.</p>
         </div>
       </footer>
+
+      {/* Batch 2 Verification & Details Modal */}
+      <Batch2DetailModal
+        isOpen={isBatch2ModalOpen}
+        onClose={() => setIsBatch2ModalOpen(false)}
+      />
     </div>
   );
 }
