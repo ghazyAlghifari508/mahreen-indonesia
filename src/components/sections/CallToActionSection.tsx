@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight01Icon } from '@hugeicons/core-free-icons';
+import { Icon } from '../ui/Icon';
 
 interface CallToActionSectionProps {
   onOpenBatch2Modal?: () => void;
@@ -30,30 +31,11 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = ({
           <button
             type="button"
             onClick={onOpenBatch2Modal}
-            className="btn-started w-full sm:w-auto"
+            className="btn-started w-full sm:w-auto cursor-pointer"
           >
             <span>Mulai Berkarya di Batch 2</span>
-            <ArrowRight className="w-4 h-4 ml-1.5" />
+            <Icon icon={ArrowRight01Icon} size={15} className="ml-1.5" />
           </button>
-
-          <a
-            href="#tentang"
-            onClick={(e) => {
-              e.preventDefault();
-              const el = document.getElementById('tentang');
-              if (el) {
-                const navHeight = 76;
-                const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
-                window.scrollTo({
-                  top: elementPosition - navHeight,
-                  behavior: 'smooth',
-                });
-              }
-            }}
-            className="btn-sales w-full sm:w-auto text-center cursor-pointer"
-          >
-            Kenali Ekosistem
-          </a>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Check } from 'lucide-react';
+import { CheckmarkCircle02Icon } from '@hugeicons/core-free-icons';
 import { PILLARS_DATA, VISION_MISSION } from '../../data/mahreenData';
+import { Icon } from '../ui/Icon';
 
 interface WhoWeAreSectionProps {
   onSelectPillar?: (pillarId: string) => void;
@@ -119,7 +120,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
                     className="flex items-start space-x-3 bg-white p-3 rounded-[4px] border border-slate-200/70"
                   >
                     <div className="w-5 h-5 rounded-full bg-[#EDF4F9] text-[#054FBF] flex items-center justify-center shrink-0 mt-0.5">
-                      <Check size={12} className="stroke-[3]" />
+                      <Icon icon={CheckmarkCircle02Icon} size={14} />
                     </div>
                     <p className="text-xs md:text-sm text-[#123049] font-medium leading-relaxed font-poppins">
                       {misi}

@@ -9,10 +9,9 @@ describe('HeroSection Component Tests', () => {
     expect(html).toContain('Satu Dampak.');
   });
 
-  it('renders campaign theme "BERKARYA UNTUK INDONESIA"', () => {
+  it('renders campaign badge "#BerkaryaUntukIndonesia"', () => {
     const html = renderToStaticMarkup(<HeroSection />);
-    expect(html).toContain('BERKARYA UNTUK INDONESIA');
-    expect(html).toContain('text-[#007FE7]');
+    expect(html).toContain('#BerkaryaUntukIndonesia');
   });
 
   it('renders primary CTA button with btn-started class', () => {
@@ -36,7 +35,7 @@ describe('HeroSection Component Tests', () => {
 
   it('renders authentic team photo', () => {
     const html = renderToStaticMarkup(<HeroSection />);
-    expect(html).toContain('/assets/team-meeting.webp');
-    expect(html).toContain('Sesi Kolaborasi Tim Mahreen Indonesia');
+    expect(html).toContain('/assets/future-build.webp');
+    expect(html).toContain('Kolaborasi Tim Mahreen Indonesia');
   });
 });

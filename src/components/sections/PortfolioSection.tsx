@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { 
-  ArrowUpRight, 
-  Trophy
-} from 'lucide-react';
+  ArrowRight01Icon, 
+  Award01Icon
+} from '@hugeicons/core-free-icons';
 import { PROJECTS_DATA, ALUMNI_AWARDEES } from '../../data/mahreenData';
 import { ProjectItem } from '../../types/mahreen';
+import { Icon } from '../ui/Icon';
 
 interface PortfolioSectionProps {
   onSelectProject: (project: ProjectItem) => void;
@@ -38,12 +39,12 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             Portofolio Proyek Terverifikasi
           </h2>
           <p className="text-midtrans-muted text-base md:text-lg leading-relaxed">
-            Karya otentik yang dihasilkan dari berbagai pilar ekosistem Mahreen—dari implementasi 
+            Karya otentik yang dihasilkan dari berbagai pilar ekosistem Mahreen - dari implementasi 
             sistem website, perancangan identitas brand, hingga inisiatif kebermanfaatan sosial.
           </p>
         </div>
 
-        {/* Category Filter Pills (17px Pill Radius) */}
+        {/* Category Filter Pills (2px Sharp Radius) */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {CATEGORIES.map((cat) => {
             const isActive = activeCategory === cat;
@@ -51,9 +52,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 text-xs font-semibold rounded-[17px] transition-all duration-150 border ${
+                className={`px-4 py-1.5 text-xs font-semibold rounded-[2px] transition-all duration-150 border cursor-pointer ${
                   isActive
-                    ? 'bg-midtrans-blue text-white border-midtrans-blue shadow-sm'
+                    ? 'bg-[#054FBF] text-white border-[#054FBF] shadow-sm'
                     : 'bg-white text-midtrans-muted hover:text-midtrans-slate border-slate-200 hover:border-slate-300'
                 }`}
               >
@@ -121,7 +122,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
               {/* Action Trigger */}
               <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-midtrans-blue">
                 <span>Lihat Detail Proyek</span>
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <Icon icon={ArrowRight01Icon} size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </div>
             </div>
           ))}
@@ -132,9 +133,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-8 pb-4 border-b border-midtrans-mist">
             <div>
               <div className="flex items-center space-x-2">
-                <Trophy className="w-5 h-5 text-amber-500" />
+                <Icon icon={Award01Icon} size={20} color="#007FE7" />
                 <h3 className="text-xl md:text-2xl font-bold text-midtrans-slate">
-                  Hall of Fame — Alumni Berprestasi Batch 1
+                  Hall of Fame - Alumni Berprestasi Batch 1
                 </h3>
               </div>
               <p className="text-xs md:text-sm text-midtrans-muted mt-1">

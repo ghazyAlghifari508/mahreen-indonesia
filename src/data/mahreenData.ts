@@ -43,20 +43,22 @@ export const PILLARS_DATA: Pillar[] = [
     id: 'tanya-mahreen',
     name: 'Tanya Mahreen',
     category: 'Digital & Business Solutions',
-    tagline: 'Solusi digital dan kreatif untuk membantu UMKM & brand bertumbuh.',
+    tagline: 'Academic • Creative • Business • Digital Solution',
     description:
-      'Layanan konsultasi dan agensi digital terintegrasi untuk akselerasi bisnis lokal, UMKM, dan brand melalui website profesional, identitas visual terpadu, dan strategi digital marketing.',
+      'Solusi modern untuk kebutuhan akademik, pengembangan bisnis, branding digital, hingga media kreatif yang dirancang secara profesional, inovatif, dan adaptif di era modern. "Solusi Ada di Tanya Mahreen".',
     highlightMetrics: [
       { label: 'Proyek Selesai', value: '100+' },
       { label: 'Web Dev Mulai', value: 'Rp1.5jt' },
       { label: 'Branding Mulai', value: 'Rp499rb' },
     ],
     servicesOrFeatures: [
-      'Website Development',
-      'Logo & Brand Identity',
+      'Academic Support',
+      'Creative Design',
+      'Digital Branding',
+      'Content Production',
       'Social Media Management',
-      'Digital Marketing & SEO',
-      'Business Consultation',
+      'UMKM Development',
+      'Website Development',
     ],
     startingPrice: 'Rp499.000',
     ctaText: 'Konsultasi Tanya Mahreen',
@@ -68,10 +70,9 @@ export const PILLARS_DATA: Pillar[] = [
     id: 'mahreen-studio',
     name: 'Mahreen Studio',
     category: 'Creative Lifestyle & Atelier',
-    tagline:
-      'Creative lifestyle brand yang berfokus pada apparel dan identitas visual modern.',
+    tagline: 'Modern • Elegant • Creative Lifestyle',
     description:
-      'Eksplorasi estetika kontemporer, produk apparel berkarakter, dan identitas visual berkelas yang memadukan filosofi desain bermakna dengan kultur generasi muda.',
+      'Creative lifestyle division dari Mahreen Indonesia yang berfokus pada pengembangan apparel, visual branding, dan identitas kreatif modern. Menghadirkan produk berkarakter dengan kultur anak muda.',
     highlightMetrics: [
       { label: 'Koleksi', value: 'Chapter 01' },
       { label: 'Desain Fokus', value: '6 Pilar Kreatif' },
@@ -81,7 +82,7 @@ export const PILLARS_DATA: Pillar[] = [
       'Visual Branding',
       'Product Development',
       'Creative Campaign',
-      'Signature Collection',
+      'Signature Noir Collection',
     ],
     ctaText: 'Jelajahi Koleksi Studio',
     ctaAction: 'scroll-portfolio',
@@ -92,10 +93,9 @@ export const PILLARS_DATA: Pillar[] = [
     id: 'peduli-mahreen',
     name: 'Peduli Mahreen',
     category: 'Social Movement',
-    tagline:
-      'Gerakan kepedulian sosial melalui pendidikan, literasi, dan pemberdayaan inklusif.',
+    tagline: 'Because caring creates impact • CARE • SHARE • IMPACT',
     description:
-      'Inisiatif filantropi dan edukasi akar rumput untuk membuka akses literasi dan inspirasi masa depan bagi anak-anak dan generasi muda di daerah prasejahtera.',
+      'Bidang sosial dan kemanusiaan dari Mahreen Indonesia yang berfokus pada kepedulian masyarakat, bantuan sosial, edukasi, serta program kebermanfaatan inklusif secara berkelanjutan.',
     highlightMetrics: [
       { label: 'Target Siswa', value: '500+' },
       { label: 'Sekolah Binaan', value: '15 Sekolah' },
@@ -116,10 +116,9 @@ export const PILLARS_DATA: Pillar[] = [
     id: 'mahreen-csr',
     name: 'Mahreen CSR',
     category: 'Partnership & Sustainability',
-    tagline:
-      'Membangun kolaborasi CSR dan keberlanjutan bersama mitra strategis.',
+    tagline: 'Sustainability • Empowerment • Impact • CARE • SHARE • RESPECT',
     description:
-      'Jembatan kolaborasi strategis antara dunia usaha dengan agenda keberlanjutan lingkungan hidup dan pemberdayaan sosial jangka panjang.',
+      'Bidang Corporate Social Responsibility dari Mahreen Indonesia yang berfokus pada program sosial, pemberdayaan masyarakat, kolaborasi komunitas, dan kontribusi keberlanjutan bersama mitra strategis.',
     highlightMetrics: [
       { label: 'Pohon Endemik', value: '10,000' },
       { label: 'Program CSR', value: '15+' },
@@ -267,15 +266,15 @@ export const PATHFINDER_OPTIONS: PathfinderOption[] = [
  */
 export const PROJECTS_DATA: ProjectItem[] = [
   {
-    id: 'project-fauzan-adzima',
-    title: 'Website Yayasan Fauzan Adzima Sukajadi',
-    pillar: 'Mahreen Indonesia Internship',
+    id: 'project-website-fauzan',
+    title: 'Website Yayasan Fauzan Adzima',
+    pillar: 'Magang Mahreen',
     category: 'Website',
     year: '2026',
     description:
-      'Implementasi website resmi yayasan sosial dan pendidikan Fauzan Adzima Sukajadi dengan informasi program, capaian, dan ajakan berdonasi.',
-    image: '/assets/magang-portfolio-website.webp',
-    tags: ['Website Development', 'Tailwind CSS', 'Responsive UI', 'Magang Mahreen'],
+      'Implementasi halaman utama website yayasan dengan informasi program, capaian, dan ajakan berdonasi.',
+    image: '/assets/magang-portfolio-03-website-BIAjnDJL.webp',
+    tags: ['Website Development', 'React', 'Tailwind CSS', 'Magang Mahreen'],
     deliverables: [
       'Implementasi Halaman Utama Yayasan',
       'Integrasi Modul Informasi Program',
@@ -285,15 +284,32 @@ export const PROJECTS_DATA: ProjectItem[] = [
     clientOrBeneficiary: 'Yayasan Fauzan Adzima Sukajadi',
   },
   {
-    id: 'project-uat-testing',
-    title: 'Pengujian Modul Autentikasi (UAT)',
-    pillar: 'Mahreen Indonesia Internship',
+    id: 'project-dashboard-yayasan',
+    title: 'Dashboard Administrasi Yayasan',
+    pillar: 'Magang Mahreen',
     category: 'Website',
     year: '2026',
     description:
-      'Dokumentasi pengujian registrasi dan login untuk memastikan setiap skenario pengujian berjalan sesuai hasil yang diharapkan.',
-    image: '/assets/magang-portfolio-uat.webp',
-    tags: ['Quality Assurance', 'User Acceptance Testing', 'Auth Flow', 'Security'],
+      'Pengembangan dashboard internal untuk memantau program, donasi, pengguna, dan aktivitas operasional yayasan.',
+    image: '/assets/magang-portfolio-04-dashboard-DnZWWoLJ.webp',
+    tags: ['Dashboard Development', 'Admin System', 'Data Analytics', 'Magang Mahreen'],
+    deliverables: [
+      'Dashboard Pemantau Donasi & Program',
+      'Manajemen Hak Akses Pengguna',
+      'Visualisasi Metrik Operasional',
+    ],
+    clientOrBeneficiary: 'Yayasan Fauzan Adzima Sukajadi',
+  },
+  {
+    id: 'project-uat-testing',
+    title: 'Pengujian Modul Autentikasi',
+    pillar: 'Magang Mahreen',
+    category: 'Website',
+    year: '2026',
+    description:
+      'Dokumentasi pengujian registrasi dan login untuk memastikan setiap skenario berjalan sesuai hasil yang diharapkan.',
+    image: '/assets/magang-portfolio-01-uat-D5zoMnsu.webp',
+    tags: ['Quality Assurance', 'UAT Testing', 'Security Flow', 'Magang Mahreen'],
     deliverables: [
       'Penyusunan Test Matrix Skenario',
       'Validasi Alur Registrasi & Login',
@@ -304,12 +320,12 @@ export const PROJECTS_DATA: ProjectItem[] = [
   {
     id: 'project-db-validation',
     title: 'Validasi Database Pengguna',
-    pillar: 'Mahreen Indonesia Internship',
+    pillar: 'Magang Mahreen',
     category: 'Website',
     year: '2026',
     description:
-      'Pemeriksaan data pengguna melalui basis data untuk memvalidasi proses registrasi, relasi tabel, dan kesiapan integrasi sistem.',
-    image: '/assets/magang-portfolio-database.webp',
+      'Pemeriksaan data pengguna melalui basis data untuk memvalidasi proses registrasi dan integrasi sistem.',
+    image: '/assets/magang-portfolio-02-database-gNwkFr8a.webp',
     tags: ['Backend & Database', 'Data Validation', 'Schema Design', 'phpMyAdmin'],
     deliverables: [
       'Pemeriksaan Struktur Tabel User',
@@ -319,123 +335,174 @@ export const PROJECTS_DATA: ProjectItem[] = [
     clientOrBeneficiary: 'Core Platform Backend',
   },
   {
-    id: 'project-urban-odyssey',
-    title: 'Urban Odyssey Apparel Collection',
-    pillar: 'Mahreen Studio',
+    id: 'project-program-module',
+    title: 'Modul Manajemen Program',
+    pillar: 'Magang Mahreen',
+    category: 'Website',
+    year: '2026',
+    description:
+      'Penerapan modul pengelolaan program yang menampilkan kategori, progres, status, dan tindakan administratif.',
+    image: '/assets/magang-portfolio-05-program-D22ZZDbp.webp',
+    tags: ['Admin System', 'Program Management', 'CRUD Architecture', 'Magang Mahreen'],
+    deliverables: [
+      'Modul Kategori & Status Program',
+      'Filter & Pencarian Progres',
+      'Aksi Administratif Cepat',
+    ],
+    clientOrBeneficiary: 'Yayasan Fauzan Adzima',
+  },
+  {
+    id: 'project-code-implementation',
+    title: 'Implementasi Kode Website',
+    pillar: 'Magang Mahreen',
+    category: 'Website',
+    year: '2026',
+    description:
+      'Dokumentasi proses implementasi kode antarmuka dan integrasi basis data selama pengerjaan proyek website.',
+    image: '/assets/magang-portfolio-11-development-BpaKCTZ4.webp',
+    tags: ['Frontend Development', 'VS Code', 'Git Workflows', 'Clean Architecture'],
+    deliverables: [
+      'Arsitektur Komponen Terstandarisasi',
+      'Integrasi State Management',
+      'Review Kode & Formatting',
+    ],
+    clientOrBeneficiary: 'Mahreen Tech Team',
+  },
+  {
+    id: 'project-brand-ntmy',
+    title: 'Kolaborasi Brand NTMY',
+    pillar: 'Magang Mahreen',
     category: 'Branding',
     year: '2026',
     description:
-      'Koleksi busana streetwear Chapter 01 bertema penjelajahan urban modern dengan eksplorasi tipografi futuristik dan material premium.',
-    image: '/assets/future-build.webp',
-    tags: [
-      'Streetwear Design',
-      'Art Direction',
-      'Packaging Design',
-      'Lookbook Production',
-    ],
+      'Dokumentasi hasil kolaborasi identitas merek dan pengembangan talenta kreatif bersama brand partner Nice To Meet You.',
+    image: '/assets/internship-impact-brand-partner-DubyWUBW.webp',
+    tags: ['Brand Partnership', 'Creative Direction', 'Talent Showcase', 'Magang Mahreen'],
     deliverables: [
-      'Signature Noir Hoodie',
-      'Minimalist Oversized Tee',
-      'Lookbook Campaign',
-      'Hangtag & Custom Box',
+      'Kolaborasi Identitas Merek',
+      'Sertifikat Kemitraan Strategis',
+      'Pengembangan Talenta Kreatif',
+    ],
+    clientOrBeneficiary: 'Nice To Meet You (NTMY)',
+  },
+  {
+    id: 'project-urban-odyssey',
+    title: 'Urban Odyssey Apparel',
+    pillar: 'Mahreen Studio',
+    category: 'Branding',
+    year: '2025',
+    description:
+      'Koleksi busana streetwear modern eksklusif yang memadukan estetika visual urban dengan tren milenial.',
+    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=900&q=80',
+    tags: ['Apparel & Branding', 'Streetwear Design', 'Art Direction', 'Lookbook'],
+    deliverables: [
+      'Signature Streetwear Collection',
+      'Urban Aesthetic Lookbook',
+      'Packaging & Merchandising',
     ],
     clientOrBeneficiary: 'Mahreen Studio Collection',
   },
   {
     id: 'project-kopi-selasar',
-    title: 'Rebranding Visual Identity Kopi Selasar',
+    title: 'Rebranding Kopi Selasar',
     pillar: 'Mahreen Studio',
     category: 'Branding',
     year: '2025',
     description:
-      'Revitalisasi identitas visual menyeluruh untuk brand kedai kopi lokal, mencakup logo, color guide, kemasan take-away, dan visual merchandising.',
-    image: '/assets/pillar-mahreen-studio.webp',
-    tags: ['Brand Identity', 'Packaging', 'Brand Guideline', 'Typography'],
+      'Penyusunan identitas visual baru yang hangat dan kekinian untuk kedai kopi lokal populer.',
+    image: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=80',
+    tags: ['Branding & Identity', 'Brand Guideline', 'Packaging Cup', 'Typography'],
     deliverables: [
       'Logo Suite & Iconography',
-      'Packaging Cup & Beans',
-      'Social Media Templates',
-      'Signage Guidelines',
+      'Kemasan Take-Away & Beans',
+      'Social Media Brand Assets',
     ],
     clientOrBeneficiary: 'Kopi Selasar Indonesia',
   },
   {
     id: 'project-griya-batik',
-    title: 'E-Commerce Platform Griya Batik Nusantara',
+    title: 'E-Commerce Griya Batik',
     pillar: 'Tanya Mahreen',
     category: 'Website',
-    year: '2026',
+    year: '2025',
     description:
-      'Platform toko online modern untuk perajin batik tradisional dengan katalog interaktif, checkout praktis, dan integrasi WhatsApp payment.',
-    image: '/assets/pillar-tanya-mahreen.webp',
-    tags: ['E-Commerce', 'Next.js', 'Payment Flow', 'UMKM Digital'],
+      'Pengembangan website belanja batik premium berbasis Next.js dengan sistem manajemen produk canggih.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80',
+    tags: ['Web Development', 'E-Commerce', 'Next.js', 'Katalog Digital'],
     deliverables: [
       'Katalog Produk Berfilter',
-      'WhatsApp Direct Checkout',
-      'Mobile Friendly Layout',
-      'Inventory Sync Engine',
+      'Sistem Manajemen Produk Canggih',
+      'Integrasi Checkout Praktis',
     ],
     clientOrBeneficiary: 'Griya Batik Nusantara',
   },
   {
     id: 'project-sehatku-app',
-    title: 'SehatKu Healthcare Platform UI/UX',
+    title: 'SehatKu App UI/UX',
     pillar: 'Tanya Mahreen',
     category: 'Website',
     year: '2025',
     description:
-      'Perancangan antarmuka pengguna komprehensif untuk portal booking konsultasi medis terpadu dan rekam medis preventif pasien.',
-    image: '/assets/magang-portfolio-uat.webp',
-    tags: ['UI/UX Design', 'Design System', 'Prototyping', 'Accessibility'],
+      'Rancangan desain antarmuka aplikasi kesehatan ramah lansia yang fokus pada kemudahan akses navigasi.',
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=80',
+    tags: ['UI/UX Design', 'Healthcare', 'Design System', 'Accessibility'],
     deliverables: [
+      'Desain Antarmuka Ramah Lansia',
+      'Navigasi Konsultasi Terpadu',
       'Design System Components',
-      'Patient Consultation Flow',
-      'Appointment Booking Prototype',
-      'WCAG AA Accessibility Audit',
     ],
     clientOrBeneficiary: 'SehatKu Telehealth Indonesia',
   },
-
   {
     id: 'project-pojok-literasi',
-    title: 'Pojok Literasi & Edukasi Cigugur',
+    title: 'Pojok Literasi Cigugur',
     pillar: 'Peduli Mahreen',
     category: 'Social Impact',
-    year: '2026',
+    year: '2025',
     description:
-      'Pembangunan ruang baca komunitas dan pengadaan 1.200 buku bacaan bergambar untuk anak-anak sekolah dasar di Cigugur, Jawa Barat.',
-    image: '/assets/pillar-peduli-mahreen.webp',
-    tags: [
-      'Pendidikan Inklusif',
-      'Donasi Buku',
-      'Renovasi Library',
-      'Community Hub',
-    ],
+      'Pembangunan perpustakaan komunitas yang terintegrasi dengan akses internet dan laboratorium komputer dasar gratis.',
+    image: 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=900&q=80',
+    tags: ['Social Impact', 'Community Library', 'Literasi Digital', 'Fasilitas Gratis'],
     deliverables: [
-      'Renovasi 1 Unit Perpustakaan Desa',
-      'Pengadaan 1.200 Buku Edukasi',
-      'Sesi Kelas Inspirasi 4 Minggu',
-      'Pelatihan Pengelola Komunitas',
+      'Pembangunan Perpustakaan Komunitas',
+      'Laboratorium Komputer Dasar',
+      'Pengadaan Buku & Akses Internet',
     ],
     clientOrBeneficiary: 'Komunitas Anak Pesisir & Desa Cigugur',
   },
   {
     id: 'project-ecohub-csr',
-    title: 'Eco-Hub Circular Economy & Reboisasi',
+    title: 'Eco-Hub CSR Program',
     pillar: 'Mahreen CSR',
     category: 'Sustainability',
-    year: '2026',
+    year: '2025',
     description:
-      'Inisiatif kemitraan hijau multi-pihak yang menanam 10.000 bibit pohon endemik dan mendirikan fasilitas pengolahan sampah organik di 5 desa binaan.',
-    image: '/assets/pillar-mahreen-csr.webp',
-    tags: ['CSR Partnership', 'Reboisasi', 'Circular Economy', 'ESG Impact'],
+      'Inisiatif ekonomi sirkular yang mendaur ulang sisa kemasan produksi pabrik menjadi produk bernilai guna.',
+    image: 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=900&q=80',
+    tags: ['Sustainability', 'Circular Economy', 'CSR Program', 'Eco Products'],
     deliverables: [
-      'Penanaman 10.000 Pohon Endemik',
-      'Fasilitas Kompos Organik Terpadu',
-      'Laporan Metrik Dampak ESG',
-      'Pemberdayaan 5 Kelompok Tani',
+      'Inisiatif Daur Ulang Kemasan',
+      'Produk Bernilai Guna Komunitas',
+      'Laporan Dampak Keberlanjutan',
     ],
     clientOrBeneficiary: 'Konsorsium Mitra Hijau Jawa Barat',
+  },
+  {
+    id: 'project-wirausaha-muda',
+    title: 'Inkubator Wirausaha Muda',
+    pillar: 'Peduli Mahreen',
+    category: 'Social Impact',
+    year: '2026',
+    description:
+      'Program akselerasi keterampilan kepemimpinan dan manajemen keuangan pemuda yang disertai bantuan modal.',
+    image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80',
+    tags: ['Education & Funding', 'Social Empowerment', 'Inkubasi Bisnis', 'Leadership'],
+    deliverables: [
+      'Pelatihan Kepemimpinan & Manajemen Keuangan',
+      'Pendampingan Inkubasi Wirausaha',
+      'Bantuan Modal Usaha Pemuda',
+    ],
+    clientOrBeneficiary: 'Talenta Muda Komunitas',
   },
 ];
 
@@ -463,7 +530,7 @@ export const ALUMNI_AWARDEES: AlumniAwardee[] = [
   },
   {
     name: 'Andhika Septiansyah',
-    role: 'President University — Web Dev',
+    role: 'President University - Web Dev',
     award: 'Web Innovator Award',
     citation:
       'Contributed innovative solutions to web development through effective implementation, problem-solving, and user-focused thinking.',
@@ -472,7 +539,7 @@ export const ALUMNI_AWARDEES: AlumniAwardee[] = [
   },
   {
     name: 'Ikhrom Nur K.',
-    role: 'Institute Teknologi Bandung — Sosmed',
+    role: 'Institute Teknologi Bandung - Sosmed',
     award: 'Best Content Strategist',
     citation:
       'Developed relevant content strategies through structured ideation, strategic thinking, and effective communication.',
@@ -481,7 +548,7 @@ export const ALUMNI_AWARDEES: AlumniAwardee[] = [
   },
   {
     name: 'Athaya Aurellin K.',
-    role: 'Universitas Brawijaya — Video Editor',
+    role: 'Universitas Brawijaya - Video Editor',
     award: 'Creative Editing Award',
     citation:
       'Demonstrated strong editing skills through creative storytelling, technical precision, and engaging visual output.',
@@ -490,7 +557,7 @@ export const ALUMNI_AWARDEES: AlumniAwardee[] = [
   },
   {
     name: 'Raihan Syahputra F.',
-    role: 'Universitas Teknologi Bandung — Web Dev',
+    role: 'Universitas Teknologi Bandung - Web Dev',
     award: 'Most Engaged Intern',
     citation:
       'Demonstrated active participation, effective communication, and strong engagement across meetings and projects.',
@@ -499,7 +566,7 @@ export const ALUMNI_AWARDEES: AlumniAwardee[] = [
   },
   {
     name: 'Aditya, Darryl, Rakha & Afrizal',
-    role: 'UTB, ITHB & UIN — Lintas Divisi',
+    role: 'UTB, ITHB & UIN - Lintas Divisi',
     award: 'Most Improved Interns',
     citation:
       'Demonstrated significant growth in skills, performance, and contribution through continuous learning and dedication.',
@@ -790,7 +857,7 @@ export const BATCH2_DETAILS: Batch2Details = {
   batchNumber: 2,
   period: '1 Oktober 2026 – 31 Januari 2027',
   workSystem: 'Remote WFH / WFA (Work From Anywhere)',
-  commitment: '4 Bulan — Terjadwal & Terstruktur',
+  commitment: '4 Bulan - Terjadwal & Terstruktur',
   feeScheme:
     'Profit Sharing 30% untuk Tim Pelaksana atas Proyek Komersial Mahreen yang Menghasilkan Pendapatan',
   weeklyOperatingSystem: [
@@ -931,6 +998,21 @@ export const ORGANIZATION_META = {
   campaign: '#From Learning to Real Impact',
   description:
     'Ekosistem kreatif yang memberdayakan bisnis, mahasiswa, komunitas, dan generasi muda Indonesia melalui kreativitas, teknologi, pendidikan, dan kolaborasi nyata.',
+  address: 'Jl. Kebon Kopi No. 153 Kota Cimahi, Jawa Barat 40535',
+  officeAddress: 'Jl. Kebon Kopi No. 153 Kota Cimahi, Jawa Barat 40535',
+  skKemenkumham: 'AHU-A089408.AH.01.30.Tahun 2026',
+  nib: '1203260152054',
+  haki: '001180040',
+  phone: '+62 896-5264-7385',
+  email: 'info@mahreenindonesia.com',
+  website: 'https://mahreenindonesia.com',
+  legalEstablishment: {
+    decreeNumber: 'AHU-A089408.AH.01.30 Tahun 2026',
+    date: '18 Mei 2026',
+    authorizedBy: 'Menteri Hukum Republik Indonesia (Dirjen AHU)',
+    nib: '1203260152054',
+    haki: '001180040 (Permohonan EC002026042583)',
+  },
   leadership: {
     founder: 'Mohamad Dzikri Arfiansyah, S.T.',
     ceo: 'Tania Restiani Fajar',
@@ -938,8 +1020,10 @@ export const ORGANIZATION_META = {
   socials: {
     instagram: '@mahreenindonesia',
     instagramUrl: 'https://instagram.com/mahreenindonesia',
-    email: 'halo@mahreen.id',
-    twibbonUrl: 'https://twibbonize.com/mii-batch2',
+    tiktokUrl: 'https://tiktok.com/@mahreenindonesia',
+    youtubeUrl: 'https://youtube.com/@officialmahreenindonesia',
+    xUrl: 'https://x.com/mahreenidn',
+    twibbonUrl: 'https://twb.nz/miinternshipb2',
     formSubmissionUrl: 'https://bit.ly/FormTaskMII2',
   },
   statsOverview: [
@@ -949,3 +1033,24 @@ export const ORGANIZATION_META = {
     { label: 'Siswa Terdampak', value: '500+' },
   ],
 };
+
+export const BATCH2_INFO = {
+  theme: 'BERKARYA UNTUK INDONESIA',
+  period: '1 Oktober 2026 – 31 Januari 2027',
+  timeline: [
+    { title: 'Pendaftaran & Portfolio Submission', dates: '10 – 26 Sept 2026' },
+    { title: 'Pengumuman Lolos Seleksi Tahap 1', dates: '27 Sept 2026' },
+    { title: 'Creative Challenge (1x24 Jam)', dates: '28 – 29 Sept 2026' },
+    { title: 'Pengumuman Final Peserta Magang', dates: '30 Sept 2026' },
+    { title: 'Onboarding & Kickoff Batch 2', dates: '1 Okt 2026' },
+  ],
+};
+
+export const INTERNSHIP_STEPS = INTERNSHIP_JOURNEY_MONTHS.map((m) => ({
+  phase: m.phase,
+  title: m.title,
+  subtitle: `Bulan ${m.monthNumber} • ${m.monthName}`,
+  description: m.focusDescription,
+  deliverables: m.keyOutputs,
+}));
+

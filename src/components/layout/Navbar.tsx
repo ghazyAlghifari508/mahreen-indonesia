@@ -1,139 +1,158 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu01Icon, Cancel01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons';
+import { Icon } from '../ui/Icon';
 
 interface NavbarProps {
+  currentRoute?: string;
+  onNavigate?: (route: string) => void;
   onOpenBatch2Modal?: () => void;
   className?: string;
 }
 
-const NAV_ITEMS = [
-  { label: 'Tentang Kami', href: '#tentang' },
-  { label: 'Ruang Berkarya', href: '#ruang-berkarya' },
-  { label: 'Solusi Talenta', href: '#solusi-talenta' },
-  { label: 'Karya Nyata', href: '#karya-nyata' },
-  { label: 'Legalitas', href: '#legalitas' },
+export const NAV_ITEMS = [
+  { label: 'Beranda', route: '/' },
+  { label: 'Tentang Mahreen', route: '/tentang' },
+  { label: 'Internship Batch 2', route: '/internship' },
+  { label: '5 Pilar Ekosistem', route: '/ekosistem' },
+  { label: 'Portofolio & Karya', route: '/portofolio' },
 ];
 
 export const Navbar: React.FC<NavbarProps> = ({
+  currentRoute = '/',
+  onNavigate = () => {},
   onOpenBatch2Modal,
   className = '',
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    if (element) {
-      const navHeight = 76;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - navHeight;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-    setMobileMenuOpen(false);
-  };
-
-  const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleNavClick = (route: string) => {
+    onNavigate(route);
     setMobileMenuOpen(false);
   };
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full bg-[#002855] border-b border-white/10 ${className}`}
+      className={`row header bg-[#002855] text-white border-b border-white/10 fixed top-0 left-0 right-0 z-[1001] w-full ${className}`}
+      itemScope
+      itemType="http://www.schema.org/SiteNavigationElement"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[76px]">
-          {/* Pure Logo (Zero Box, Zero Border, Transparent PNG) */}
+      <div className="container max-w-7xl mx-auto flex items-center justify-between h-[76px] px-4 sm:px-8 w-full">
+        {/* Left Side: Brand Logo & Navigation */}
+        <div className="left flex items-center gap-8">
           <a
-            href="#"
-            onClick={scrollToTop}
-            className="flex items-center py-2 focus:outline-none cursor-pointer"
-            aria-label="Mahreen Indonesia - Beranda"
+            className="logos flex items-center py-1 cursor-pointer shrink-0"
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('/');
+            }}
           >
             <img
-              src="/assets/mahreen-logo-384.webp"
               alt="Mahreen Indonesia"
-              className="h-10 md:h-11 w-auto object-contain hover:opacity-90 transition-opacity"
+              className="logo h-9 md:h-10 w-auto object-contain"
+              src="/assets/mahreen-logo-384.webp"
             />
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav
-            aria-label="Navigasi Utama"
-            className="hidden lg:flex items-center gap-8 font-poppins font-medium text-[15px]"
-          >
-            {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-white hover:text-[#007FE7] transition-colors py-1.5 cursor-pointer"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          {/* Desktop Navigation Links with generous spacing */}
+          <ul className="menu-nav hidden lg:flex items-center gap-6 xl:gap-8 font-poppins text-[14px]">
+            {NAV_ITEMS.map((item) => {
+              const isActive = currentRoute === item.route;
+              return (
+                <li
+                  key={item.route}
+                  className={`py-1 cursor-pointer transition-colors ${
+                    isActive ? 'text-[#007FE7] font-semibold' : 'text-white/85 hover:text-[#007FE7]'
+                  }`}
+                >
+                  <a
+                    href={item.route}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleNavClick(item.route);
+                    }}
+                    className={`block py-1 tracking-normal transition-colors ${
+                      isActive ? 'text-[#007FE7]' : 'text-white/85 hover:text-[#007FE7]'
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
-          {/* Right Action: Midtrans-style CTA */}
-          <div className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center space-x-2 text-xs font-semibold text-white/80 border-r border-white/20 pr-4">
-              <span className="text-[#007FE7]">ID</span>
-              <span className="text-white/40">|</span>
-              <span className="text-white/60">EN</span>
-            </div>
-
-            <button
-              onClick={onOpenBatch2Modal}
-              className="btn-started hidden sm:inline-flex"
+        {/* Right Side: Direct CTAs */}
+        <div className="right flex items-center gap-4">
+          <span className="btn-started inline-block">
+            <a
+              href="#daftar"
+              onClick={(e) => {
+                e.preventDefault();
+                if (onOpenBatch2Modal) {
+                  onOpenBatch2Modal();
+                } else {
+                  handleNavClick('/internship');
+                }
+              }}
+              className="text-white bg-[#054FBF] hover:bg-[#002855] text-xs font-semibold px-5 py-2.5 rounded-full transition-all"
             >
               Mulai Berkarya
-            </button>
+            </a>
+          </span>
 
-            {/* Mobile Menu Button */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
-              className="lg:hidden p-2 text-white hover:text-[#007FE7] transition-colors cursor-pointer"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+          {/* Mobile Menu Trigger */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-white hover:text-[#007FE7] focus:outline-none cursor-pointer"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
+          >
+            <Icon icon={mobileMenuOpen ? Cancel01Icon : Menu01Icon} size={24} />
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#002855] border-t border-white/10 px-6 py-6 space-y-4">
-          <nav className="flex flex-col space-y-3 font-poppins text-[15px]">
+        <div className="overlay overlay-slidedown mobile lg:hidden bg-[#002855] border-t border-white/10 px-6 py-6 transition-all duration-200">
+          <ul className="menu-mobile flex flex-col space-y-4">
             {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-white hover:text-[#007FE7] py-1 cursor-pointer"
-              >
-                {item.label}
-              </a>
+              <li key={item.route}>
+                <button
+                  type="button"
+                  onClick={() => handleNavClick(item.route)}
+                  className={`w-full text-left text-base font-poppins py-2 cursor-pointer flex items-center justify-between ${
+                    currentRoute === item.route
+                      ? 'text-[#007FE7] font-semibold'
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  <span>{item.label}</span>
+                  <Icon icon={ArrowRight01Icon} size={16} />
+                </button>
+              </li>
             ))}
-          </nav>
-          <div className="pt-4 border-t border-white/10">
-            <button
-              onClick={() => {
+          </ul>
+
+          <div className="mobile-login pt-6 mt-6 border-t border-white/10 flex flex-col gap-3">
+            <a
+              href="#daftar"
+              onClick={(e) => {
+                e.preventDefault();
                 setMobileMenuOpen(false);
-                onOpenBatch2Modal?.();
+                if (onOpenBatch2Modal) {
+                  onOpenBatch2Modal();
+                } else {
+                  handleNavClick('/internship');
+                }
               }}
-              className="btn-started w-full justify-center"
+              className="w-full text-center py-3 bg-[#054FBF] hover:bg-[#002855] text-white font-poppins font-semibold text-sm rounded-full transition-all"
             >
-              <span>Mulai Berkarya</span>
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </button>
+              Daftar Internship Batch 2
+            </a>
           </div>
         </div>
       )}

@@ -13,11 +13,11 @@ describe('Layout Components Unit Tests', () => {
       expect(html).toContain('rounded-none');
     });
 
-    it('renders official ecosystem information text', () => {
+    it('renders announcement information text', () => {
       const html = renderToStaticMarkup(
         <TopAnnouncementStrip onOpenBatch2Modal={() => {}} />
       );
-      expect(html).toContain('OFFICIAL ECOSYSTEM');
+      expect(html).not.toContain('OFFICIAL ECOSYSTEM');
       expect(html).toContain('Selamat Datang di Mahreen Indonesia');
     });
 
@@ -34,6 +34,21 @@ describe('Layout Components Unit Tests', () => {
       const html = renderToStaticMarkup(<Navbar onOpenBatch2Modal={() => {}} />);
       expect(html).toContain('bg-[#002855]');
       expect(html).toContain('h-[76px]');
+    });
+
+    it('renders fixed top-0 header', () => {
+      const html = renderToStaticMarkup(
+        <Navbar onOpenBatch2Modal={() => {}} />
+      );
+      expect(html).toContain('top-0');
+      expect(html).toContain('fixed');
+    });
+
+    it('does not render ID | EN or Kontak links in header', () => {
+      const html = renderToStaticMarkup(<Navbar onOpenBatch2Modal={() => {}} />);
+      expect(html).not.toContain('>ID<');
+      expect(html).not.toContain('>EN<');
+      expect(html).not.toContain('Kontak');
     });
 
     it('renders Mahreen Indonesia branding with pure transparent logo asset', () => {

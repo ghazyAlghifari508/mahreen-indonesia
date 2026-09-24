@@ -1,14 +1,14 @@
 import React from 'react';
 import {
-  Calendar,
-  Layers,
-  Building2,
-  Check,
-  Tag,
-  ArrowUpRight,
-} from 'lucide-react';
+  Calendar03Icon,
+  Layers01Icon,
+  Building03Icon,
+  CheckmarkCircle02Icon,
+  ArrowRight01Icon,
+} from '@hugeicons/core-free-icons';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
+import { Icon } from '../ui/Icon';
 import type { ProjectItem } from '../../types/mahreen';
 
 export interface ProjectDetailModalProps {
@@ -40,7 +40,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             variant="primary"
             size="sm"
             onClick={() => onConsultSimilar(project)}
-            icon={<ArrowUpRight size={14} />}
+            icon={<Icon icon={ArrowRight01Icon} size={14} />}
             iconPosition="right"
             className="rounded-[2px] bg-[#054FBF] hover:bg-[#002855] text-white text-[12px] font-bold px-6 py-2.5"
           >
@@ -52,7 +52,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             size="sm"
             href="https://bit.ly/MII-2"
             target="_blank"
-            icon={<ArrowUpRight size={14} />}
+            icon={<Icon icon={ArrowRight01Icon} size={14} />}
             iconPosition="right"
             className="rounded-[2px] bg-[#054FBF] hover:bg-[#002855] text-white text-[12px] font-bold px-6 py-2.5"
           >
@@ -82,41 +82,23 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       footer={footerActions}
     >
       <div className="space-y-5">
-        {/* 1. Browser Frame Mockup Container (Midtrans Window Pattern) */}
+        {/* 1. Clean Project Image Showcase */}
         {project.image && (
-          <div className="w-full overflow-hidden rounded-[4px] border border-[#EDF4F9] shadow-xs bg-white">
-            {/* Minimalist Browser Frame Top Bar */}
-            <div className="h-7 bg-[#EDF4F9] border-b border-[#EDF4F9] px-3 flex items-center justify-between select-none">
-              {/* 3 OS Window Dots: Red, Yellow, Green */}
-              <div className="flex items-center space-x-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] block shrink-0" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] block shrink-0" />
-                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] block shrink-0" />
-              </div>
-              {/* URL Bar */}
-              <div className="text-[10px] text-[#7686AB] font-mono px-3 py-0.5 bg-white/80 rounded-[2px] truncate max-w-[240px] sm:max-w-xs border border-slate-200/50">
-                mahreenindonesia.com/karya/{project.id}
-              </div>
-              <div className="w-8" />
-            </div>
-
-            {/* Clean Screenshot Inside Mockup */}
-            <div className="relative w-full max-h-72 overflow-hidden bg-[#F7FCFF] flex items-center justify-center">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-auto max-h-72 object-cover object-top"
-                loading="lazy"
-              />
-            </div>
+          <div className="w-full bg-[#123049] p-2 border border-[#EDF4F9] shadow-sm">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-auto max-h-80 object-cover object-top"
+              loading="lazy"
+            />
           </div>
         )}
 
-        {/* 2. Project Meta Cards (Midtrans Micro-Radii Tokens) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-[#F7FCFF] border border-[#BBBBBB]/30 p-3 rounded-[4px]">
+        {/* 2. Project Meta Cards */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-[#F7FCFF] border border-[#BBBBBB]/30 p-3.5 rounded-[4px]">
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 rounded-[2px] bg-white border border-[#BBBBBB]/20 text-[#054FBF] shrink-0">
-              <Layers size={15} />
+              <Icon icon={Layers01Icon} size={16} />
             </div>
             <div>
               <p className="text-[10px] font-semibold text-[#7686AB] uppercase tracking-wider">
@@ -128,7 +110,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
           <div className="flex items-center gap-2.5">
             <div className="p-1.5 rounded-[2px] bg-white border border-[#BBBBBB]/20 text-[#054FBF] shrink-0">
-              <Calendar size={15} />
+              <Icon icon={Calendar03Icon} size={16} />
             </div>
             <div>
               <p className="text-[10px] font-semibold text-[#7686AB] uppercase tracking-wider">
@@ -141,7 +123,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           {project.clientOrBeneficiary && (
             <div className="col-span-2 sm:col-span-1 flex items-center gap-2.5">
               <div className="p-1.5 rounded-[2px] bg-white border border-[#BBBBBB]/20 text-[#054FBF] shrink-0">
-                <Building2 size={15} />
+                <Icon icon={Building03Icon} size={16} />
               </div>
               <div>
                 <p className="text-[10px] font-semibold text-[#7686AB] uppercase tracking-wider">
@@ -165,7 +147,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           </p>
         </div>
 
-        {/* 4. Deliverables Section (Midtrans-biaya.html Row Style with Hairline Dividers) */}
+        {/* 4. Deliverables Section (Hairline dividers, no bullet dots) */}
         {project.deliverables && project.deliverables.length > 0 && (
           <div>
             <h4 className="text-[11px] font-bold text-[#054FBF] uppercase tracking-wider mb-2 font-poppins">
@@ -175,11 +157,9 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
               {project.deliverables.map((item, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2.5 border-b border-[#EDF4F9] py-2.5 text-[13px] text-[#123049] font-poppins"
+                  className="flex items-center gap-2.5 border-b border-[#EDF4F9] py-2 text-[12px] text-[#123049] font-poppins"
                 >
-                  <div className="w-4 h-4 rounded-full bg-[#EDF4F9] text-[#054FBF] flex items-center justify-center shrink-0">
-                    <Check size={11} className="stroke-[3]" />
-                  </div>
+                  <Icon icon={CheckmarkCircle02Icon} size={14} className="text-[#054FBF] shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -187,11 +167,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           </div>
         )}
 
-        {/* 5. Tags Section (Midtrans Micro-Chips with rounded-[2px]) */}
+        {/* 5. Tags Section (Sharp 2px Micro-Chips) */}
         {project.tags && project.tags.length > 0 && (
           <div>
-            <h4 className="text-[11px] font-bold text-[#7686AB] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-poppins">
-              <Tag size={12} /> Tags &amp; Teknologi
+            <h4 className="text-[11px] font-bold text-[#7686AB] uppercase tracking-wider mb-2 font-poppins">
+              Tags &amp; Teknologi
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag, idx) => (

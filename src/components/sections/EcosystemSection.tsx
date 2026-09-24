@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight01Icon, CheckmarkCircle02Icon } from '@hugeicons/core-free-icons';
 import { PILLARS_DATA } from '../../data/mahreenData';
+import { Icon } from '../ui/Icon';
 
 interface EcosystemSectionProps {
   activePillarId?: string;
@@ -81,7 +82,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                 <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                   <span className="text-xs font-bold text-[#054FBF] font-poppins flex items-center group">
                     <span>Lihat Detail Ruang</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover:translate-x-1" />
+                    <Icon icon={ArrowRight01Icon} size={14} className="ml-1 transition-transform group-hover:translate-x-1" />
                   </span>
                 </div>
               </div>
@@ -124,7 +125,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                   {currentPillar.servicesOrFeatures.map((svc, idx) => (
                     <div key={idx} className="flex items-center -ml-[26px] space-x-2.5">
                       <div className="w-5 h-5 rounded-full bg-[#EDF4F9] flex items-center justify-center shrink-0 text-[#054FBF]">
-                        <Check className="w-3 h-3 stroke-[3]" />
+                        <Icon icon={CheckmarkCircle02Icon} size={13} />
                       </div>
                       <span className="text-xs md:text-sm font-semibold text-[#123049] font-poppins">
                         {svc}
@@ -151,10 +152,10 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
 
               <button
                 onClick={currentPillar.id === 'internship' ? onOpenBatch2Modal : undefined}
-                className="btn-started w-full justify-center shadow-xs"
+                className="btn-started w-full justify-center shadow-xs cursor-pointer"
               >
                 <span>{currentPillar.ctaText}</span>
-                <ArrowRight className="w-4 h-4 ml-2" />
+                <Icon icon={ArrowRight01Icon} size={15} className="ml-2" />
               </button>
             </div>
           </div>

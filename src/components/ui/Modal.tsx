@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { X } from 'lucide-react';
+import { Cancel01Icon } from '@hugeicons/core-free-icons';
+import { Icon } from './Icon';
 
 export interface ModalProps {
   isOpen: boolean;
@@ -146,7 +147,7 @@ export const Modal: React.FC<ModalProps> = ({
             aria-label="Tutup Dialog"
             className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-[#F0F0F0] hover:bg-[#DCE1E6] text-[#123049] flex items-center justify-center transition-colors duration-150 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#054FBF]"
           >
-            <X size={18} strokeWidth={2.5} />
+            <Icon icon={Cancel01Icon} size={18} />
           </button>
         )}
 
@@ -173,3 +174,5 @@ export const Modal: React.FC<ModalProps> = ({
 };
 
 Modal.displayName = 'Modal';
+
+export default Modal;

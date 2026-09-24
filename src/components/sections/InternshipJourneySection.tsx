@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
 import { 
-  Calendar, 
-  Laptop, 
-  Coins, 
-  ArrowRight, 
-  CheckCircle2,
-  Compass,
-  Hammer,
-  Send,
-  Trophy,
-  Layers
-} from 'lucide-react';
+  Calendar03Icon, 
+  ComputerIcon, 
+  Coins01Icon, 
+  ArrowRight01Icon, 
+  CheckmarkCircle02Icon,
+  CompassIcon,
+  ToolsIcon,
+  SentIcon,
+  Award01Icon,
+  Layers01Icon
+} from '@hugeicons/core-free-icons';
 import { BATCH2_DETAILS } from '../../data/mahreenData';
+import { Icon } from '../ui/Icon';
 
 interface InternshipJourneySectionProps {
   onOpenBatch2Modal: () => void;
 }
 
 const PHASE_ICONS = [
-  <Compass className="w-5 h-5" />,
-  <Hammer className="w-5 h-5" />,
-  <Send className="w-5 h-5" />,
-  <Trophy className="w-5 h-5" />,
+  <Icon icon={CompassIcon} size={20} />,
+  <Icon icon={ToolsIcon} size={20} />,
+  <Icon icon={SentIcon} size={20} />,
+  <Icon icon={Award01Icon} size={20} />,
 ];
 
 export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> = ({
@@ -106,7 +107,7 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {activePhase.keyOutputs.map((out, oIdx) => (
                       <div key={oIdx} className="flex items-center space-x-2 text-xs text-[#123049] font-medium bg-white p-3 rounded-[2px] border border-slate-200/70 font-poppins">
-                        <CheckCircle2 className="w-4 h-4 text-[#054FBF] shrink-0" />
+                        <Icon icon={CheckmarkCircle02Icon} size={15} className="text-[#054FBF] shrink-0" />
                         <span>{out}</span>
                       </div>
                     ))}
@@ -168,7 +169,7 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
             <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
-              <Laptop className="w-5 h-5" />
+              <Icon icon={ComputerIcon} size={20} />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">Remote WFH / WFA</h4>
             <p className="text-xs text-[#7686AB] leading-relaxed font-poppins">
@@ -178,7 +179,7 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
 
           <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
             <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
-              <Coins className="w-5 h-5" />
+              <Icon icon={Coins01Icon} size={20} />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">Fee Project 30%</h4>
             <p className="text-xs text-[#7686AB] leading-relaxed font-poppins">
@@ -188,7 +189,7 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
 
           <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
             <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
-              <Calendar className="w-5 h-5" />
+              <Icon icon={Calendar03Icon} size={20} />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">4 Bulan Terstruktur</h4>
             <p className="text-xs text-[#7686AB] leading-relaxed font-poppins">
@@ -198,7 +199,7 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
 
           <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
             <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
-              <Layers className="w-5 h-5" />
+              <Icon icon={Layers01Icon} size={20} />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">5 Divisi Pilihan</h4>
             <p className="text-xs text-[#7686AB] leading-relaxed font-poppins">
@@ -211,10 +212,10 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
         <div className="text-center">
           <button 
             onClick={onOpenBatch2Modal}
-            className="btn-started inline-flex items-center space-x-2"
+            className="btn-started inline-flex items-center space-x-2 cursor-pointer"
           >
             <span>Pelajari Pedoman Lengkap &amp; Syarat Batch 2</span>
-            <ArrowRight className="w-4 h-4 ml-1" />
+            <Icon icon={ArrowRight01Icon} size={15} className="ml-1" />
           </button>
         </div>
       </div>

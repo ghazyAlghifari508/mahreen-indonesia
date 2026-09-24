@@ -15,6 +15,7 @@ export interface Pillar {
   name: string;
   category: string;
   tagline: string;
+  motto?: string;
   description: string;
   highlightMetrics: HighlightMetric[];
   servicesOrFeatures: string[];
@@ -23,6 +24,8 @@ export interface Pillar {
   ctaAction: string;
   badge: string;
   logoUrl?: string;
+  targetAudience?: string;
+  imageSrc?: string;
 }
 
 export type ProjectCategory =

@@ -1,214 +1,369 @@
 import React from 'react';
 import { 
-  Instagram, 
-  Youtube, 
-  Mail, 
-  ExternalLink, 
-  ArrowUp
-} from 'lucide-react';
-import { PILLARS_DATA } from '../../data/mahreenData';
+  InstagramIcon, 
+  Mail01Icon, 
+  Call02Icon,
+  ArrowUp01Icon 
+} from '@hugeicons/core-free-icons';
+import { Icon } from '../ui/Icon';
+import { WaveDivider } from '../ui/WaveDivider';
+import { ORGANIZATION_META } from '../../data/mahreenData';
 
 interface FooterProps {
+  onNavigate: (route: string) => void;
   onOpenBatch2Modal: () => void;
-  onSelectPillar: (pillarId: string) => void;
+  onSelectPillar?: (pillarId: string) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
+  onNavigate,
   onOpenBatch2Modal,
-  onSelectPillar,
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-midtrans-navy text-white pt-16 pb-12 px-6 md:px-12 border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
-        {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-          {/* Brand Info (2 Columns on large) */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <img 
-                src="/assets/mahreen-logo-192.webp" 
-                alt="Mahreen Indonesia" 
-                className="h-10 w-auto object-contain brightness-0 invert opacity-95" 
+    <footer className="footer relative bg-[#191E24] text-white pt-10 pb-12 font-poppins">
+      <WaveDivider type="footer" />
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="row upper-footer flex flex-col lg:flex-row justify-between gap-12 pb-12 border-b border-white/10">
+          
+          {/* Address & Organization Info */}
+          <div id="newsletterBox" className="address-footer max-w-md space-y-4">
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                onNavigate('/');
+              }}
+              className="inline-block cursor-pointer"
+            >
+              <img
+                alt="Mahreen Indonesia"
+                src="/assets/mahreen-logo-384.webp"
+                className="h-10 w-auto object-contain"
               />
-            </div>
-            <p className="text-xs text-midtrans-ice/70 leading-relaxed mb-4 max-w-sm">
-              Ekosistem kreatif yang memberdayakan bisnis, mahasiswa, talenta muda, komunitas, 
-              dan organisasi melalui kreativitas, teknologi digital, pendidikan, dan aksi sosial bermakna.
+            </a>
+
+            <h4 className="text-lg font-bold text-white tracking-tight">
+              PT Mahreen Berkah Berdaya
+            </h4>
+
+            <p className="text-xs text-white/70 leading-relaxed space-y-1">
+              <span className="block font-medium text-white/90">Ecosystem Navigator Indonesia</span>
+              <span>{ORGANIZATION_META.officeAddress}</span>
+              <br />
+              <span>SK Kemenkumham: {ORGANIZATION_META.skKemenkumham}</span>
+              <br />
+              <span>NIB: {ORGANIZATION_META.nib} | HAKI ID: {ORGANIZATION_META.haki}</span>
             </p>
-            <div className="text-[11px] text-midtrans-ice/60 space-y-1">
-              <div><strong>Badan Hukum:</strong> PT Mahreen Indonesia Group</div>
-              <div><strong>Keputusan Menkumham RI:</strong> AHU-A089408.AH.01.30.Tahun 2026</div>
-              <div><strong>NIB:</strong> 1203260152054 | <strong>HAKI:</strong> 001180040</div>
-              <div><strong>Kantor:</strong> Cimahi, Jawa Barat, Indonesia</div>
-            </div>
+
+            <ul className="sosmed-footer flex items-center gap-3 pt-2">
+              <li>
+                <a
+                  href="https://www.instagram.com/mahreenindonesia/"
+                  target="_blank"
+                  rel="noopener"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#007FE7] flex items-center justify-center text-white transition-colors"
+                  aria-label="Instagram Resmi Mahreen Indonesia"
+                >
+                  <Icon icon={InstagramIcon} size={18} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/6289652647385"
+                  target="_blank"
+                  rel="noopener"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#007FE7] flex items-center justify-center text-white transition-colors"
+                  aria-label="WhatsApp Official Mahreen"
+                >
+                  <Icon icon={Call02Icon} size={18} />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@mahreenindonesia.com"
+                  target="_blank"
+                  rel="noopener"
+                  className="w-9 h-9 rounded-full bg-white/10 hover:bg-[#007FE7] flex items-center justify-center text-white transition-colors"
+                  aria-label="Email Resmi Mahreen"
+                >
+                  <Icon icon={Mail01Icon} size={18} />
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* 5 Pillars Directory */}
-          <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              5 Pilar Ekosistem
-            </h4>
-            <ul className="space-y-2.5 text-xs text-midtrans-ice/75">
-              {PILLARS_DATA.map((pillar) => (
-                <li key={pillar.id}>
-                  <button
-                    onClick={() => {
-                      const el = document.getElementById('ecosystem');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      onSelectPillar(pillar.id);
-                    }}
-                    className="hover:text-midtrans-azure transition-colors text-left"
-                  >
-                    {pillar.name}
-                  </button>
-                </li>
-              ))}
+          {/* Menus Grid */}
+          <div className="row menu-footer flex-1 grid grid-cols-2 sm:grid-cols-4 gap-8">
+            {/* Column 1: Navigasi */}
+            <ul className="space-y-2.5">
+              <li>
+                <h4 className="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
+                  Navigasi
+                </h4>
+              </li>
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Beranda
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/tentang"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/tentang');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Tentang Kami
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Internship Batch 2
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/ekosistem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/ekosistem');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  5 Pilar Ekosistem
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/portofolio"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/portofolio');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Portofolio &amp; Karya
+                </a>
+              </li>
+            </ul>
+
+            {/* Column 2: 5 Pilar */}
+            <ul className="space-y-2.5">
+              <li>
+                <h4 className="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
+                  5 Pilar
+                </h4>
+              </li>
+              <li>
+                <a
+                  href="/ekosistem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/ekosistem');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Mahreen Studio
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Mahreen Internship
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/ekosistem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/ekosistem');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Tanya Mahreen
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/ekosistem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/ekosistem');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Mahreen CSR
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/ekosistem"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/ekosistem');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Peduli Mahreen
+                </a>
+              </li>
+            </ul>
+
+            {/* Column 3: Karir & Magang */}
+            <ul className="space-y-2.5">
+              <li>
+                <h4 className="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
+                  Batch 2 Divisi
+                </h4>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Web Development
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Quality Assurance (QA)
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Database Engineer
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Product Design UI/UX
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/internship"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('/internship');
+                  }}
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Talent Acquisition
+                </a>
+              </li>
+            </ul>
+
+            {/* Column 4: Kontak & Bantuan */}
+            <ul className="space-y-2.5">
+              <li>
+                <h4 className="font-bold text-sm text-white uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
+                  Bantuan &amp; Kontak
+                </h4>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/6289652647385"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  Chat WhatsApp
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:info@mahreenindonesia.com"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-xs text-white/75 hover:text-[#007FE7] transition-colors"
+                >
+                  info@mahreenindonesia.com
+                </a>
+              </li>
               <li>
                 <button
-                  onClick={() => {
-                    const el = document.getElementById('ecosystem');
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="hover:text-midtrans-azure transition-colors text-left"
-                >
-                  Mahreen Learning
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Navigation */}
-          <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Navigasi Cepat
-            </h4>
-            <ul className="space-y-2.5 text-xs text-midtrans-ice/75">
-              <li>
-                <a href="#pathfinder" className="hover:text-midtrans-azure transition-colors">
-                  Temukan Ruangmu
-                </a>
-              </li>
-              <li>
-                <a href="#journey" className="hover:text-midtrans-azure transition-colors">
-                  Perjalanan Internship (Batch 2)
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="hover:text-midtrans-azure transition-colors">
-                  Portofolio & Hall of Fame
-                </a>
-              </li>
-              <li>
-                <a href="#legalitas" className="hover:text-midtrans-azure transition-colors">
-                  Legalitas & Mitra Kampus
-                </a>
-              </li>
-              <li>
-                <button 
+                  type="button"
                   onClick={onOpenBatch2Modal}
-                  className="hover:text-midtrans-azure transition-colors text-left font-semibold text-midtrans-azure"
+                  className="text-xs text-[#007FE7] hover:underline cursor-pointer font-medium"
                 >
-                  Pedoman & Syarat Magang →
+                  Daftar Online Batch 2
+                </button>
+              </li>
+              <li className="pt-2">
+                <button
+                  type="button"
+                  onClick={scrollToTop}
+                  className="inline-flex items-center gap-1.5 text-xs text-white/80 hover:text-white cursor-pointer bg-white/10 px-3 py-1.5 rounded-full"
+                >
+                  <Icon icon={ArrowUp01Icon} size={14} />
+                  <span>Kembali ke Atas</span>
                 </button>
               </li>
             </ul>
-          </div>
-
-          {/* Official Media & Hubungi Kami */}
-          <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 font-poppins">
-              Kanal Media &amp; Hubungi Kami
-            </h4>
-            <ul className="space-y-2.5 text-xs text-midtrans-ice/75 mb-6">
-              <li>
-                <a 
-                  href="https://www.instagram.com/mahreenindonesia" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-midtrans-azure transition-colors flex items-center"
-                >
-                  Instagram @mahreenindonesia <ExternalLink className="w-3 h-3 ml-1" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://www.tiktok.com/@mahreenindonesia" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-midtrans-azure transition-colors flex items-center"
-                >
-                  TikTok @mahreenindonesia <ExternalLink className="w-3 h-3 ml-1" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="https://www.youtube.com/@officialmahreenindonesia" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-midtrans-azure transition-colors flex items-center"
-                >
-                  YouTube Official Mahreen <ExternalLink className="w-3 h-3 ml-1" />
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="mailto:info@mahreenindonesia.com" 
-                  className="hover:text-midtrans-azure transition-colors flex items-center"
-                >
-                  Email: info@mahreenindonesia.com
-                </a>
-              </li>
-            </ul>
-
-            {/* Social Icons */}
-            <div className="flex space-x-3">
-              <a 
-                href="https://www.instagram.com/mahreenindonesia" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-midtrans-blue text-white transition-colors"
-                aria-label="Instagram @mahreenindonesia"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a 
-                href="https://www.youtube.com/@officialmahreenindonesia" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-midtrans-blue text-white transition-colors"
-                aria-label="YouTube Official Mahreen Indonesia"
-              >
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a 
-                href="mailto:info@mahreenindonesia.com" 
-                className="w-8 h-8 rounded bg-white/10 flex items-center justify-center hover:bg-midtrans-blue text-white transition-colors"
-                aria-label="Email Mahreen Indonesia"
-              >
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-midtrans-ice/60 gap-4">
-          <div>
-            © 2026 PT Mahreen Indonesia Group. Seluruh hak cipta dilindungi undang-undang.
+        {/* Copyright & Entity Row */}
+        <div className="row copyright flex flex-col sm:flex-row items-center justify-between pt-8 text-xs text-white/60 gap-4">
+          <div className="left flex items-center gap-2">
+            <span className="gojek-logo">
+              bagian dari ekosistem <strong className="text-white">PT Mahreen Berkah Berdaya</strong>
+            </span>
           </div>
-          <div className="flex items-center space-x-4">
-            <span>Satu Ide. Satu Karya. Satu Dampak.</span>
-            <button 
-              onClick={scrollToTop}
-              className="p-2 rounded bg-white/10 hover:bg-white/20 text-white transition-colors flex items-center"
-              aria-label="Kembali ke atas"
-            >
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
+          <div className="right">
+            <h4>© 2026 PT Mahreen Berkah Berdaya. Hak Cipta Dilindungi Undang-Undang.</h4>
           </div>
         </div>
       </div>

@@ -1,23 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import HeroSection from './components/sections/HeroSection';
-import PartnerMarqueeSection from './components/sections/PartnerMarqueeSection';
-import WhoWeAreSection from './components/sections/WhoWeAreSection';
-import PathfinderSection from './components/sections/PathfinderSection';
-import EcosystemSection from './components/sections/EcosystemSection';
-import InternshipJourneySection from './components/sections/InternshipJourneySection';
-import PortfolioSection from './components/sections/PortfolioSection';
-import TrustAndPartnersSection from './components/sections/TrustAndPartnersSection';
-import CallToActionSection from './components/sections/CallToActionSection';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import InternshipPage from './pages/InternshipPage';
+import EcosystemPage from './pages/EcosystemPage';
+import PortfolioPage from './pages/PortfolioPage';
 import Batch2DetailModal from './components/modals/Batch2DetailModal';
 import ProjectDetailModal from './components/modals/ProjectDetailModal';
-import { ProjectItem } from './types/mahreen';
+import type { ProjectItem } from './types/mahreen';
 
 export function App() {
+  const [currentRoute, setCurrentRoute] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname;
+      if (['/tentang', '/internship', '/ekosistem', '/portofolio'].includes(path)) {
+        return path;
+      }
+    }
+    return '/';
+  });
+
   const [isBatch2ModalOpen, setIsBatch2ModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
-  const [activePillarId, setActivePillarId] = useState<string>('internship');
+
+  // Sync with browser back/forward buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (['/', '/tentang', '/internship', '/ekosistem', '/portofolio'].includes(path)) {
+        setCurrentRoute(path);
+      } else {
+        setCurrentRoute('/');
+      }
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const handleNavigate = (route: string) => {
+    setCurrentRoute(route);
+    if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', route);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  };
 
   const handleOpenBatch2Modal = () => {
     setIsBatch2ModalOpen(true);
@@ -27,83 +56,87 @@ export function App() {
     setIsBatch2ModalOpen(false);
   };
 
-  const handleSelectPillar = (pillarId: string) => {
-    setActivePillarId(pillarId);
+  const handleSelectProject = (project: ProjectItem) => {
+    setSelectedProject(project);
   };
 
-  const handleExplorePathfinder = () => {
-    const el = document.getElementById('pathfinder');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  const handleCloseProjectModal = () => {
+    setSelectedProject(null);
+  };
+
+  // Render appropriate page based on current route
+  const renderCurrentPage = () => {
+    switch (currentRoute) {
+      case '/tentang':
+        return (
+          <AboutPage
+            onNavigate={handleNavigate}
+            onOpenBatch2Modal={handleOpenBatch2Modal}
+          />
+        );
+      case '/internship':
+        return (
+          <InternshipPage
+            onNavigate={handleNavigate}
+            onOpenBatch2Modal={handleOpenBatch2Modal}
+          />
+        );
+      case '/ekosistem':
+        return (
+          <EcosystemPage
+            onNavigate={handleNavigate}
+            onOpenBatch2Modal={handleOpenBatch2Modal}
+          />
+        );
+      case '/portofolio':
+        return (
+          <PortfolioPage
+            onNavigate={handleNavigate}
+            onOpenBatch2Modal={handleOpenBatch2Modal}
+            onSelectProject={handleSelectProject}
+          />
+        );
+      case '/':
+      default:
+        return (
+          <HomePage
+            onNavigate={handleNavigate}
+            onOpenBatch2Modal={handleOpenBatch2Modal}
+          />
+        );
     }
   };
 
   return (
-    <div className="min-h-screen bg-white text-midtrans-slate flex flex-col font-sans selection:bg-midtrans-blue selection:text-white">
-      {/* 01. Header Navbar */}
-      <Navbar onOpenBatch2Modal={handleOpenBatch2Modal} />
+    <div className="min-h-screen bg-white text-[#123049] flex flex-col font-sans selection:bg-[#054FBF] selection:text-white">
+      {/* 01. Header Navbar with Multi-Page Navigation */}
+      <Navbar
+        currentRoute={currentRoute}
+        onNavigate={handleNavigate}
+        onOpenBatch2Modal={handleOpenBatch2Modal}
+      />
 
+      {/* 02. Active Page Dynamic View */}
       <main className="flex-1">
-        {/* 03. Hero Section: Editorial Split */}
-        <HeroSection 
-          onExplorePathfinder={handleExplorePathfinder}
-          onOpenBatch2Modal={handleOpenBatch2Modal}
-        />
-
-        {/* 03b. Midtrans-style Client/Partner Logo Marquee */}
-        <PartnerMarqueeSection />
-
-        {/* 03c. Who We Are & Visi Misi */}
-        <WhoWeAreSection onSelectPillar={handleSelectPillar} />
-
-        {/* 04. Centerpiece: Pathfinder Two-Panel Experience */}
-        <PathfinderSection 
-          onSelectPillar={handleSelectPillar}
-          onOpenBatch2Modal={handleOpenBatch2Modal}
-        />
-
-        {/* 05. The 5 Ecosystem Pillars (Segmented Tabs) */}
-        <EcosystemSection 
-          activePillarId={activePillarId}
-          onSelectPillar={handleSelectPillar}
-          onOpenBatch2Modal={handleOpenBatch2Modal}
-        />
-
-        {/* 06. Internship Journey: ADAPT to IMPACT */}
-        <InternshipJourneySection 
-          onOpenBatch2Modal={handleOpenBatch2Modal}
-        />
-
-        {/* 07. Real Work & Verified Impact: Portfolio & Alumni */}
-        <PortfolioSection 
-          onSelectProject={(project) => setSelectedProject(project)}
-        />
-
-        {/* 08. Institutional Trust & Legal Records */}
-        <TrustAndPartnersSection />
-
-        {/* 09. Final Conversion Section */}
-        <CallToActionSection 
-          onOpenBatch2Modal={handleOpenBatch2Modal}
-        />
+        {renderCurrentPage()}
       </main>
 
-      {/* 10. Institutional Footer */}
-      <Footer 
+      {/* 03. Institutional Footer with Cimahi Headquarters and SK Kemenkumham */}
+      <Footer
+        onNavigate={handleNavigate}
         onOpenBatch2Modal={handleOpenBatch2Modal}
-        onSelectPillar={handleSelectPillar}
       />
 
       {/* Modals */}
-      <Batch2DetailModal 
+      <Batch2DetailModal
         isOpen={isBatch2ModalOpen}
         onClose={handleCloseBatch2Modal}
       />
 
-      <ProjectDetailModal 
+      <ProjectDetailModal
         project={selectedProject}
         isOpen={!!selectedProject}
-        onClose={() => setSelectedProject(null)}
+        onClose={handleCloseProjectModal}
       />
     </div>
   );

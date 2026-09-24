@@ -1,12 +1,13 @@
 import React from 'react';
 import { 
-  Building2, 
-  Scale, 
-  Check, 
-  FileCheck2,
-  ShieldCheck,
-} from 'lucide-react';
+  Building03Icon, 
+  JusticeScaleIcon, 
+  CheckmarkCircle02Icon, 
+  Certificate01Icon,
+  Shield02Icon,
+} from '@hugeicons/core-free-icons';
 import { LEGAL_RECORDS } from '../../data/mahreenData';
+import { Icon } from '../ui/Icon';
 
 export const TrustAndPartnersSection: React.FC = () => {
   return (
@@ -43,15 +44,15 @@ export const TrustAndPartnersSection: React.FC = () => {
             {/* Bulleted Guarantees */}
             <div className="space-y-2.5 text-xs md:text-sm text-[#123049] font-medium font-poppins">
               <div className="flex items-center space-x-2.5">
-                <Check size={14} className="text-[#054FBF] stroke-[3]" />
+                <Icon icon={CheckmarkCircle02Icon} size={15} className="text-[#054FBF]" />
                 <span>Pengesahan Badan Hukum Menkumham RI</span>
               </div>
               <div className="flex items-center space-x-2.5">
-                <Check size={14} className="text-[#054FBF] stroke-[3]" />
+                <Icon icon={CheckmarkCircle02Icon} size={15} className="text-[#054FBF]" />
                 <span>Perizinan Berusaha Terpadu (NIB Nasional)</span>
               </div>
               <div className="flex items-center space-x-2.5">
-                <Check size={14} className="text-[#054FBF] stroke-[3]" />
+                <Icon icon={CheckmarkCircle02Icon} size={15} className="text-[#054FBF]" />
                 <span>Perlindungan Hak Cipta &amp; Merek DJKI</span>
               </div>
             </div>
@@ -66,9 +67,9 @@ export const TrustAndPartnersSection: React.FC = () => {
               >
                 <div>
                   <div className="w-10 h-10 rounded-[2px] bg-[#EDF4F9] border border-[#BBBBBB]/20 flex items-center justify-center text-[#054FBF] mb-4 group-hover:scale-105 transition-transform">
-                    {idx === 0 ? <Scale className="w-5 h-5" /> :
-                     idx === 1 ? <Building2 className="w-5 h-5" /> :
-                     <FileCheck2 className="w-5 h-5" />}
+                    {idx === 0 ? <Icon icon={JusticeScaleIcon} size={20} /> :
+                     idx === 1 ? <Icon icon={Building03Icon} size={20} /> :
+                     <Icon icon={Certificate01Icon} size={20} />}
                   </div>
 
                   <span className="text-[10px] font-bold text-[#7686AB] uppercase tracking-wider block mb-1 font-poppins">
@@ -94,7 +95,7 @@ export const TrustAndPartnersSection: React.FC = () => {
         <div className="bg-[#002855] text-white p-6 md:p-8 rounded-[6px] flex flex-col md:flex-row items-center justify-between gap-6 border border-white/10 shadow-sm">
           <div className="flex items-center space-x-4">
             <div className="w-11 h-11 rounded-[2px] bg-white/10 flex items-center justify-center shrink-0 text-[#007FE7]">
-              <ShieldCheck className="w-6 h-6" />
+              <Icon icon={Shield02Icon} size={24} color="#007FE7" />
             </div>
             <div>
               <h4 className="text-base font-bold text-white font-poppins mb-1">

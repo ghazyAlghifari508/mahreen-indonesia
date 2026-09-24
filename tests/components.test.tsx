@@ -100,7 +100,7 @@ describe('UI Primitives & Modals Unit Tests', () => {
       const html = renderToStaticMarkup(
         <Batch2DetailModal isOpen={true} onClose={() => {}} />
       );
-      expect(html).toContain('Mahreen Indonesia Internship — Batch 2');
+      expect(html).toContain('Mahreen Indonesia Internship - Batch 2');
       expect(html).toContain('1 Okt 2026 – 31 Jan 2027');
       expect(html).toContain('Remote WFH / WFA');
       expect(html).toContain('30% Profit Sharing');
