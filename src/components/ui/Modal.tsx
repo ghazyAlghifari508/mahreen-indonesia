@@ -50,7 +50,7 @@ export const ModalFooter: React.FC<{
   className?: string;
 }> = ({ children, className = '' }) => (
   <div
-    className={`px-6 py-4 bg-[#F7FCFF] border-t border-[#EDF4F9] flex items-center justify-end gap-3 rounded-b-[8px] ${className}`.trim()}
+    className={`px-6 py-4 bg-[#F7FCFF] border-t border-[#EDF4F9] flex items-center justify-end gap-3 rounded-b-2xl ${className}`.trim()}
   >
     {children}
   </div>
@@ -128,7 +128,7 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto"
+      className="fixed inset-0 z-[2000] flex items-center justify-center p-4 sm:p-6 md:p-8 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -136,7 +136,7 @@ export const Modal: React.FC<ModalProps> = ({
     >
       <div
         ref={modalRef}
-        className={`relative w-full ${maxWidthMap[maxWidth]} bg-white rounded-[8px] shadow-[0px_1px_40px_rgba(0,0,0,0.12)] border border-[#EDF4F9] flex flex-col my-auto transition-all animate-scale-up ${className}`.trim()}
+        className={`relative w-full ${maxWidthMap[maxWidth]} bg-white rounded-2xl overflow-hidden shadow-[0px_20px_60px_rgba(0,0,0,0.3)] border border-[#EDF4F9] flex flex-col my-auto transition-all animate-scale-up ${className}`.trim()}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Midtrans System Overlay Close Trigger */}
