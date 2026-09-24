@@ -29,7 +29,7 @@ export const EcosystemPage: React.FC<EcosystemPageProps> = ({
             Sinergi Komersial, Inkubasi Talenta &amp; Dampak Sosial
           </h1>
 
-          <div className="flex flex-wrap items-center justify-center gap-5 mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-5">
             <a
               href="#detail-pilar"
               className="text-white bg-[#054FBF] hover:bg-[#002855] text-xs sm:text-sm font-bold px-8 py-4 rounded-full transition-all cursor-pointer shadow-xl uppercase tracking-wider"
@@ -44,24 +44,6 @@ export const EcosystemPage: React.FC<EcosystemPageProps> = ({
             >
               Daftar Internship Batch 2
             </button>
-          </div>
-
-          {/* Connected 5-Pillar Navigation Ribbon */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-8 border-t border-white/15 max-w-3xl mx-auto">
-            {PILLARS_DATA.map((pilar) => (
-              <a
-                key={pilar.id}
-                href="#detail-pilar"
-                onClick={() => setSelectedPillarId(pilar.id)}
-                className={`px-4 py-2 text-xs font-medium rounded-full border transition-all cursor-pointer ${
-                  selectedPillarId === pilar.id
-                    ? 'bg-[#007FE7] text-white border-[#007FE7] shadow-lg'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 border-white/20'
-                }`}
-              >
-                {pilar.name}
-              </a>
-            ))}
           </div>
         </div>
       </div>
