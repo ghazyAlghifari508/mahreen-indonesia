@@ -154,9 +154,9 @@ export const EcosystemPage: React.FC<EcosystemPageProps> = ({
       <WaveDivider type="grey" />
 
       {/* 03. Interkoneksi 5 Pilar */}
-      <div className="relative bg-[#EDF4F9] pt-12 sm:pt-16 pb-36 sm:pb-44 lg:pb-52">
-        <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+      <div className="relative bg-[#EDF4F9] pt-0 sm:pt-2 pb-36 sm:pb-44 lg:pb-52">
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 -mt-12 sm:-mt-16 lg:-mt-20 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
             <span className="text-xs font-bold text-[#054FBF] uppercase tracking-widest block mb-2 font-poppins">
               SISTEM SIRKULAR
             </span>

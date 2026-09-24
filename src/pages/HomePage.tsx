@@ -317,10 +317,10 @@ export const HomePage: React.FC<HomePageProps> = ({
       <WaveDivider type="blue" />
 
       {/* 04. Secure Section: Legalitas & Kredensial Resmi (.secure-section) */}
-      <div className="secure-section bg-[#002855] text-white pt-6 sm:pt-8 lg:pt-10 pb-36 sm:pb-44 lg:pb-52 relative">
+      <div className="secure-section bg-[#002855] text-white pt-0 sm:pt-2 pb-36 sm:pb-44 lg:pb-52 relative">
         <div className="wrapper-secure">
-          <div className="container max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <div className="container max-w-7xl mx-auto px-4 sm:px-6 -mt-12 sm:-mt-16 lg:-mt-20 relative z-10">
+            <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
               <span className="text-xs font-bold text-[#007FE7] uppercase tracking-[0.2em] block mb-2 font-poppins">
                 LEGALITAS &amp; AKUNTABILITAS
               </span>
