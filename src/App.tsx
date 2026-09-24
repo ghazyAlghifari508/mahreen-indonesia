@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
 import PartnerMarqueeSection from './components/sections/PartnerMarqueeSection';
+import WhoWeAreSection from './components/sections/WhoWeAreSection';
 import PathfinderSection from './components/sections/PathfinderSection';
 import EcosystemSection from './components/sections/EcosystemSection';
 import InternshipJourneySection from './components/sections/InternshipJourneySection';
@@ -55,6 +56,9 @@ export function App() {
 
         {/* 03b. Midtrans-style Client/Partner Logo Marquee */}
         <PartnerMarqueeSection />
+
+        {/* 03c. Who We Are & Visi Misi */}
+        <WhoWeAreSection onSelectPillar={handleSelectPillar} />
 
         {/* 04. Centerpiece: Pathfinder Two-Panel Experience */}
         <PathfinderSection 

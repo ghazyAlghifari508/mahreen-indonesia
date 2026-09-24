@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import { PILLARS_DATA, MAHREEN_LEARNING_PROGRAMS } from '../../data/mahreenData';
 import Button from '../ui/Button';
-import Badge from '../ui/Badge';
 
 interface EcosystemSectionProps {
   activePillarId: string;
@@ -192,7 +191,9 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                 </p>
               </div>
             </div>
-            <Badge variant="azure">Program Pendidikan Terbuka</Badge>
+            <span className="text-[11px] font-bold text-[#054FBF] bg-[#EDF4F9] px-3 py-1 rounded-[2px] border border-[#007FE7]/20 uppercase">
+              Program Pendidikan Terbuka
+            </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -1,131 +1,85 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ShieldCheck, Users, Briefcase } from 'lucide-react';
 import { Button } from '../ui/Button';
-
-export interface TransformationStage {
-  id: string;
-  stepNumber: string;
-  title: string;
-  description: string;
-  phaseLabel: string;
-  outcome: string;
-  primaryMetric: string;
-  metricLabel: string;
-  deliverablesSummary: string;
-}
-
-export const TRANSFORMATION_STAGES: TransformationStage[] = [
-  {
-    id: 'ide',
-    stepNumber: '01',
-    title: 'IDE & GAGASAN',
-    description: 'Eksplorasi minat & penajaman konsep awal',
-    phaseLabel: 'FASE 01 • INKUBASI GAGASAN',
-    outcome:
-      'Pemetaan potensi talenta, riset kebutuhan nyata, dan perumusan kerangka konsep inovatif.',
-    primaryMetric: '50+ Mitra Kampus',
-    metricLabel: 'Jejaring Kampus & Talenta',
-    deliverablesSummary: 'Assessment Talenta & MIOS Induction',
-  },
-  {
-    id: 'karya',
-    stepNumber: '02',
-    title: 'KARYA NYATA',
-    description: 'Produksi proyek klien & bimbingan mentor praktisi',
-    phaseLabel: 'FASE 02 • PRODUKSI INDUSTRI',
-    outcome:
-      'Eksekusi proyek klien komersial nyata di bawah supervisi mentor ahli dengan standar agensi.',
-    primaryMetric: '30% Profit Sharing',
-    metricLabel: 'Bagi Hasil Tim Pelaksana',
-    deliverablesSummary: 'Web Modern, Branding & Konten Video',
-  },
-  {
-    id: 'dampak',
-    stepNumber: '03',
-    title: 'DAMPAK BERMAKNA',
-    description: 'Kontribusi nyata bagi UMKM & masyarakat Indonesia',
-    phaseLabel: 'FASE 03 • DAMPAK KEBERMANFAATAN',
-    outcome:
-      'Digitalisasi UMKM lokal, kelas inspirasi sosial, dan portofolio profesional berdaya saing tinggi.',
-    primaryMetric: '100% Legalitas Resmi',
-    metricLabel: 'Kemenkumham & Portofolio Kerja',
-    deliverablesSummary: '100+ Proyek Selesai & Wisuda Magang',
-  },
-];
-
-export interface HeroStatItem {
-  value: string;
-  label: string;
-}
-
-export const HERO_STATS: HeroStatItem[] = [
-  {
-    value: '50+',
-    label: 'Mitra Kampus di Seluruh Indonesia',
-  },
-  {
-    value: '5',
-    label: 'Pilar Ekosistem Terkoneksi',
-  },
-  {
-    value: '12',
-    label: 'Batch Berjalan',
-  },
-  {
-    value: '100%',
-    label: 'Terdaftar Resmi (SK Kemenkumham RI 2026)',
-  },
-];
 
 export interface HeroSectionProps {
   onExplorePathfinder?: () => void;
   onOpenBatch2Modal?: () => void;
-  activeStage?: number;
-  defaultStage?: number;
-  onStageChange?: (stageIndex: number) => void;
   className?: string;
 }
 
-/**
- * Midtrans-Styled Hero Section
- *
- * Implements authoritative dark shell enclosure, editorial split,
- * interactive 3-stage talent transformation preview card, and
- * verified high-contrast institutional metric ribbon.
- */
+interface EcosystemPreviewTab {
+  id: 'internship' | 'business' | 'social';
+  label: string;
+  badge: string;
+  title: string;
+  description: string;
+  metrics: { label: string; value: string }[];
+  highlight: string;
+}
+
+const PREVIEW_TABS: EcosystemPreviewTab[] = [
+  {
+    id: 'internship',
+    label: 'Talent Incubation',
+    badge: 'Batch 2 Resmi Dibuka',
+    title: 'Mahreen Indonesia Internship',
+    description: 'Program magang 4 bulan berbasis proyek nyata industri dengan bimbingan mentor 1-on-1 dan skema bagi hasil 30%.',
+    metrics: [
+      { label: 'Mitra Kampus', value: '50+' },
+      { label: 'Sistem Kerja', value: 'Remote WFH' },
+      { label: 'Spesialisasi', value: '5 Divisi' },
+    ],
+    highlight: 'Kurikulum ADAPT, CREATE, DELIVER, IMPACT',
+  },
+  {
+    id: 'business',
+    label: 'Digital Solutions',
+    badge: 'Solusi UMKM & Brand',
+    title: 'Tanya Mahreen Solutions',
+    description: 'Layanan terintegrasi pembuatan website, branding identitas, digital marketing, hingga konsultasi bisnis modern.',
+    metrics: [
+      { label: 'Paket Mulai', value: 'Rp499rb' },
+      { label: 'Web Dev Mulai', value: 'Rp1.5jt' },
+      { label: 'Proyek Selesai', value: '100+' },
+    ],
+    highlight: 'Transparan, bergaransi, dan terarah',
+  },
+  {
+    id: 'social',
+    label: 'Social Movement',
+    badge: 'CARE • SHARE • IMPACT',
+    title: 'Peduli Mahreen & CSR',
+    description: 'Inisiatif filantropi pendidikan, renovasi perpustakaan (Library Hub), dan pelestarian lingkungan 10.000 pohon endemik.',
+    metrics: [
+      { label: 'Target Siswa', value: '500+' },
+      { label: 'Sekolah Binaan', value: '15 Sekolah' },
+      { label: 'Reboisasi Jabar', value: '10.000 Pohon' },
+    ],
+    highlight: 'Dampak sosial terukur dan berkelanjutan',
+  },
+];
+
 export const HeroSection: React.FC<HeroSectionProps> = ({
   onExplorePathfinder,
   onOpenBatch2Modal,
-  activeStage,
-  defaultStage = 0,
-  onStageChange,
   className = '',
 }) => {
-  const [internalStage, setInternalStage] = useState(defaultStage);
-  const currentStageIndex =
-    activeStage !== undefined ? activeStage : internalStage;
-  const activeStageData =
-    TRANSFORMATION_STAGES[currentStageIndex] || TRANSFORMATION_STAGES[0];
-
-  const handleSelectStage = (index: number) => {
-    if (activeStage === undefined) {
-      setInternalStage(index);
-    }
-    onStageChange?.(index);
-  };
+  const [activeTab, setActiveTab] = useState<'internship' | 'business' | 'social'>('internship');
+  const currentTab = PREVIEW_TABS.find((t) => t.id === activeTab) || PREVIEW_TABS[0];
 
   return (
     <section
-      className={`bg-[#002855] text-white relative overflow-hidden py-16 md:py-24 px-6 md:px-12 border-b border-white/10 ${className}`.trim()}
+      className={`bg-[#002855] text-white relative overflow-hidden pt-16 md:pt-24 pb-24 md:pb-36 px-6 md:px-12 ${className}`.trim()}
       aria-label="Mahreen Indonesia Hero"
     >
-      {/* Ambient background illumination */}
+      {/* Midtrans-style Background Floating Capsule Glows */}
       <div
-        className="pointer-events-none absolute -top-40 right-0 w-[500px] h-[500px] bg-[#007FE7]/10 rounded-full blur-3xl"
+        className="pointer-events-none absolute -top-32 -right-20 w-[550px] h-[550px] rounded-full bg-[#007FE7]/15 blur-3xl"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -bottom-32 left-10 w-[400px] h-[400px] bg-[#054FBF]/15 rounded-full blur-3xl"
+        className="pointer-events-none absolute bottom-10 -left-20 w-[450px] h-[450px] rounded-full bg-[#054FBF]/20 blur-3xl"
         aria-hidden="true"
       />
 
@@ -134,34 +88,35 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column (Editorial & Value Proposition) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            {/* Campaign Tag */}
-            <div className="mb-3">
-              <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.18em] block font-poppins">
+            {/* Campaign Kicker */}
+            <div className="mb-4">
+              <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.2em] block font-poppins">
                 BERKARYA UNTUK INDONESIA
               </span>
             </div>
 
             {/* H1 Headline */}
-            <h1 className="text-[32px] sm:text-[38px] lg:text-[44px] font-bold text-white leading-[1.25] tracking-tight font-poppins mb-4">
-              Satu Ide. Satu Karya. Satu Dampak.
+            <h1 className="text-[36px] sm:text-[44px] lg:text-[52px] font-bold text-white leading-[1.15] tracking-tight font-poppins mb-6">
+              Satu Ide. Satu Karya. <br className="hidden sm:inline" />
+              Satu Dampak.
             </h1>
 
             {/* Subheadline */}
-            <p className="text-[16px] leading-[26px] text-[#F7FCFF]/85 font-poppins font-normal max-w-2xl mb-8">
-              Ruang kolaboratif yang menghubungkan gagasan generasi muda dengan
-              karya nyata. Melalui pengembangan talenta, solusi digital, studio
-              kreatif, dan kontribusi sosial—kami hadir agar setiap ide tumbuh
-              menjadi kebermanfaatan.
+            <p className="text-[16px] md:text-[18px] leading-[28px] text-[#F7FCFF]/90 font-poppins font-normal max-w-2xl mb-10">
+              Ekosistem terintegrasi yang menjembatani gagasan generasi muda dengan
+              karya profesional nyata. Dari inkubasi talenta kreatif, agensi digital, 
+              studio lifestyle, hingga gerakan sosial bermakna bagi Indonesia.
             </p>
 
-            {/* Dual Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            {/* Dual Sharp 2px Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 mb-12">
               <Button
                 variant="primary"
                 size="md"
                 onClick={onExplorePathfinder}
                 icon={<ArrowRight size={14} />}
                 iconPosition="right"
+                className="shadow-[0_4px_14px_rgba(5,79,191,0.4)]"
               >
                 Temukan Ruangmu di Mahreen
               </Button>
@@ -173,161 +128,140 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 Pelajari Internship Batch 2
               </Button>
             </div>
+
+            {/* High-Trust Fact Indicators */}
+            <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/15 text-xs text-[#F7FCFF]/80">
+              <div className="flex items-center space-x-2">
+                <ShieldCheck className="w-4 h-4 text-[#007FE7]" />
+                <span>SK Kemenkumham RI 2026</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Users className="w-4 h-4 text-[#007FE7]" />
+                <span>50+ Mitra Kampus Terhubung</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <Briefcase className="w-4 h-4 text-[#007FE7]" />
+                <span>Profit Sharing 30% Terverifikasi</span>
+              </div>
+            </div>
           </div>
 
-          {/* Right Column (Interactive Transformation Preview Card) */}
+          {/* Right Column (Midtrans-style Dynamic Ecosystem Showcase) */}
           <div className="lg:col-span-5 flex justify-center w-full">
-            <div className="w-full bg-[#FFFFFF] rounded-[8px] p-6 sm:p-7 text-[#123049] shadow-[0px_1px_40px_rgba(0,0,0,0.1)] border border-white/20 relative">
-              {/* Card Header */}
-              <div className="flex items-center justify-between pb-3 border-b border-[#EDF4F9] mb-3">
+            <div className="w-full bg-white rounded-[8px] p-6 sm:p-7 text-[#123049] shadow-[0px_20px_50px_rgba(0,0,0,0.25)] border border-white/40 relative">
+              {/* Card Window Top Header */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-[#EDF4F9] mb-4">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#007FE7]" />
-                  <h2 className="text-[12px] font-bold uppercase tracking-[0.5px] text-[#123049] font-poppins">
-                    ALUR PERJALANAN TALENTA
-                  </h2>
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#007FE7]" />
+                  <span className="text-[12px] font-bold uppercase tracking-[0.5px] text-[#123049] font-poppins">
+                    EKOSISTEM MAHREEN INDONESIA
+                  </span>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#054FBF] bg-[#EDF4F9] px-2.5 py-0.5 rounded-[2px] border border-[#007FE7]/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#007FE7]" />
-                  Ekosistem Terintegrasi
+                <span className="text-[10px] font-bold text-[#054FBF] bg-[#EDF4F9] px-2.5 py-0.5 rounded-[2px] border border-[#007FE7]/20 uppercase">
+                  Live Showcase
                 </span>
               </div>
 
-              {/* Authentic Photo Context */}
-              <div className="relative rounded-[4px] overflow-hidden mb-3 border border-[#EDF4F9]">
-                <img 
-                  src="/assets/team-meeting.webp" 
-                  alt="Sesi Kolaborasi Ide Mahreen Indonesia" 
-                  className="w-full h-28 sm:h-32 object-cover" 
+              {/* Segmented Switcher Tabs */}
+              <div className="grid grid-cols-3 gap-1 bg-[#F7FCFF] p-1 rounded-[4px] border border-[#EDF4F9] mb-4">
+                {PREVIEW_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`py-1.5 px-2 text-[11px] font-bold rounded-[2px] transition-all cursor-pointer font-poppins text-center truncate ${
+                      activeTab === tab.id
+                        ? 'bg-[#054FBF] text-white shadow-xs'
+                        : 'text-[#7686AB] hover:text-[#123049]'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Team Collaboration Authentic Photo */}
+              <div className="relative rounded-[4px] overflow-hidden mb-4 border border-[#EDF4F9] bg-[#002855]">
+                <img
+                  src="/assets/team-meeting.webp"
+                  alt="Sesi Kolaborasi Tim Mahreen Indonesia"
+                  className="w-full h-32 sm:h-36 object-cover opacity-90"
                   loading="eager"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002855]/80 via-transparent to-transparent flex items-end p-2.5">
-                  <span className="text-[11px] font-medium text-white/95 leading-tight">
-                    Sesi Kolaborasi &amp; Perancangan Ide Mahreen Indonesia
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002855]/90 via-[#002855]/20 to-transparent flex items-end p-3">
+                  <div>
+                    <span className="text-[10px] font-bold text-[#007FE7] uppercase tracking-wider block">
+                      Dokumentasi Otentik Mahreen
+                    </span>
+                    <span className="text-[12px] font-semibold text-white leading-tight block">
+                      Sesi Kolaborasi Ide &amp; Strategi Proyek Nyata
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Dynamic Content Details */}
+              <div className="bg-[#F7FCFF] p-4 rounded-[4px] border border-[#EDF4F9] mb-4">
+                <div className="flex items-center justify-between mb-1.5">
+                  <h3 className="text-sm font-bold text-[#123049] font-poppins">
+                    {currentTab.title}
+                  </h3>
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-[2px] border border-emerald-200">
+                    {currentTab.badge}
                   </span>
                 </div>
-              </div>
+                <p className="text-xs text-[#7686AB] leading-relaxed mb-3 font-poppins">
+                  {currentTab.description}
+                </p>
 
-              {/* 3-Stage Transformation Stepper */}
-              <div className="space-y-3" role="tablist" aria-label="Tahapan Transformasi Talenta">
-                {TRANSFORMATION_STAGES.map((stage, index) => {
-                  const isActive = currentStageIndex === index;
-                  return (
-                    <button
-                      key={stage.id}
-                      type="button"
-                      role="tab"
-                      aria-selected={isActive}
-                      aria-controls={`stage-panel-${stage.id}`}
-                      data-stage-index={index}
-                      data-stage-id={stage.id}
-                      onClick={() => handleSelectStage(index)}
-                      onMouseEnter={() => handleSelectStage(index)}
-                      className={`w-full text-left p-3.5 sm:p-4 rounded-[6px] border transition-all duration-200 cursor-pointer flex items-start gap-3.5 select-none ${
-                        isActive
-                          ? 'bg-[#F7FCFF] border-[#054FBF] shadow-[0_2px_8px_rgba(5,79,191,0.12)] ring-1 ring-[#054FBF]'
-                          : 'bg-white border-[#E2E8F0] hover:bg-[#F7FCFF]/60 hover:border-[#054FBF]/40'
-                      }`}
-                    >
-                      <div
-                        className={`w-8 h-8 rounded-[4px] flex items-center justify-center font-poppins font-bold text-[12px] shrink-0 transition-colors ${
-                          isActive
-                            ? 'bg-[#054FBF] text-white shadow-sm'
-                            : 'bg-[#EDF4F9] text-[#7686AB]'
-                        }`}
-                      >
-                        {stage.stepNumber}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2 mb-0.5">
-                          <h3
-                            className={`font-poppins font-bold text-[13px] tracking-[0.3px] uppercase ${
-                              isActive ? 'text-[#054FBF]' : 'text-[#123049]'
-                            }`}
-                          >
-                            {stage.title}
-                          </h3>
-                          {isActive && (
-                            <span className="text-[10px] font-bold uppercase tracking-wider text-[#054FBF] bg-[#054FBF]/10 px-2 py-0.5 rounded-[12px]">
-                              Aktif
-                            </span>
-                          )}
-                        </div>
-                        <p
-                          className={`text-[12px] leading-[18px] font-poppins line-clamp-2 ${
-                            isActive
-                              ? 'text-[#123049] font-medium'
-                              : 'text-[#7686AB]'
-                          }`}
-                        >
-                          {stage.description}
-                        </p>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-
-              {/* Dynamic Verified Outcome Panel */}
-              <div
-                id={`stage-panel-${activeStageData.id}`}
-                role="tabpanel"
-                className="mt-4 pt-4 border-t border-[#EDF4F9]"
-              >
-                <div className="bg-[#EDF4F9]/70 rounded-[6px] p-4 border border-[#007FE7]/20 transition-all duration-200">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.5px] text-[#054FBF] font-poppins">
-                      {activeStageData.phaseLabel}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold text-emerald-700 bg-emerald-100/80 px-2 py-0.5 rounded-full">
-                      <CheckCircle2 size={11} className="text-emerald-600" />
-                      Terverifikasi
-                    </span>
-                  </div>
-                  <p className="text-[12px] leading-[18px] text-[#123049] font-medium mb-3">
-                    {activeStageData.outcome}
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 pt-2.5 border-t border-slate-200/80">
-                    <div>
-                      <span className="block text-[10px] font-semibold uppercase text-[#7686AB] tracking-wider mb-0.5">
-                        Metrik Kunci
+                {/* 3 Metrics */}
+                <div className="grid grid-cols-3 gap-2 pt-2.5 border-t border-slate-200/60">
+                  {currentTab.metrics.map((m, idx) => (
+                    <div key={idx}>
+                      <span className="text-[10px] text-[#7686AB] block truncate font-poppins">
+                        {m.label}
                       </span>
-                      <span className="text-[12px] font-bold text-[#054FBF] font-poppins block truncate">
-                        {activeStageData.primaryMetric}
+                      <span className="text-xs font-bold text-[#054FBF] font-poppins block truncate">
+                        {m.value}
                       </span>
                     </div>
-                    <div>
-                      <span className="block text-[10px] font-semibold uppercase text-[#7686AB] tracking-wider mb-0.5">
-                        Hasil Teruji
-                      </span>
-                      <span className="text-[12px] font-semibold text-[#123049] font-poppins block truncate">
-                        {activeStageData.deliverablesSummary}
-                      </span>
-                    </div>
-                  </div>
+                  ))}
                 </div>
+              </div>
+
+              {/* Quick Highlight Footer */}
+              <div className="flex items-center justify-between text-xs pt-1">
+                <span className="text-[11px] font-semibold text-[#123049] flex items-center">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 mr-1.5" />
+                  {currentTab.highlight}
+                </span>
+                <button
+                  onClick={activeTab === 'internship' ? onOpenBatch2Modal : onExplorePathfinder}
+                  className="text-[11px] font-bold text-[#054FBF] hover:text-[#002855] underline cursor-pointer"
+                >
+                  Detail →
+                </button>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Bottom Metric Ribbon */}
-        <div className="border-t border-white/10 mt-14 sm:mt-16 lg:mt-20 pt-10 sm:pt-12">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {HERO_STATS.map((stat, idx) => (
-              <div key={idx} className="flex flex-col">
-                <div className="flex items-baseline gap-1">
-                  <span className="text-3xl sm:text-4xl lg:text-5xl font-bold font-poppins text-white tracking-tight">
-                    {stat.value}
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#007FE7] mb-1" />
-                </div>
-                <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#F7FCFF]/90 font-poppins mt-2">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Midtrans Signature Organic Curved Wave Bottom Divider */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none z-20 pointer-events-none"
+        aria-hidden="true"
+      >
+        <svg 
+          viewBox="0 0 1440 90" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="w-full h-10 sm:h-14 md:h-20 text-white block preserve-3d"
+        >
+          <path 
+            d="M0,45 C320,90 1120,90 1440,45 L1440,90 L0,90 Z" 
+            fill="#FFFFFF"
+          />
+        </svg>
       </div>
     </section>
   );

@@ -13,7 +13,6 @@ import { PATHFINDER_OPTIONS } from '../../data/mahreenData';
 import { calculateRecommendation } from '../../lib/pathfinder';
 import { UserGoalId } from '../../types/mahreen';
 import Button from '../ui/Button';
-import Badge from '../ui/Badge';
 
 interface PathfinderSectionProps {
   onSelectPillar: (pillarId: string) => void;
@@ -126,12 +125,12 @@ export const PathfinderSection: React.FC<PathfinderSectionProps> = ({
               <div className="absolute top-0 right-0 w-32 h-32 bg-midtrans-azure/5 rounded-full blur-2xl pointer-events-none" />
 
               <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-midtrans-mist mb-6">
-                <span className="text-xs font-bold text-midtrans-muted tracking-wider uppercase">
+                <span className="text-xs font-bold text-midtrans-muted tracking-wider uppercase font-poppins">
                   REKOMENDASI JALUR EKOSISTEM
                 </span>
-                <Badge variant="cobalt">
+                <span className="text-[11px] font-bold text-[#054FBF] bg-[#EDF4F9] px-3 py-1 rounded-[2px] border border-[#007FE7]/20 uppercase font-poppins">
                   {recommendation.badge}
-                </Badge>
+                </span>
               </div>
 
               <div className="mb-4">
@@ -155,9 +154,12 @@ export const PathfinderSection: React.FC<PathfinderSectionProps> = ({
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {recommendation.availableRoles.map((role) => (
-                    <Badge key={role} variant="slate" className="py-1 px-3">
+                    <span 
+                      key={role} 
+                      className="text-xs font-semibold text-[#123049] bg-[#EDF4F9] px-3 py-1 rounded-[2px] border border-slate-200/80"
+                    >
                       {role}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
               </div>
