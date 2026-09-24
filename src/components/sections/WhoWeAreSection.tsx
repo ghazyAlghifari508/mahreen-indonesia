@@ -57,12 +57,12 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
               <div>
                 {/* Heading with pure logo & title (Midtrans .heading-payment layout) */}
                 <div className="flex items-center space-x-4 mb-5 pb-3 border-b border-[#EDF4F9]">
-                  <div className="h-12 w-12 shrink-0 flex items-center justify-center">
+                  <div className="h-14 w-14 shrink-0 flex items-center justify-center">
                     {unit.logoUrl ? (
                       <img 
-                        src={unit.logoUrl} 
+                        src={`${unit.logoUrl}?v=2`} 
                         alt={unit.name} 
-                        className="max-h-12 w-auto object-contain group-hover:scale-105 transition-transform" 
+                        className="max-h-14 w-auto object-contain group-hover:scale-105 transition-transform" 
                       />
                     ) : (
                       <span className="text-xl font-bold text-[#054FBF]">M</span>

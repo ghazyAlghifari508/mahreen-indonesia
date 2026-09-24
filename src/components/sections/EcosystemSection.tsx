@@ -61,7 +61,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                   <div className="h-14 mb-5 flex items-center">
                     {pillar.logoUrl ? (
                       <img 
-                        src={pillar.logoUrl} 
+                        src={`${pillar.logoUrl}?v=2`} 
                         alt={pillar.name} 
                         className="max-h-14 w-auto object-contain group-hover:scale-105 transition-transform"
                         loading="lazy"

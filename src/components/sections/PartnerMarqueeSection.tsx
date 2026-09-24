@@ -39,9 +39,9 @@ export const PartnerMarqueeSection: React.FC = () => {
             >
               {/* Pure Transparent Logo, Large & Clearly Visible */}
               <img
-                src={partner.logoUrl}
+                src={`${partner.logoUrl}?v=2`}
                 alt={`Logo ${partner.name}`}
-                className="h-12 sm:h-14 md:h-16 w-auto max-w-[170px] object-contain opacity-75 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200"
+                className="h-12 sm:h-14 md:h-16 w-auto max-w-[170px] object-contain opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-200"
                 loading="lazy"
               />
             </div>
