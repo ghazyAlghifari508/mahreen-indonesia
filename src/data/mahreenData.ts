@@ -385,16 +385,17 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2025',
     description:
       'Perancangan antarmuka pengguna komprehensif untuk portal booking konsultasi medis terpadu dan rekam medis preventif pasien.',
-    image: '/assets/team-meeting.webp',
-    tags: ['UI/UX Design', 'Design System', 'Figma Prototyping', 'Accessibility'],
+    image: '/assets/magang-portfolio-uat.webp',
+    tags: ['UI/UX Design', 'Design System', 'Prototyping', 'Accessibility'],
     deliverables: [
-      'Design System 40+ Components',
+      'Design System Components',
       'Patient Consultation Flow',
       'Appointment Booking Prototype',
       'WCAG AA Accessibility Audit',
     ],
     clientOrBeneficiary: 'SehatKu Telehealth Indonesia',
   },
+
   {
     id: 'project-pojok-literasi',
     title: 'Pojok Literasi & Edukasi Cigugur',

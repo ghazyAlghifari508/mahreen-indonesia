@@ -9,50 +9,51 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = ({
   onOpenBatch2Modal,
 }) => {
   return (
-    <section className="bg-[#002855] text-white py-24 px-6 md:px-12 relative overflow-hidden">
-      {/* Background Ambient Capsule Glow */}
-      <img 
-        src="/assets/capsule1.png" 
-        alt="" 
-        className="pointer-events-none absolute left-0 bottom-0 opacity-20 select-none hidden lg:block"
-        aria-hidden="true" 
-      />
+    <section className="bg-[#002855] text-white py-16 md:py-20 px-6 md:px-12 border-t border-white/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
+        {/* Left Column: Authentic Midtrans .accept-payment Header */}
+        <div className="max-w-2xl text-center lg:text-left">
+          <span className="text-[11px] font-bold text-[#007FE7] uppercase tracking-[0.2em] block mb-2 font-poppins">
+            BERKARYA UNTUK INDONESIA
+          </span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white font-poppins mb-3 tracking-tight">
+            Satu Ide. Satu Karya. Satu Dampak.
+          </h2>
+          <p className="text-sm md:text-base text-[#F7FCFF]/85 font-poppins leading-relaxed">
+            Mulai langkah nyatamu sekarang. Pilih ruang berkarya, bangun portofolio profesional, 
+            dan hadirkan manfaat nyata bersama ekosistem Mahreen Indonesia.
+          </p>
+        </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.2em] block mb-4 font-poppins">
-          BERKARYA UNTUK INDONESIA • #FromLearningToRealImpact
-        </span>
-
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-white mb-6 font-poppins">
-          Satu Ide. Satu Karya. <br className="hidden sm:inline" />
-          Satu Dampak Nyata untuk Indonesia.
-        </h2>
-
-        <p className="text-[#F7FCFF]/90 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-poppins">
-          Saatnya bergerak dari sekadar pembelajar teori menjadi kreator yang menghasilkan solusi. 
-          Pilih ruangmu, kembangkan potensimu, dan hadirkan kontribusi nyata bersama ekosistem Mahreen Indonesia.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            type="button"
-            onClick={() => {
-              const el = document.getElementById('pathfinder');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="btn-started w-full sm:w-auto shadow-[0_4px_16px_rgba(5,79,191,0.4)]"
-          >
-            <span>Temukan Ruang Berkaryamu</span>
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </button>
-
+        {/* Right Column: Authentic Midtrans .btn-started & .btn-sales Group */}
+        <div className="flex flex-wrap items-center justify-center lg:justify-end gap-3.5 shrink-0 w-full sm:w-auto">
           <button
             type="button"
             onClick={onOpenBatch2Modal}
-            className="btn-sales w-full sm:w-auto"
+            className="btn-started w-full sm:w-auto"
           >
-            <span>Pelajari Jalur Kolaborasi</span>
+            <span>Mulai Berkarya di Batch 2</span>
+            <ArrowRight className="w-4 h-4 ml-1.5" />
           </button>
+
+          <a
+            href="#tentang"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById('tentang');
+              if (el) {
+                const navHeight = 76;
+                const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                  top: elementPosition - navHeight,
+                  behavior: 'smooth',
+                });
+              }
+            }}
+            className="btn-sales w-full sm:w-auto text-center cursor-pointer"
+          >
+            Kenali Ekosistem
+          </a>
         </div>
       </div>
     </section>

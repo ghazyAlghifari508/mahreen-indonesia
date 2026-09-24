@@ -3,14 +3,13 @@ import {
   Calendar,
   Layers,
   Building2,
-  CheckCircle2,
+  Check,
   Tag,
   ArrowUpRight,
 } from 'lucide-react';
 import { Modal } from '../ui/Modal';
 import { Button } from '../ui/Button';
-import { Badge, BadgeVariant } from '../ui/Badge';
-import type { ProjectItem, ProjectCategory } from '../../types/mahreen';
+import type { ProjectItem } from '../../types/mahreen';
 
 export interface ProjectDetailModalProps {
   project: ProjectItem | null;
@@ -27,21 +26,13 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 }) => {
   if (!project) return null;
 
-  const categoryBadgeVariant: Record<ProjectCategory, BadgeVariant> = {
-    Website: 'azure',
-    Branding: 'cobalt',
-    'Social Impact': 'slate',
-    Internship: 'cobalt',
-    Sustainability: 'ice',
-  };
-
   const footerActions = (
-    <div className="flex items-center justify-between w-full gap-3">
+    <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-3">
       <div className="text-[12px] text-[#7686AB]">
         Pilar: <span className="font-semibold text-[#123049]">{project.pillar}</span>
       </div>
-      <div className="flex items-center gap-2">
-        <Button variant="ghost" size="sm" onClick={onClose}>
+      <div className="flex items-center gap-2.5 w-full sm:w-auto justify-end">
+        <Button variant="ghost" size="sm" onClick={onClose} className="rounded-[2px]">
           Tutup
         </Button>
         {onConsultSimilar ? (
@@ -51,6 +42,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             onClick={() => onConsultSimilar(project)}
             icon={<ArrowUpRight size={14} />}
             iconPosition="right"
+            className="rounded-[2px] bg-[#054FBF] hover:bg-[#002855] text-white text-[12px] font-bold px-6 py-2.5"
           >
             Konsultasikan Proyek Serupa
           </Button>
@@ -62,6 +54,7 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
             target="_blank"
             icon={<ArrowUpRight size={14} />}
             iconPosition="right"
+            className="rounded-[2px] bg-[#054FBF] hover:bg-[#002855] text-white text-[12px] font-bold px-6 py-2.5"
           >
             Pelajari Program Terkait
           </Button>
@@ -77,49 +70,56 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       maxWidth="3xl"
       title={
         <div className="flex flex-wrap items-center gap-2.5">
-          <span>{project.title}</span>
-          <Badge variant={categoryBadgeVariant[project.category] || 'ice'} size="sm">
+          <span className="font-poppins font-bold text-[#123049] text-lg sm:text-xl">
+            {project.title}
+          </span>
+          <span className="text-[11px] font-poppins font-medium text-[#123049] bg-[#EDF4F9] border border-[#BBBBBB]/30 px-2 py-0.5 rounded-[2px]">
             {project.category}
-          </Badge>
+          </span>
         </div>
       }
       subtitle={`Dokumentasi & Portofolio Karya • ${project.year}`}
       footer={footerActions}
     >
       <div className="space-y-5">
-        {/* Project Visual Feature Banner */}
+        {/* 1. Browser Frame Mockup Container (Midtrans Window Pattern) */}
         {project.image && (
-          <div className="relative w-full h-56 sm:h-72 overflow-hidden rounded-[6px] bg-[#EDF4F9] border border-[#EDF4F9]">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              onError={(e) => {
-                // Fallback to placeholder if image link is broken
-                (e.currentTarget as HTMLImageElement).src =
-                  'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80';
-              }}
-            />
-            <div className="absolute top-3 left-3 flex gap-2">
-              <Badge variant="cobalt" size="sm">
-                {project.year}
-              </Badge>
-              <Badge variant="azure" size="sm">
-                {project.pillar}
-              </Badge>
+          <div className="w-full overflow-hidden rounded-[4px] border border-[#EDF4F9] shadow-xs bg-white">
+            {/* Minimalist Browser Frame Top Bar */}
+            <div className="h-7 bg-[#EDF4F9] border-b border-[#EDF4F9] px-3 flex items-center justify-between select-none">
+              {/* 3 OS Window Dots: Red, Yellow, Green */}
+              <div className="flex items-center space-x-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56] block shrink-0" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E] block shrink-0" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F] block shrink-0" />
+              </div>
+              {/* URL Bar */}
+              <div className="text-[10px] text-[#7686AB] font-mono px-3 py-0.5 bg-white/80 rounded-[2px] truncate max-w-[240px] sm:max-w-xs border border-slate-200/50">
+                mahreenindonesia.com/karya/{project.id}
+              </div>
+              <div className="w-8" />
+            </div>
+
+            {/* Clean Screenshot Inside Mockup */}
+            <div className="relative w-full max-h-72 overflow-hidden bg-[#F7FCFF] flex items-center justify-center">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-auto max-h-72 object-cover object-top"
+                loading="lazy"
+              />
             </div>
           </div>
         )}
 
-        {/* Project Meta Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-[#F7FCFF] border border-[#EDF4F9] p-3.5 rounded-[6px]">
+        {/* 2. Project Meta Cards (Midtrans Micro-Radii Tokens) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 bg-[#F7FCFF] border border-[#BBBBBB]/30 p-3 rounded-[4px]">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded bg-white text-[#054FBF] shadow-xs shrink-0">
-              <Layers size={16} />
+            <div className="p-1.5 rounded-[2px] bg-white border border-[#BBBBBB]/20 text-[#054FBF] shrink-0">
+              <Layers size={15} />
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#7686AB] uppercase tracking-wider">
+              <p className="text-[10px] font-semibold text-[#7686AB] uppercase tracking-wider">
                 Kategori
               </p>
               <p className="text-[12px] font-bold text-[#123049]">{project.category}</p>
@@ -127,11 +127,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           </div>
 
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded bg-white text-[#054FBF] shadow-xs shrink-0">
-              <Calendar size={16} />
+            <div className="p-1.5 rounded-[2px] bg-white border border-[#BBBBBB]/20 text-[#054FBF] shrink-0">
+              <Calendar size={15} />
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-[#7686AB] uppercase tracking-wider">
+              <p className="text-[10px] font-semibold text-[#7686AB] uppercase tracking-wider">
                 Tahun
               </p>
               <p className="text-[12px] font-bold text-[#123049]">{project.year}</p>
@@ -140,11 +140,11 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 
           {project.clientOrBeneficiary && (
             <div className="col-span-2 sm:col-span-1 flex items-center gap-2.5">
-              <div className="p-2 rounded bg-white text-[#054FBF] shadow-xs shrink-0">
-                <Building2 size={16} />
+              <div className="p-1.5 rounded-[2px] bg-white border border-[#BBBBBB]/20 text-[#054FBF] shrink-0">
+                <Building2 size={15} />
               </div>
               <div>
-                <p className="text-[11px] font-semibold text-[#7686AB] uppercase tracking-wider">
+                <p className="text-[10px] font-semibold text-[#7686AB] uppercase tracking-wider">
                   Klien / Mitra
                 </p>
                 <p className="text-[12px] font-bold text-[#123049] truncate">
@@ -155,26 +155,31 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           )}
         </div>
 
-        {/* Description Section */}
+        {/* 3. Description Section */}
         <div>
-          <h4 className="text-[13px] font-bold text-[#123049] mb-1.5 font-poppins">
+          <h4 className="text-[12px] font-bold uppercase tracking-wider text-[#123049] mb-1 font-poppins">
             Deskripsi Proyek
           </h4>
-          <p className="text-[13px] leading-relaxed text-[#7686AB]">
+          <p className="text-[13px] leading-relaxed text-[#7686AB] font-poppins">
             {project.description}
           </p>
         </div>
 
-        {/* Deliverables Section */}
+        {/* 4. Deliverables Section (Midtrans-biaya.html Row Style with Hairline Dividers) */}
         {project.deliverables && project.deliverables.length > 0 && (
-          <div className="bg-[#EDF4F9]/60 p-4 rounded-[6px] border border-[#EDF4F9]">
-            <h4 className="text-[11px] font-bold text-[#054FBF] uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-              <CheckCircle2 size={15} /> Deliverables & Ruang Lingkup
+          <div>
+            <h4 className="text-[11px] font-bold text-[#054FBF] uppercase tracking-wider mb-2 font-poppins">
+              Ruang Lingkup &amp; Deliverables
             </h4>
-            <div className="grid sm:grid-cols-2 gap-2">
+            <div className="border-t border-[#EDF4F9]">
               {project.deliverables.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-[12px] text-[#123049]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#054FBF]" />
+                <div
+                  key={idx}
+                  className="flex items-center gap-2.5 border-b border-[#EDF4F9] py-2.5 text-[13px] text-[#123049] font-poppins"
+                >
+                  <div className="w-4 h-4 rounded-full bg-[#EDF4F9] text-[#054FBF] flex items-center justify-center shrink-0">
+                    <Check size={11} className="stroke-[3]" />
+                  </div>
                   <span>{item}</span>
                 </div>
               ))}
@@ -182,17 +187,20 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
           </div>
         )}
 
-        {/* Tags Section */}
+        {/* 5. Tags Section (Midtrans Micro-Chips with rounded-[2px]) */}
         {project.tags && project.tags.length > 0 && (
           <div>
-            <h4 className="text-[11px] font-bold text-[#7686AB] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <Tag size={13} /> Tags & Teknologi
+            <h4 className="text-[11px] font-bold text-[#7686AB] uppercase tracking-wider mb-2 flex items-center gap-1.5 font-poppins">
+              <Tag size={12} /> Tags &amp; Teknologi
             </h4>
             <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag, idx) => (
-                <Badge key={idx} variant="outline" size="sm">
+                <span
+                  key={idx}
+                  className="text-[11px] font-medium font-poppins text-[#123049] bg-[#EDF4F9] border border-[#BBBBBB]/30 px-2.5 py-0.5 rounded-[2px]"
+                >
                   {tag}
-                </Badge>
+                </span>
               ))}
             </div>
           </div>

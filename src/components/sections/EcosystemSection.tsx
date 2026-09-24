@@ -17,7 +17,7 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
   return (
     <section 
       id="ruang-berkarya" 
-      className="bg-[#F7FCFF] py-24 px-6 md:px-12 relative overflow-hidden border-b border-[#EDF4F9]"
+      className="scroll-mt-[100px] bg-[#F7FCFF] py-24 px-6 md:px-12 relative overflow-hidden border-b border-[#EDF4F9]"
     >
       {/* Background Floating Capsule */}
       <img 

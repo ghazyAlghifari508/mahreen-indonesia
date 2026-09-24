@@ -59,7 +59,7 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
     // Strict Midtrans color tokens and state transitions
     const variantClasses: Record<ButtonVariant, string> = {
       primary:
-        'bg-[#054FBF] text-white border border-[#054FBF] hover:bg-[#002855] hover:border-[#002855] hover:shadow-[0_6px_16px_rgba(5,79,191,0.28)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007FE7]',
+        'bg-[#054FBF] text-white border border-[#054FBF] hover:bg-[#002855] hover:border-[#002855] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007FE7]',
       outline:
         'bg-white text-[#054FBF] border border-[#054FBF] hover:bg-[#054FBF]/5 hover:border-[#002855] hover:text-[#002855] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#054FBF]',
       'outline-light':
@@ -67,7 +67,7 @@ export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, Bu
       ghost:
         'bg-transparent text-[#123049] border border-transparent hover:bg-[#EDF4F9] hover:text-[#054FBF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#054FBF]',
       dark:
-        'bg-[#002855] text-white border border-[#002855] hover:bg-[#123049] hover:border-[#123049] hover:shadow-[0_6px_16px_rgba(0,40,85,0.3)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007FE7]',
+        'bg-[#002855] text-white border border-[#002855] hover:bg-[#123049] hover:border-[#123049] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007FE7]',
     };
 
     const combinedClasses = `${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${

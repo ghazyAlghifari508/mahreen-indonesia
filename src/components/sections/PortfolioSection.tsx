@@ -26,7 +26,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
   return (
     <section 
       id="karya-nyata" 
-      className="bg-midtrans-ice py-20 px-6 md:px-12 border-b border-midtrans-mist"
+      className="scroll-mt-[100px] bg-midtrans-ice py-20 px-6 md:px-12 border-b border-midtrans-mist"
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -141,7 +141,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                 Bukti capaian nyata yang diverifikasi langsung dari sesi penganugerahan Best Intern Awards Mahreen Indonesia.
               </p>
             </div>
-            <span className="text-xs font-bold text-[#054FBF] bg-midtrans-ice px-3 py-1 rounded-[2px] border border-midtrans-azure/20">
+            <span className="text-xs font-bold text-[#054FBF] bg-white px-3 py-1 rounded-[2px] border border-[#BBBBBB]/30 font-poppins">
               Dokumentasi Resmi Batch 1
             </span>
           </div>
@@ -150,7 +150,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             {ALUMNI_AWARDEES.map((alumni, idx) => (
               <div 
                 key={idx}
-                className="bg-white rounded-[6px] border border-slate-200/80 overflow-hidden hover:border-midtrans-blue hover:shadow-midtrans-card transition-all duration-200 flex flex-col justify-between group"
+                className="bg-white rounded-[6px] border border-slate-200/80 overflow-hidden hover:border-midtrans-blue transition-all duration-200 flex flex-col justify-between group shadow-2xs"
               >
                 <div>
                   {/* Real Award Poster Photo */}
@@ -162,7 +162,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                       loading="lazy"
                     />
                     <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
-                      <span className="text-[10px] font-bold bg-[#002855]/90 text-white px-2 py-0.5 rounded-[2px] backdrop-blur-xs">
+                      <span className="text-[10px] font-bold bg-[#002855] text-white px-2 py-0.5 rounded-[2px]">
                         {alumni.award}
                       </span>
                     </div>

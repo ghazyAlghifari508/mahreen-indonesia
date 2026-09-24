@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <button
                 type="button"
                 onClick={onExplorePathfinder}
-                className="btn-started shadow-[0_4px_16px_rgba(5,79,191,0.45)]"
+                className="btn-started"
               >
                 <span>Mulai Eksplorasi</span>
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -84,7 +84,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Right Column: Visual Composite of Mahreen Ecosystem */}
           <div className="lg:col-span-5 flex justify-center w-full">
-            <div className="w-full bg-white rounded-[20px] p-6 text-[#123049] shadow-[0px_20px_50px_rgba(0,0,0,0.3)] border border-white/20 relative overflow-hidden">
+            <div className="w-full bg-white rounded-[16px] p-6 text-[#123049] border border-[#EDF4F9] shadow-[0px_10px_25px_rgba(0,0,0,0.15)] relative overflow-hidden">
               {/* Card Window Header */}
               <div className="flex items-center justify-between pb-3.5 border-b border-[#EDF4F9] mb-4">
                 <div className="flex items-center gap-2">

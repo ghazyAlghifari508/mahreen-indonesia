@@ -9,11 +9,9 @@ import {
   Hammer,
   Send,
   Trophy,
-  Layers,
-  ChevronRight
+  Layers
 } from 'lucide-react';
 import { BATCH2_DETAILS } from '../../data/mahreenData';
-import Button from '../ui/Button';
 
 interface InternshipJourneySectionProps {
   onOpenBatch2Modal: () => void;
@@ -35,14 +33,8 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
   return (
     <section 
       id="solusi-talenta" 
-      className="bg-[#FFFFFF] py-24 px-6 md:px-12 relative overflow-hidden border-b border-[#EDF4F9]"
+      className="scroll-mt-[100px] bg-[#FFFFFF] py-24 px-6 md:px-12 relative overflow-hidden border-b border-[#EDF4F9]"
     >
-      {/* Midtrans Background Capsule Shape */}
-      <div 
-        className="pointer-events-none absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#007FE7]/5 blur-3xl"
-        aria-hidden="true" 
-      />
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -58,66 +50,47 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
           </p>
         </div>
 
-        {/* Interactive Milestone Progression Bar (Anti-Slop Architecture) */}
+        {/* Midtrans-style .ui-tabs Horizontal Tabs Navigation */}
         <div className="mb-12">
-          {/* Step Selector Pills */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
+          {/* Tab Selector Links */}
+          <div className="flex border-b border-[#EDF4F9] mb-8 overflow-x-auto scrollbar-none justify-start md:justify-center">
             {BATCH2_DETAILS.journeyPhases.map((phase, idx) => {
               const isSelected = selectedPhaseIndex === idx;
               return (
                 <button
                   key={phase.phase}
                   onClick={() => setSelectedPhaseIndex(idx)}
-                  className={`p-4 rounded-[6px] text-left transition-all duration-200 border cursor-pointer flex items-center justify-between group ${
-                    isSelected
-                      ? 'bg-[#002855] text-white border-[#002855] shadow-[0_8px_20px_rgba(0,40,85,0.25)]'
-                      : 'bg-[#F7FCFF] hover:bg-white text-[#123049] border-[#EDF4F9] hover:border-[#054FBF]/40'
+                  className={`pb-3.5 px-4 sm:px-8 text-xs sm:text-[13px] font-bold uppercase tracking-wider transition-all relative font-poppins whitespace-nowrap cursor-pointer flex items-center space-x-2 ${
+                    isSelected ? 'text-[#054FBF]' : 'text-[#7686AB] hover:text-[#123049]'
                   }`}
                 >
-                  <div className="flex items-center space-x-3">
-                    <div 
-                      className={`w-9 h-9 rounded-[4px] flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected 
-                          ? 'bg-[#054FBF] text-white' 
-                          : 'bg-white text-[#054FBF] border border-[#EDF4F9]'
-                      }`}
-                    >
-                      {PHASE_ICONS[idx]}
-                    </div>
-                    <div>
-                      <span className={`text-[10px] font-bold uppercase tracking-wider block ${
-                        isSelected ? 'text-[#007FE7]' : 'text-[#7686AB]'
-                      }`}>
-                        Bulan 0{phase.monthNumber}
-                      </span>
-                      <h4 className="text-sm font-bold font-poppins">
-                        {phase.phase}
-                      </h4>
-                    </div>
-                  </div>
-                  <ChevronRight className={`w-4 h-4 transition-transform ${
-                    isSelected ? 'text-[#007FE7] translate-x-0.5' : 'text-slate-400 opacity-50 group-hover:opacity-100'
-                  }`} />
+                  <span className={isSelected ? 'text-[#054FBF]' : 'text-[#7686AB]'}>
+                    {PHASE_ICONS[idx]}
+                  </span>
+                  <span>0{phase.monthNumber}. {phase.phase}</span>
+                  {isSelected && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#054FBF]" />
+                  )}
                 </button>
               );
             })}
           </div>
 
-          {/* Deep Phase Inspector Surface (Double-Bezel Architecture) */}
-          <div className="bg-[#F7FCFF] rounded-[8px] p-6 sm:p-8 md:p-10 border border-[#EDF4F9] shadow-[0px_10px_30px_rgba(45,50,55,0.06)] relative overflow-hidden">
+          {/* Deep Phase Inspector Surface (Midtrans Double-Bezel Architecture) */}
+          <div className="bg-[#F7FCFF] rounded-[8px] p-6 sm:p-8 md:p-10 border border-[#BBBBBB]/30 relative overflow-hidden transition-all duration-200">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Phase Focus & Narrative */}
               <div className="lg:col-span-7">
                 <div className="flex items-center space-x-3 mb-3">
-                  <span className="text-xs font-bold text-[#054FBF] uppercase tracking-wider bg-white px-3 py-1 rounded-[2px] border border-[#054FBF]/20">
-                    Bulan {activePhase.monthNumber} • {activePhase.monthName} 2026
+                  <span className="text-xs font-bold text-[#054FBF] uppercase tracking-wider bg-white px-3 py-1 rounded-[2px] border border-[#BBBBBB]/30 font-poppins">
+                    Bulan {activePhase.monthNumber} • {activePhase.monthName}
                   </span>
-                  <span className="text-xs font-semibold text-[#7686AB]">
+                  <span className="text-xs font-semibold text-[#7686AB] font-poppins">
                     Fokus: {activePhase.title}
                   </span>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-bold text-[#123049] tracking-tight font-poppins mb-4">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#123049] tracking-tight font-poppins mb-3">
                   Tahap {activePhase.phase}: {activePhase.title}
                 </h3>
 
@@ -125,15 +98,15 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
                   {activePhase.focusDescription}
                 </p>
 
-                {/* Key Outputs Checklist */}
+                {/* Key Outputs Checklist (Midtrans-style hairline rows) */}
                 <div className="mb-6">
-                  <h5 className="text-xs font-bold text-[#123049] uppercase tracking-wider mb-3">
-                    Target Capaian &amp; Luaran:
-                  </h5>
+                  <span className="text-[11px] font-bold text-[#123049] uppercase tracking-wider block mb-3 font-poppins">
+                    Target Capaian &amp; Luaran Kerja:
+                  </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {activePhase.keyOutputs.map((out, oIdx) => (
-                      <div key={oIdx} className="flex items-center space-x-2 text-xs text-[#123049] font-medium bg-white p-2.5 rounded-[4px] border border-[#EDF4F9]">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <div key={oIdx} className="flex items-center space-x-2 text-xs text-[#123049] font-medium bg-white p-3 rounded-[2px] border border-slate-200/70 font-poppins">
+                        <CheckCircle2 className="w-4 h-4 text-[#054FBF] shrink-0" />
                         <span>{out}</span>
                       </div>
                     ))}
@@ -141,49 +114,49 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
                 </div>
 
                 {/* Flagship Program Banner */}
-                <div className="bg-white p-4 rounded-[4px] border-l-4 border-l-[#054FBF] border border-[#EDF4F9] flex items-center justify-between">
+                <div className="bg-white p-4 rounded-[4px] border border-[#BBBBBB]/30 flex items-center justify-between">
                   <div>
-                    <span className="text-[10px] font-bold text-[#7686AB] uppercase tracking-wider block">
+                    <span className="text-[10px] font-bold text-[#7686AB] uppercase tracking-wider block font-poppins">
                       Program Unggulan Bulan Ini:
                     </span>
                     <span className="text-sm font-bold text-[#002855] font-poppins">
                       {activePhase.flagshipProgram}
                     </span>
                   </div>
-                  <span className="text-xs font-bold text-[#054FBF] bg-[#EDF4F9] px-2.5 py-1 rounded-[2px]">
-                    Wajib Diikuti
+                  <span className="text-[11px] font-bold text-[#054FBF] bg-[#EDF4F9] px-2.5 py-1 rounded-[2px] uppercase font-poppins">
+                    Flagship Agenda
                   </span>
                 </div>
               </div>
 
-              {/* Right Column: Weekly System Rhythm Card */}
-              <div className="lg:col-span-5 bg-[#002855] text-white p-6 rounded-[6px] shadow-sm border border-white/10">
+              {/* Right Column: Weekly System Rhythm Card (Midtrans Dark Container) */}
+              <div className="lg:col-span-5 bg-[#002855] text-white p-6 md:p-7 rounded-[6px] border border-white/10 shadow-sm">
                 <span className="text-[11px] font-bold text-[#007FE7] uppercase tracking-wider block mb-2 font-poppins">
                   SISTEM OPERASIONAL MINGGUAN (MIOS)
                 </span>
                 <h4 className="text-lg font-bold text-white font-poppins mb-4">
                   Weekly Operating Rhythm
                 </h4>
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="font-bold text-[#007FE7]">Senin</span>
-                    <span className="text-white/80">Weekly Kickoff &amp; Pembagian Task</span>
+                <div className="space-y-3 text-xs font-poppins">
+                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                    <span className="font-bold text-[#007FE7] uppercase">Senin</span>
+                    <span className="text-white/90">Weekly Kickoff &amp; Pembagian Task</span>
                   </div>
-                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="font-bold text-[#007FE7]">Selasa</span>
-                    <span className="text-white/80">Production Day (Fokus Pengerjaan Divisi)</span>
+                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                    <span className="font-bold text-[#007FE7] uppercase">Selasa</span>
+                    <span className="text-white/90">Production Day (Fokus Divisi)</span>
                   </div>
-                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="font-bold text-[#007FE7]">Rabu</span>
-                    <span className="text-white/80">Collaboration Day (Lintas Divisi)</span>
+                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                    <span className="font-bold text-[#007FE7] uppercase">Rabu</span>
+                    <span className="text-white/90">Collaboration Day (Lintas Tim)</span>
                   </div>
-                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
-                    <span className="font-bold text-[#007FE7]">Kamis</span>
-                    <span className="text-white/80">Project &amp; Client Delivery Day</span>
+                  <div className="flex items-center justify-between pb-2.5 border-b border-white/10">
+                    <span className="font-bold text-[#007FE7] uppercase">Kamis</span>
+                    <span className="text-white/90">Project &amp; Client Delivery Day</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-[#007FE7]">Jumat</span>
-                    <span className="text-white/80">Review, Mentoring &amp; Learning Day</span>
+                    <span className="font-bold text-[#007FE7] uppercase">Jumat</span>
+                    <span className="text-white/90">Review, Mentoring &amp; Learning Day</span>
                   </div>
                 </div>
               </div>
@@ -191,10 +164,10 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
           </div>
         </div>
 
-        {/* 4 Core Pillars of the Internship System */}
+        {/* 4 Core Pillars of the Internship System (Grid in Cool Mist) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <div className="bg-white p-6 rounded-[6px] border border-[#EDF4F9] hover:border-[#054FBF]/30 transition-all shadow-xs">
-            <div className="w-10 h-10 rounded-[4px] bg-[#F7FCFF] text-[#054FBF] flex items-center justify-center mb-4 border border-[#EDF4F9]">
+          <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
+            <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
               <Laptop className="w-5 h-5" />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">Remote WFH / WFA</h4>
@@ -203,8 +176,8 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-[6px] border border-[#EDF4F9] hover:border-[#054FBF]/30 transition-all shadow-xs">
-            <div className="w-10 h-10 rounded-[4px] bg-[#F7FCFF] text-[#054FBF] flex items-center justify-center mb-4 border border-[#EDF4F9]">
+          <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
+            <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
               <Coins className="w-5 h-5" />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">Fee Project 30%</h4>
@@ -213,18 +186,18 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-[6px] border border-[#EDF4F9] hover:border-[#054FBF]/30 transition-all shadow-xs">
-            <div className="w-10 h-10 rounded-[4px] bg-[#F7FCFF] text-[#054FBF] flex items-center justify-center mb-4 border border-[#EDF4F9]">
+          <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
+            <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
               <Calendar className="w-5 h-5" />
             </div>
-            <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">4 Bulan Terukur</h4>
+            <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">4 Bulan Terstruktur</h4>
             <p className="text-xs text-[#7686AB] leading-relaxed font-poppins">
               Periode resmi 1 Oktober 2026 – 31 Januari 2027 dengan evaluasi berkala dan wisuda akhir.
             </p>
           </div>
 
-          <div className="bg-white p-6 rounded-[6px] border border-[#EDF4F9] hover:border-[#054FBF]/30 transition-all shadow-xs">
-            <div className="w-10 h-10 rounded-[4px] bg-[#F7FCFF] text-[#054FBF] flex items-center justify-center mb-4 border border-[#EDF4F9]">
+          <div className="bg-[#EDF4F9] p-6 rounded-[4px] border border-[#BBBBBB]/30">
+            <div className="w-9 h-9 rounded-[2px] bg-white text-[#054FBF] flex items-center justify-center mb-4 border border-[#BBBBBB]/20">
               <Layers className="w-5 h-5" />
             </div>
             <h4 className="text-sm font-bold text-[#123049] mb-1 font-poppins">5 Divisi Pilihan</h4>
@@ -236,14 +209,13 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
 
         {/* CTA Trigger */}
         <div className="text-center">
-          <Button 
-            variant="primary" 
+          <button 
             onClick={onOpenBatch2Modal}
-            icon={<ArrowRight className="w-4 h-4" />}
-            iconPosition="right"
+            className="btn-started inline-flex items-center space-x-2"
           >
-            Pelajari Pedoman Lengkap &amp; Syarat Batch 2
-          </Button>
+            <span>Pelajari Pedoman Lengkap &amp; Syarat Batch 2</span>
+            <ArrowRight className="w-4 h-4 ml-1" />
+          </button>
         </div>
       </div>
     </section>

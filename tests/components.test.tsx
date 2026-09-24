@@ -100,10 +100,10 @@ describe('UI Primitives & Modals Unit Tests', () => {
       const html = renderToStaticMarkup(
         <Batch2DetailModal isOpen={true} onClose={() => {}} />
       );
-      expect(html).toContain('Mahreen Indonesia Internship Batch 2');
-      expect(html).toContain('1 Oktober 2026 – 31 Januari 2027');
+      expect(html).toContain('Mahreen Indonesia Internship — Batch 2');
+      expect(html).toContain('1 Okt 2026 – 31 Jan 2027');
       expect(html).toContain('Remote WFH / WFA');
-      expect(html).toContain('Profit Sharing 30%');
+      expect(html).toContain('30% Profit Sharing');
       expect(html).toContain('Buka Form Pendaftaran');
       expect(html).toContain('Unduh Pedoman Resmi');
       expect(html).toContain('https://bit.ly/MII-2');
@@ -121,7 +121,7 @@ describe('UI Primitives & Modals Unit Tests', () => {
       expect(html).toContain(project.pillar);
       expect(html).toContain(project.category);
       expect(html).toContain(project.year);
-      expect(html).toContain('Deliverables &amp; Ruang Lingkup');
+      expect(html).toContain('Ruang Lingkup &amp; Deliverables');
       expect(html).toContain(project.deliverables![0]);
     });
 

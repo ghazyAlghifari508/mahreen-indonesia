@@ -1,4 +1,5 @@
 import React from 'react';
+import { Check } from 'lucide-react';
 import { PILLARS_DATA, VISION_MISSION } from '../../data/mahreenData';
 
 interface WhoWeAreSectionProps {
@@ -26,7 +27,7 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
   return (
     <section 
       id="tentang" 
-      className="bg-[#FFFFFF] py-20 px-6 md:px-12 border-b border-[#EDF4F9]"
+      className="scroll-mt-[100px] bg-[#FFFFFF] py-20 px-6 md:px-12 border-b border-[#EDF4F9]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Midtrans-style Section Title */}
@@ -92,41 +93,65 @@ export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
           ))}
         </div>
 
-        {/* Vision & Mission (Official Instagram Slide 1 in Clean Midtrans Layout) */}
-        <div className="bg-[#002855] text-white rounded-[20px] p-8 md:p-12 shadow-[0px_15px_35px_rgba(0,40,85,0.15)] relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative z-10">
-            {/* Vision */}
-            <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-white/15 pb-8 lg:pb-0 lg:pr-10">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#007FE7] block mb-3 font-poppins">
-                VISI KAMI
+        {/* Vision & Mission (Midtrans-enterprises.html Editorial Split on Cool Mist #EDF4F9) */}
+        <div className="bg-[#EDF4F9] rounded-[20px] p-8 md:p-12 border border-slate-200/80">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* Left Column: Visi & 4 Misi Strategis */}
+            <div className="lg:col-span-7">
+              <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#054FBF] block mb-2 font-poppins">
+                VISI &amp; MISI STRATEGIS
               </span>
-              <h3 className="text-xl sm:text-2xl font-bold text-white leading-relaxed mb-4 font-poppins">
-                "{VISION_MISSION.vision}"
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#123049] leading-snug font-poppins mb-3">
+                Inovasi Nyata untuk Generasi Muda &amp; Kemajuan Indonesia
               </h3>
-              <p className="text-xs text-[#F7FCFF]/70 leading-relaxed font-poppins">
-                Membangun ekosistem berkelanjutan yang mempertemukan ide kreatif, inovasi digital, 
-                dan kepedulian sosial demi kebermanfaatan nyata bagi bangsa.
+              <p className="text-[15px] font-semibold text-[#007FE7] mb-3 font-poppins italic">
+                "{VISION_MISSION.vision}"
               </p>
+              <p className="text-xs md:text-sm text-[#7686AB] leading-relaxed mb-6 font-poppins">
+                Berangkat dari riset dan observasi sejak 2024, Mahreen Indonesia diresmikan sebagai entitas berbadan hukum pada 2026. Kami meyakini bahwa kemajuan dibangun melalui ilmu yang diterapkan, nilai yang dijaga, dan manfaat yang ditinggalkan.
+              </p>
+
+              {/* 4 Missions with Midtrans-style checklist */}
+              <div className="space-y-2.5">
+                {VISION_MISSION.missions.map((misi, idx) => (
+                  <div 
+                    key={idx} 
+                    className="flex items-start space-x-3 bg-white p-3 rounded-[4px] border border-slate-200/70"
+                  >
+                    <div className="w-5 h-5 rounded-full bg-[#EDF4F9] text-[#054FBF] flex items-center justify-center shrink-0 mt-0.5">
+                      <Check size={12} className="stroke-[3]" />
+                    </div>
+                    <p className="text-xs md:text-sm text-[#123049] font-medium leading-relaxed font-poppins">
+                      {misi}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* 4 Strategic Missions */}
-            <div className="lg:col-span-7 space-y-3">
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#007FE7] block mb-3 font-poppins">
-                EMPAT MISI STRATEGIS
-              </span>
-              {VISION_MISSION.missions.map((misi, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex items-start space-x-3.5 bg-white/5 hover:bg-white/10 p-3.5 rounded-[4px] border border-white/10 transition-colors"
-                >
-                  <span className="text-xs font-bold font-mono text-[#007FE7] bg-white/10 px-2 py-0.5 rounded-[2px] shrink-0 mt-0.5">
-                    0{idx + 1}
+            {/* Right Column: Authentic Editorial Photo Mockup */}
+            <div className="lg:col-span-5 flex flex-col justify-center">
+              <div className="w-full bg-white rounded-[12px] overflow-hidden border border-slate-200/80 shadow-sm">
+                <div className="h-7 bg-slate-100 border-b border-slate-200 px-3 flex items-center space-x-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#27C93F]" />
+                  <span className="text-[10px] text-slate-500 font-mono ml-2">mahreenindonesia.com/tentang</span>
+                </div>
+                <img
+                  src="/assets/team-meeting.webp"
+                  alt="Sesi Kolaborasi Visi & Strategi Mahreen Indonesia"
+                  className="w-full h-56 sm:h-64 object-cover"
+                />
+                <div className="p-4 bg-white border-t border-slate-100">
+                  <span className="text-[11px] font-bold text-[#054FBF] uppercase tracking-wider block font-poppins">
+                    DOKUMENTASI KARYA
                   </span>
-                  <p className="text-xs md:text-sm text-white/95 leading-relaxed font-poppins">
-                    {misi}
+                  <p className="text-xs text-[#7686AB] font-poppins mt-0.5">
+                    Proses pengembangan ide, riset, dan strategi berkelanjutan tim Mahreen Indonesia.
                   </p>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
