@@ -57,17 +57,17 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
                 }`}
               >
                 <div>
-                  {/* Pillar Logo */}
-                  <div className="w-16 h-16 rounded-[6px] bg-[#F7FCFF] p-2.5 border border-[#EDF4F9] flex items-center justify-center mb-6">
+                  {/* Pure Pillar Logo (Zero Box, No Border) */}
+                  <div className="h-14 mb-5 flex items-center">
                     {pillar.logoUrl ? (
                       <img 
                         src={pillar.logoUrl} 
                         alt={pillar.name} 
-                        className="w-full h-full object-contain"
+                        className="max-h-14 w-auto object-contain group-hover:scale-105 transition-transform"
                         loading="lazy"
                       />
                     ) : (
-                      <span className="text-xl font-bold text-[#054FBF]">M</span>
+                      <span className="text-xl font-bold text-[#054FBF] font-poppins">M</span>
                     )}
                   </div>
 
