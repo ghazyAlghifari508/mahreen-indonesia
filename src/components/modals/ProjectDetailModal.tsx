@@ -203,3 +203,5 @@ export const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
 };
 
 ProjectDetailModal.displayName = 'ProjectDetailModal';
+
+export default ProjectDetailModal;

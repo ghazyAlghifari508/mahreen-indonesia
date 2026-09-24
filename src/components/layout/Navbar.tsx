@@ -176,3 +176,5 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBatch2Modal, className = '
     </header>
   );
 };
+
+export default Navbar;

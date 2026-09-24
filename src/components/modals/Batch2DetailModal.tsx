@@ -396,3 +396,5 @@ export const Batch2DetailModal: React.FC<Batch2DetailModalProps> = ({
 };
 
 Batch2DetailModal.displayName = 'Batch2DetailModal';
+
+export default Batch2DetailModal;

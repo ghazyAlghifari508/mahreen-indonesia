@@ -325,3 +325,5 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 HeroSection.displayName = 'HeroSection';
+
+export default HeroSection;

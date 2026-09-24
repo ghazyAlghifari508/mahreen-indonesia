@@ -78,3 +78,5 @@ export const TopAnnouncementStrip: React.FC<TopAnnouncementStripProps> = ({
     </aside>
   );
 };
+
+export default TopAnnouncementStrip;
