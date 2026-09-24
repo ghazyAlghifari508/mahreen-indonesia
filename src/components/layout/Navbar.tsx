@@ -1,150 +1,114 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
-import { Button } from '../ui/Button';
 
-export interface NavbarProps {
-  onOpenBatch2Modal: () => void;
+interface NavbarProps {
+  onOpenBatch2Modal?: () => void;
   className?: string;
 }
 
-export interface NavItem {
-  label: string;
-  href: string;
-}
-
-export const NAV_ITEMS: NavItem[] = [
-  { label: 'Ekosistem', href: '#ecosystem' },
-  { label: 'Temukan Ruangmu', href: '#pathfinder' },
-  { label: 'Perjalanan Magang', href: '#journey' },
-  { label: 'Portofolio', href: '#portfolio' },
+const NAV_ITEMS = [
+  { label: 'Tentang Kami', href: '#tentang' },
+  { label: 'Ruang Berkarya', href: '#ruang-berkarya' },
+  { label: 'Solusi Talenta', href: '#solusi-talenta' },
+  { label: 'Karya Nyata', href: '#karya-nyata' },
   { label: 'Legalitas', href: '#legalitas' },
 ];
 
-/**
- * Midtrans-compliant Enterprise Header Navigation Shell (Component #4)
- *
- * Visual specifications:
- * - Solid Midnight Navy background (`#002855`), non-transparent, zero border-bottom or subtle hairline
- * - Fixed/Sticky 76px height (`h-[76px]`)
- * - Mahreen Indonesia logo branding: clean geometric vector mark and typography "MAHREEN INDONESIA" with subtitle "Ecosystem"
- * - Navigation links in Poppins-Medium 15px/16px white, hover state smoothly transitions to Electric Azure (`#007FE7`) in 150ms
- * - Right-aligned conversion CTA: Button "Daftar Internship" with Royal Cobalt fill (`#054FBF`), 2px micro-radius, triggering onOpenBatch2Modal()
- * - Responsive mobile drawer with hamburger toggle and Midnight Navy dropdown
- */
-export const Navbar: React.FC<NavbarProps> = ({ onOpenBatch2Modal, className = '' }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  onOpenBatch2Modal,
+  className = '',
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen((prev) => !prev);
-  };
-
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-  };
-
-  const handleCtaClick = () => {
-    closeMobileMenu();
-    onOpenBatch2Modal();
-  };
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full bg-[#002855] border-b border-white/10 shadow-[0_2px_12px_rgba(0,40,85,0.25)] ${className}`}
+      className={`sticky top-0 z-50 w-full bg-[#002855] border-b border-white/10 ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-[76px]">
-          {/* Brand Logo & Typography */}
+          {/* Pure Logo (Zero Box, Zero Border, Transparent PNG) */}
           <a
             href="#"
-            className="flex items-center gap-3.5 group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007FE7] rounded-sm select-none"
+            className="flex items-center py-2 focus:outline-none"
             aria-label="Mahreen Indonesia - Beranda"
           >
-            {/* Official Mahreen Logo */}
-            <img 
-              src="/assets/mahreen-logo-192.webp" 
-              alt="Mahreen Indonesia" 
-              className="h-10 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity" 
+            <img
+              src="/assets/mahreen-logo-384.webp"
+              alt="Mahreen Indonesia"
+              className="h-10 md:h-11 w-auto object-contain"
             />
           </a>
 
           {/* Desktop Navigation Links */}
           <nav
             aria-label="Navigasi Utama"
-            className="hidden lg:flex items-center gap-7 xl:gap-8 font-poppins font-medium text-[15px]"
+            className="hidden lg:flex items-center gap-8 font-poppins font-medium text-[15px]"
           >
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="text-white hover:text-[#007FE7] transition-colors duration-150 py-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007FE7] rounded-sm"
+                className="text-white hover:text-[#007FE7] transition-colors py-1.5"
               >
                 {item.label}
               </a>
             ))}
           </nav>
 
-          {/* Right Action: Conversion CTA & Mobile Toggle */}
-          <div className="flex items-center gap-3">
-            {/* Primary Conversion CTA */}
-            <Button
-              variant="primary"
-              size="md"
-              onClick={handleCtaClick}
-              className="hidden sm:inline-flex shadow-sm hover:shadow-[0_6px_16px_rgba(5,79,191,0.35)]"
-            >
-              Daftar Internship
-            </Button>
+          {/* Right Action: Midtrans-style CTA */}
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center space-x-2 text-xs font-semibold text-white/80 border-r border-white/20 pr-4">
+              <span className="text-[#007FE7]">ID</span>
+              <span className="text-white/40">|</span>
+              <span className="text-white/60">EN</span>
+            </div>
 
-            {/* Mobile Hamburger Toggle */}
+            <button
+              onClick={onOpenBatch2Modal}
+              className="btn-started hidden sm:inline-flex"
+            >
+              Mulai Berkarya
+            </button>
+
+            {/* Mobile Menu Button */}
             <button
               type="button"
-              onClick={toggleMobileMenu}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
-              aria-expanded={mobileMenuOpen}
-              className="lg:hidden p-2 text-white hover:text-[#007FE7] hover:bg-white/10 rounded-[2px] transition-colors focus-visible:outline-2 focus-visible:outline-[#007FE7]"
+              className="lg:hidden p-2 text-white hover:text-[#007FE7] transition-colors"
             >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" aria-hidden="true" />
-              ) : (
-                <Menu className="w-6 h-6" aria-hidden="true" />
-              )}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation Drawer / Dropdown */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div
-          role="dialog"
-          aria-label="Menu Navigasi Mobile"
-          className="lg:hidden bg-[#002855] border-t border-white/10 px-4 pt-3 pb-6 space-y-2 animate-in fade-in slide-in-from-top-2 duration-150 shadow-2xl"
-        >
-          <div className="flex flex-col space-y-1">
+        <div className="lg:hidden bg-[#002855] border-t border-white/10 px-6 py-6 space-y-4">
+          <nav className="flex flex-col space-y-3 font-poppins text-[15px]">
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                onClick={closeMobileMenu}
-                className="block px-3 py-2.5 rounded-[2px] text-white hover:text-[#007FE7] hover:bg-white/5 font-poppins font-medium text-[15px] transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-white hover:text-[#007FE7] py-1"
               >
                 {item.label}
               </a>
             ))}
-          </div>
-
-          <div className="pt-3 border-t border-white/10">
-            <Button
-              variant="primary"
-              size="md"
-              fullWidth
-              onClick={handleCtaClick}
-              icon={<ArrowRight className="w-4 h-4" />}
-              iconPosition="right"
-              className="justify-between"
+          </nav>
+          <div className="pt-4 border-t border-white/10">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBatch2Modal?.();
+              }}
+              className="btn-started w-full justify-center"
             >
-              Daftar Internship
-            </Button>
+              <span>Mulai Berkarya</span>
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </button>
           </div>
         </div>
       )}

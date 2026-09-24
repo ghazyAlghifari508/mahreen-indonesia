@@ -19,7 +19,7 @@ export interface TopAnnouncementStripProps {
  * - Optional dismissal with persistent state support
  */
 export const TopAnnouncementStrip: React.FC<TopAnnouncementStripProps> = ({
-  onOpenBatch2Modal,
+  onOpenBatch2Modal: _onOpenBatch2Modal,
   dismissible = true,
   className = '',
 }) => {
@@ -38,28 +38,27 @@ export const TopAnnouncementStrip: React.FC<TopAnnouncementStripProps> = ({
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         {/* Centered Content Container */}
         <div className="flex-1 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-center text-xs sm:text-[13px] md:text-[14px] font-poppins font-medium leading-normal">
-          {/* Badge BATCH 2 */}
+          {/* Badge */}
           <span className="inline-flex items-center px-2 py-0.5 rounded-[2px] bg-white text-[#007FE7] font-bold text-[11px] uppercase tracking-wider shrink-0">
-            INFO BATCH 2
+            OFFICIAL ECOSYSTEM
           </span>
 
           {/* Informational Line */}
           <span className="text-white/95">
-            Pendaftaran Mahreen Indonesia Internship Batch 2 Resmi Dibuka (1 Okt 2026 – 31 Jan 2027) — Remote (WFH/WFA)
+            Selamat Datang di Mahreen Indonesia — Ekosistem Kreatif, Digital, dan Sosial Generasi Muda
           </span>
 
           {/* Action Trigger */}
-          <button
-            type="button"
-            onClick={onOpenBatch2Modal}
+          <a
+            href="#tentang"
             className="inline-flex items-center gap-1 font-bold text-white underline underline-offset-4 hover:text-white/80 transition-colors cursor-pointer group ml-1 shrink-0"
           >
-            <span>Pelajari Detail &amp; Syarat</span>
+            <span>Kenali Mahreen</span>
             <ArrowRight
               className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5"
               aria-hidden="true"
             />
-          </button>
+          </a>
         </div>
 
         {/* Optional Dismissal Button */}

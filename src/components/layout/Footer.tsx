@@ -118,40 +118,48 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Official Campaign & Social Links */}
+          {/* Official Media & Hubungi Kami */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
-              Kampanye & Media Resmi
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 font-poppins">
+              Kanal Media &amp; Hubungi Kami
             </h4>
             <ul className="space-y-2.5 text-xs text-midtrans-ice/75 mb-6">
               <li>
                 <a 
-                  href="https://canva.link/vp26f672ldxojgs" 
+                  href="https://www.instagram.com/mahreenindonesia" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:text-midtrans-azure transition-colors flex items-center"
                 >
-                  Template Logo Canva <ExternalLink className="w-3 h-3 ml-1" />
+                  Instagram @mahreenindonesia <ExternalLink className="w-3 h-3 ml-1" />
                 </a>
               </li>
               <li>
                 <a 
-                  href="https://twb.nz/miinternshipb2" 
+                  href="https://www.tiktok.com/@mahreenindonesia" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="hover:text-midtrans-azure transition-colors flex items-center"
                 >
-                  Twibbon Resmi Batch 2 <ExternalLink className="w-3 h-3 ml-1" />
+                  TikTok @mahreenindonesia <ExternalLink className="w-3 h-3 ml-1" />
                 </a>
               </li>
               <li>
                 <a 
-                  href="https://bit.ly/FormTaskMII2" 
+                  href="https://www.youtube.com/@officialmahreenindonesia" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-midtrans-azure transition-colors flex items-center text-amber-300 font-semibold"
+                  className="hover:text-midtrans-azure transition-colors flex items-center"
                 >
-                  Form Pengumpulan Task <ExternalLink className="w-3 h-3 ml-1" />
+                  YouTube Official Mahreen <ExternalLink className="w-3 h-3 ml-1" />
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="mailto:info@mahreenindonesia.com" 
+                  className="hover:text-midtrans-azure transition-colors flex items-center"
+                >
+                  Email: info@mahreenindonesia.com
                 </a>
               </li>
             </ul>

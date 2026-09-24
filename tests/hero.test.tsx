@@ -15,29 +15,23 @@ describe('HeroSection Component Tests', () => {
     expect(html).toContain('text-[#007FE7]');
   });
 
-  it('renders primary CTA button with Royal Cobalt fill and 2px micro-radius', () => {
+  it('renders primary CTA button with btn-started class', () => {
     const html = renderToStaticMarkup(<HeroSection />);
-    expect(html).toContain('Temukan Ruangmu di Mahreen');
-    expect(html).toContain('bg-[#054FBF]');
-    expect(html).toContain('rounded-[2px]');
+    expect(html).toContain('Mulai Eksplorasi');
+    expect(html).toContain('btn-started');
   });
 
-  it('renders secondary CTA button with outline-light and 2px micro-radius', () => {
+  it('renders secondary CTA button with btn-sales class', () => {
     const html = renderToStaticMarkup(<HeroSection />);
-    expect(html).toContain('Pelajari Internship Batch 2');
-    expect(html).toContain('rounded-[2px]');
+    expect(html).toContain('Pelajari Ruang Kolaborasi');
+    expect(html).toContain('btn-sales');
   });
 
   it('renders verified statistics and credentials', () => {
     const html = renderToStaticMarkup(<HeroSection />);
     expect(html).toContain('SK Kemenkumham RI 2026');
     expect(html).toContain('50+ Mitra Kampus Terhubung');
-    expect(html).toContain('Profit Sharing 30% Terverifikasi');
-  });
-
-  it('renders organic curved wave divider at bottom', () => {
-    const html = renderToStaticMarkup(<HeroSection />);
-    expect(html).toContain('d="M0,45 C320,90 1120,90 1440,45 L1440,90 L0,90 Z"');
+    expect(html).toContain('Ekosistem Terintegrasi');
   });
 
   it('renders authentic team photo', () => {

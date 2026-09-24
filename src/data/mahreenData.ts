@@ -326,8 +326,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2026',
     description:
       'Koleksi busana streetwear Chapter 01 bertema penjelajahan urban modern dengan eksplorasi tipografi futuristik dan material premium.',
-    image:
-      'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=80',
+    image: '/assets/future-build.webp',
     tags: [
       'Streetwear Design',
       'Art Direction',
@@ -350,8 +349,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2025',
     description:
       'Revitalisasi identitas visual menyeluruh untuk brand kedai kopi lokal, mencakup logo, color guide, kemasan take-away, dan visual merchandising.',
-    image:
-      'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80',
+    image: '/assets/pillar-mahreen-studio.webp',
     tags: ['Brand Identity', 'Packaging', 'Brand Guideline', 'Typography'],
     deliverables: [
       'Logo Suite & Iconography',
@@ -369,8 +367,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2026',
     description:
       'Platform toko online modern untuk perajin batik tradisional dengan katalog interaktif, checkout praktis, dan integrasi WhatsApp payment.',
-    image:
-      'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    image: '/assets/pillar-tanya-mahreen.webp',
     tags: ['E-Commerce', 'Next.js', 'Payment Flow', 'UMKM Digital'],
     deliverables: [
       'Katalog Produk Berfilter',
@@ -388,8 +385,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2025',
     description:
       'Perancangan antarmuka pengguna komprehensif untuk portal booking konsultasi medis terpadu dan rekam medis preventif pasien.',
-    image:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+    image: '/assets/team-meeting.webp',
     tags: ['UI/UX Design', 'Design System', 'Figma Prototyping', 'Accessibility'],
     deliverables: [
       'Design System 40+ Components',
@@ -407,8 +403,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2026',
     description:
       'Pembangunan ruang baca komunitas dan pengadaan 1.200 buku bacaan bergambar untuk anak-anak sekolah dasar di Cigugur, Jawa Barat.',
-    image:
-      'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80',
+    image: '/assets/pillar-peduli-mahreen.webp',
     tags: [
       'Pendidikan Inklusif',
       'Donasi Buku',
@@ -431,8 +426,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
     year: '2026',
     description:
       'Inisiatif kemitraan hijau multi-pihak yang menanam 10.000 bibit pohon endemik dan mendirikan fasilitas pengolahan sampah organik di 5 desa binaan.',
-    image:
-      'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80',
+    image: '/assets/pillar-mahreen-csr.webp',
     tags: ['CSR Partnership', 'Reboisasi', 'Circular Economy', 'ESG Impact'],
     deliverables: [
       'Penanaman 10.000 Pohon Endemik',

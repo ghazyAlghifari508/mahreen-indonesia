@@ -2,12 +2,17 @@ import React from 'react';
 import { CAMPUS_PARTNERS } from '../../data/mahreenData';
 
 export const PartnerMarqueeSection: React.FC = () => {
-  // Take partners with real logo images
   const partnersWithLogos = CAMPUS_PARTNERS.filter((p) => Boolean(p.logoUrl));
 
   return (
-    <div className="bg-[#FFFFFF] py-10 relative overflow-hidden border-b border-[#EDF4F9]">
-      <div className="max-w-7xl mx-auto px-6 mb-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div className="relative bg-[#FFFFFF] pb-12">
+      {/* Midtrans Signature Curved Wave Transition Pattern */}
+      <div 
+        className="w-full h-16 sm:h-24 md:h-28 bg-[url('/assets/pattern-white.png')] bg-no-repeat bg-[length:100%_100%] -mt-16 sm:-mt-24 md:-mt-28 relative z-20 pointer-events-none"
+        aria-hidden="true" 
+      />
+
+      <div className="max-w-7xl mx-auto px-6 pt-6 mb-6 flex flex-col sm:flex-row items-center justify-between gap-2 relative z-10">
         <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#7686AB] font-poppins">
           MITRA KAMPUS &amp; KOLABORATOR TERVERIFIKASI
         </span>
@@ -16,13 +21,12 @@ export const PartnerMarqueeSection: React.FC = () => {
         </span>
       </div>
 
-      {/* Seamless Floating Logo Slider */}
+      {/* Floating Logo Slider with Soft Edge Fade */}
       <div className="relative w-full overflow-hidden flex items-center">
-        {/* Soft edge gradient masks */}
         <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white via-white/80 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white via-white/80 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-8 items-center overflow-x-auto scrollbar-none px-8 py-3">
+        <div className="flex gap-10 items-center overflow-x-auto scrollbar-none px-8 py-3">
           {partnersWithLogos.map((partner, idx) => (
             <div
               key={idx}
