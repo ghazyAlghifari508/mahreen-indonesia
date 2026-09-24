@@ -7,8 +7,7 @@ import {
   Leaf, 
   ArrowRight, 
   Check, 
-  BookOpen, 
-  Layers
+  BookOpen
 } from 'lucide-react';
 import { PILLARS_DATA, MAHREEN_LEARNING_PROGRAMS } from '../../data/mahreenData';
 import Button from '../ui/Button';
@@ -57,10 +56,9 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <Badge variant="cobalt" className="mb-3">
-            <Layers className="w-3.5 h-3.5 mr-1 inline" />
+          <span className="text-[12px] font-bold text-[#054FBF] uppercase tracking-[0.15em] block mb-2 font-poppins">
             ARSITEKTUR EKOSISTEM LENGKAP
-          </Badge>
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-midtrans-slate tracking-tight mb-4">
             5 Pilar Mahreen Indonesia
           </h2>
@@ -98,18 +96,33 @@ export const EcosystemSection: React.FC<EcosystemSectionProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* Left Content */}
             <div className="lg:col-span-8">
-              <div className="flex items-center space-x-2 mb-2">
-                <Badge variant="azure">{currentPillar.category}</Badge>
-                {currentPillar.startingPrice && (
-                  <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                    Mulai {currentPillar.startingPrice}
-                  </span>
+              <div className="flex items-center gap-4 mb-4">
+                {currentPillar.logoUrl && (
+                  <div className="w-16 h-16 rounded-[4px] bg-[#F7FCFF] p-2 border border-[#EDF4F9] flex items-center justify-center shrink-0">
+                    <img 
+                      src={currentPillar.logoUrl} 
+                      alt={currentPillar.name} 
+                      className="w-full h-full object-contain" 
+                    />
+                  </div>
                 )}
+                <div>
+                  <div className="flex items-center space-x-2 mb-1">
+                    <span className="text-[11px] font-bold text-[#007FE7] uppercase tracking-wider font-poppins">
+                      {currentPillar.category}
+                    </span>
+                    {currentPillar.startingPrice && (
+                      <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-[2px] border border-emerald-200">
+                        Mulai {currentPillar.startingPrice}
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-midtrans-slate tracking-tight">
+                    {currentPillar.name}
+                  </h3>
+                </div>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-bold text-midtrans-slate tracking-tight mb-2">
-                {currentPillar.name}
-              </h3>
               <p className="text-base text-midtrans-blue font-medium mb-4">
                 "{currentPillar.tagline}"
               </p>

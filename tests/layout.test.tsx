@@ -53,11 +53,10 @@ describe('Layout Components Unit Tests (Task 5)', () => {
       expect(html).toContain('h-[76px]');
     });
 
-    it('renders Mahreen Indonesia branding with geometric mark and Ecosystem subtitle', () => {
+    it('renders Mahreen Indonesia branding with official logo asset', () => {
       const html = renderToStaticMarkup(<Navbar onOpenBatch2Modal={() => {}} />);
-      expect(html).toContain('MAHREEN INDONESIA');
-      expect(html).toContain('Ecosystem');
-      expect(html).toContain('bg-[#054FBF]'); // Geometric vector mark background
+      expect(html).toContain('/assets/mahreen-logo-192.webp');
+      expect(html).toContain('alt="Mahreen Indonesia"');
     });
 
     it('renders all 5 verified navigation items with correct hash anchors', () => {

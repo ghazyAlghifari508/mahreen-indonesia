@@ -22,6 +22,7 @@ export interface Pillar {
   ctaText: string;
   ctaAction: string;
   badge: string;
+  logoUrl?: string;
 }
 
 export type ProjectCategory =
@@ -93,6 +94,11 @@ export interface InternshipMonth {
   keyOutputs: string[];
 }
 
+export interface VisionMission {
+  vision: string;
+  missions: string[];
+}
+
 export interface LegalRecord {
   title: string;
   identifier: string;
@@ -111,6 +117,7 @@ export interface CampusPartner {
   abbreviation?: string;
   category: CampusCategory;
   location?: string;
+  logoUrl?: string;
 }
 
 export interface MahreenLearningProgram {

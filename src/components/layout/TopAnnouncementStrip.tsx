@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Sparkles, X } from 'lucide-react';
+import { ArrowRight, X } from 'lucide-react';
 
 export interface TopAnnouncementStripProps {
   onOpenBatch2Modal: () => void;
@@ -39,9 +39,8 @@ export const TopAnnouncementStrip: React.FC<TopAnnouncementStripProps> = ({
         {/* Centered Content Container */}
         <div className="flex-1 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-center text-xs sm:text-[13px] md:text-[14px] font-poppins font-medium leading-normal">
           {/* Badge BATCH 2 */}
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[17px] bg-white/20 border border-white/30 text-white font-bold text-[11px] uppercase tracking-wider shrink-0">
-            <Sparkles className="w-3.5 h-3.5 text-white" aria-hidden="true" />
-            <span>BATCH 2</span>
+          <span className="inline-flex items-center px-2 py-0.5 rounded-[2px] bg-white text-[#007FE7] font-bold text-[11px] uppercase tracking-wider shrink-0">
+            INFO BATCH 2
           </span>
 
           {/* Informational Line */}

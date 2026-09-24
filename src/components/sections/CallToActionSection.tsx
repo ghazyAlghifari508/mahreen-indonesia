@@ -1,7 +1,6 @@
 import React from 'react';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Button from '../ui/Button';
-import Badge from '../ui/Badge';
 
 interface CallToActionSectionProps {
   onOpenBatch2Modal: () => void;
@@ -16,10 +15,9 @@ export const CallToActionSection: React.FC<CallToActionSectionProps> = ({
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-midtrans-blue/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <Badge variant="azure" className="mb-4 inline-flex items-center">
-          <Sparkles className="w-3.5 h-3.5 mr-1.5" />
+        <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.2em] block mb-3 font-poppins">
           KAMPANYE RESMI: #FromLearningToRealImpact
-        </Badge>
+        </span>
 
         <h2 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-white mb-6">
           Satu Ide. Satu Karya. <br className="hidden md:inline" />

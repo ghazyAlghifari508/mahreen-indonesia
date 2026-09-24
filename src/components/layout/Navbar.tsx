@@ -59,37 +59,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBatch2Modal, className = '
             className="flex items-center gap-3.5 group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#007FE7] rounded-sm select-none"
             aria-label="Mahreen Indonesia - Beranda"
           >
-            {/* Geometric Vector Mark */}
-            <div className="w-10 h-10 rounded-[2px] bg-[#054FBF] flex items-center justify-center border border-white/20 shadow-sm shrink-0 transition-transform duration-200 group-hover:scale-105">
-              <svg
-                className="w-6 h-6 text-white"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 18V6L12 12.5L20 6V18"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <circle cx="12" cy="12.5" r="2.2" fill="#007FE7" stroke="#FFFFFF" strokeWidth="1.2" />
-                <circle cx="4" cy="6" r="1.5" fill="#007FE7" />
-                <circle cx="20" cy="6" r="1.5" fill="#007FE7" />
-              </svg>
-            </div>
-
-            {/* Brand Typography */}
-            <div className="flex flex-col text-left">
-              <span className="font-poppins font-bold text-white text-[16px] sm:text-[17px] tracking-wide leading-tight group-hover:text-white/90 transition-colors">
-                MAHREEN INDONESIA
-              </span>
-              <span className="font-poppins font-medium text-[#007FE7] text-[10px] sm:text-[11px] tracking-[0.22em] uppercase leading-none mt-1">
-                Ecosystem
-              </span>
-            </div>
+            {/* Official Mahreen Logo */}
+            <img 
+              src="/assets/mahreen-logo-192.webp" 
+              alt="Mahreen Indonesia" 
+              className="h-10 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity" 
+            />
           </a>
 
           {/* Desktop Navigation Links */}

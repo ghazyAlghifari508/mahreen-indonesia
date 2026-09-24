@@ -5,7 +5,6 @@ import {
   Laptop, 
   Coins, 
   ArrowRight, 
-  Sparkles,
   Compass,
   Hammer,
   Send,
@@ -37,10 +36,9 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <Badge variant="azure" className="mb-3">
-            <Sparkles className="w-3.5 h-3.5 mr-1 inline" />
+          <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.15em] block mb-2 font-poppins">
             PROGRAM INTERNSHIP RESMI BATCH 2
-          </Badge>
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-midtrans-slate tracking-tight mb-4">
             Perjalanan Magang: Dari Adaptasi Hingga Dampak
           </h2>

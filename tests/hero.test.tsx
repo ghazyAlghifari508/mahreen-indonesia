@@ -75,9 +75,7 @@ describe('HeroSection Component Unit Tests (Task 6)', () => {
     it('renders campaign theme "BERKARYA UNTUK INDONESIA"', () => {
       const html = renderToStaticMarkup(<HeroSection />);
       expect(html).toContain('BERKARYA UNTUK INDONESIA');
-      // Sourced from Azure badge token
-      expect(html).toContain('bg-[#007FE7]');
-      expect(html).toContain('rounded-[17px]');
+      expect(html).toContain('text-[#007FE7]');
     });
 
     it('renders verified human value proposition subheadline in Muted Ice color', () => {

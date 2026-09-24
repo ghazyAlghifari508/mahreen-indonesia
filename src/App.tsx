@@ -3,6 +3,7 @@ import TopAnnouncementStrip from './components/layout/TopAnnouncementStrip';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
+import PartnerMarqueeSection from './components/sections/PartnerMarqueeSection';
 import PathfinderSection from './components/sections/PathfinderSection';
 import EcosystemSection from './components/sections/EcosystemSection';
 import InternshipJourneySection from './components/sections/InternshipJourneySection';
@@ -51,6 +52,9 @@ export function App() {
           onExplorePathfinder={handleExplorePathfinder}
           onOpenBatch2Modal={handleOpenBatch2Modal}
         />
+
+        {/* 03b. Midtrans-style Client/Partner Logo Marquee */}
+        <PartnerMarqueeSection />
 
         {/* 04. Centerpiece: Pathfinder Two-Panel Experience */}
         <PathfinderSection 

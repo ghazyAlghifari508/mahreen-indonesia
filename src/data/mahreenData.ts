@@ -8,6 +8,7 @@ import type {
   CampusPartner,
   MahreenLearningProgram,
   Batch2Details,
+  VisionMission,
 } from '../types/mahreen';
 
 /**
@@ -36,6 +37,7 @@ export const PILLARS_DATA: Pillar[] = [
     ctaText: 'Daftar Internship Batch 2',
     ctaAction: 'open-batch2-modal',
     badge: 'Talent Development',
+    logoUrl: '/assets/pillar-internship.webp',
   },
   {
     id: 'tanya-mahreen',
@@ -60,6 +62,7 @@ export const PILLARS_DATA: Pillar[] = [
     ctaText: 'Konsultasi Tanya Mahreen',
     ctaAction: 'scroll-consultation',
     badge: 'Business Solutions',
+    logoUrl: '/assets/pillar-tanya-mahreen.webp',
   },
   {
     id: 'mahreen-studio',
@@ -83,6 +86,7 @@ export const PILLARS_DATA: Pillar[] = [
     ctaText: 'Jelajahi Koleksi Studio',
     ctaAction: 'scroll-portfolio',
     badge: 'Creative Lifestyle',
+    logoUrl: '/assets/pillar-mahreen-studio.webp',
   },
   {
     id: 'peduli-mahreen',
@@ -106,6 +110,7 @@ export const PILLARS_DATA: Pillar[] = [
     ctaText: 'Dukung Gerakan Sosial',
     ctaAction: 'scroll-impact',
     badge: 'Social Movement',
+    logoUrl: '/assets/pillar-peduli-mahreen.webp',
   },
   {
     id: 'mahreen-csr',
@@ -129,6 +134,7 @@ export const PILLARS_DATA: Pillar[] = [
     ctaText: 'Kolaborasi Kemitraan CSR',
     ctaAction: 'scroll-partnership',
     badge: 'Partnership & Sustainability',
+    logoUrl: '/assets/pillar-mahreen-csr.webp',
   },
 ];
 
@@ -267,17 +273,50 @@ export const PROJECTS_DATA: ProjectItem[] = [
     category: 'Website',
     year: '2026',
     description:
-      'Pengembangan portal profil digital dan sistem donasi interaktif untuk yayasan sosial dan pendidikan Fauzan Adzima di Sukajadi.',
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-    tags: ['React', 'Tailwind CSS', 'Vite', 'Responsive Web', 'Magang Mahreen'],
+      'Implementasi website resmi yayasan sosial dan pendidikan Fauzan Adzima Sukajadi dengan informasi program, capaian, dan ajakan berdonasi.',
+    image: '/assets/magang-portfolio-website.webp',
+    tags: ['Website Development', 'Tailwind CSS', 'Responsive UI', 'Magang Mahreen'],
     deliverables: [
-      'UI/UX Design Wireframe',
-      'Interactive Donation Portal',
-      'CMS Admin Panel',
-      'SEO & Speed Optimization',
+      'Implementasi Halaman Utama Yayasan',
+      'Integrasi Modul Informasi Program',
+      'Desain Transparan Responsif',
+      'Testing & Deployment',
     ],
-    clientOrBeneficiary: 'Yayasan Fauzan Adzima',
+    clientOrBeneficiary: 'Yayasan Fauzan Adzima Sukajadi',
+  },
+  {
+    id: 'project-uat-testing',
+    title: 'Pengujian Modul Autentikasi (UAT)',
+    pillar: 'Mahreen Indonesia Internship',
+    category: 'Website',
+    year: '2026',
+    description:
+      'Dokumentasi pengujian registrasi dan login untuk memastikan setiap skenario pengujian berjalan sesuai hasil yang diharapkan.',
+    image: '/assets/magang-portfolio-uat.webp',
+    tags: ['Quality Assurance', 'User Acceptance Testing', 'Auth Flow', 'Security'],
+    deliverables: [
+      'Penyusunan Test Matrix Skenario',
+      'Validasi Alur Registrasi & Login',
+      'Laporan Bug & Edge Cases',
+    ],
+    clientOrBeneficiary: 'Internal System QA',
+  },
+  {
+    id: 'project-db-validation',
+    title: 'Validasi Database Pengguna',
+    pillar: 'Mahreen Indonesia Internship',
+    category: 'Website',
+    year: '2026',
+    description:
+      'Pemeriksaan data pengguna melalui basis data untuk memvalidasi proses registrasi, relasi tabel, dan kesiapan integrasi sistem.',
+    image: '/assets/magang-portfolio-database.webp',
+    tags: ['Backend & Database', 'Data Validation', 'Schema Design', 'phpMyAdmin'],
+    deliverables: [
+      'Pemeriksaan Struktur Tabel User',
+      'Validasi Alur Autentikasi',
+      'Dokumentasi Skema Database',
+    ],
+    clientOrBeneficiary: 'Core Platform Backend',
   },
   {
     id: 'project-urban-odyssey',
@@ -410,60 +449,79 @@ export const PROJECTS_DATA: ProjectItem[] = [
  */
 export const ALUMNI_AWARDEES: AlumniAwardee[] = [
   {
-    name: 'Andhika Septiansyah',
-    role: 'Website Development Intern',
-    award: 'Web Innovator Award',
-    citation:
-      'Berhasil mengembangkan platform digital responsif dan sistem informasi interaktif dengan standar performa dan kebersihan kode industri tinggi.',
-    division: 'Website Development',
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
-  },
-  {
     name: 'Akmal Yassar',
     role: 'Graphic Design Intern',
     award: 'Best Intern of the Batch',
     citation:
-      'Menunjukkan konsistensi estetika visual kelas agensi tingkat tinggi serta kecepatan eksekusi materi promosi dan branding multikanal.',
+      'Demonstrated outstanding overall performance through consistent execution, strong work quality, and meaningful contributions across projects.',
     division: 'Graphic Design',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+    avatar: '/assets/alumni-akmal.webp',
   },
   {
     name: 'Chintya Kharisma Y.',
     role: 'Graphic Design Intern',
     award: 'Most Outstanding Intern',
     citation:
-      'Kepemimpinan kreatif yang luar biasa dalam mendefinisikan identitas brand, kemasan produk, dan harmoni visual lintas platform.',
+      'Demonstrated exceptional initiative, strong performance, and valuable contributions throughout the internship.',
     division: 'Graphic Design',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+    avatar: '/assets/alumni-chintya.webp',
   },
   {
-    name: 'Raihan Syahputra F.',
-    role: 'Website Development Intern',
-    award: 'Most Engaged Intern',
+    name: 'Andhika Septiansyah',
+    role: 'President University — Web Dev',
+    award: 'Web Innovator Award',
     citation:
-      'Dedikasi tinggi dalam penyempurnaan UI/UX interaktif, kolaborasi teknis lintas divisi, dan pemecahan masalah kode yang tangkas.',
+      'Contributed innovative solutions to web development through effective implementation, problem-solving, and user-focused thinking.',
     division: 'Website Development',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+    avatar: '/assets/alumni-andhika.webp',
   },
   {
     name: 'Ikhrom Nur K.',
-    role: 'Social Media Management Intern',
+    role: 'Institute Teknologi Bandung — Sosmed',
     award: 'Best Content Strategist',
     citation:
-      'Meningkatkan interaksi media sosial secara organik dan signifikan melalui copywriting naratif berbasis riset perilaku audiens muda.',
+      'Developed relevant content strategies through structured ideation, strategic thinking, and effective communication.',
     division: 'Social Media Management',
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80',
+    avatar: '/assets/alumni-ikhrom.webp',
   },
   {
     name: 'Athaya Aurellin K.',
-    role: 'Video Editor Intern',
+    role: 'Universitas Brawijaya — Video Editor',
     award: 'Creative Editing Award',
     citation:
-      'Memproduksi serial video kampanye berdaya jangkau luas dengan ritme editing dinamis dan storytelling emosional yang berbobot.',
-    division: 'Video Editing',
-    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80',
+      'Demonstrated strong editing skills through creative storytelling, technical precision, and engaging visual output.',
+    division: 'Video Editor',
+    avatar: '/assets/alumni-athaya.webp',
+  },
+  {
+    name: 'Raihan Syahputra F.',
+    role: 'Universitas Teknologi Bandung — Web Dev',
+    award: 'Most Engaged Intern',
+    citation:
+      'Demonstrated active participation, effective communication, and strong engagement across meetings and projects.',
+    division: 'Website Development',
+    avatar: '/assets/alumni-raihan.webp',
+  },
+  {
+    name: 'Aditya, Darryl, Rakha & Afrizal',
+    role: 'UTB, ITHB & UIN — Lintas Divisi',
+    award: 'Most Improved Interns',
+    citation:
+      'Demonstrated significant growth in skills, performance, and contribution through continuous learning and dedication.',
+    division: 'Cross-Division',
+    avatar: '/assets/alumni-improved.webp',
+  },
+  {
+    name: 'Tanya Mahreen Strategy × Web UI/UX',
+    role: 'Kolaborasi Proyek Terpadu',
+    award: 'Best Team Player Award',
+    citation:
+      'Demonstrated effective cross-functional collaboration through communication, coordination, and consistent team support.',
+    division: 'Best Team Player',
+    avatar: '/assets/alumni-teamplayer.webp',
   },
 ];
+
 
 /**
  * 20+ Real Campus Partners & Student Bases
@@ -474,140 +532,167 @@ export const CAMPUS_PARTNERS: CampusPartner[] = [
     abbreviation: 'ITS',
     category: 'Institut',
     location: 'Surabaya',
+    logoUrl: '/assets/partner-its.webp',
   },
   {
     name: 'IPB University',
     abbreviation: 'IPB',
     category: 'Institut',
     location: 'Bogor',
+    logoUrl: '/assets/partner-ipb.webp',
   },
   {
     name: 'Sekolah Vokasi Universitas Gadjah Mada',
     abbreviation: 'SV UGM',
     category: 'Universitas',
     location: 'Yogyakarta',
+    logoUrl: '/assets/partner-ugm.webp',
   },
   {
     name: 'Universitas Diponegoro',
     abbreviation: 'UNDIP',
     category: 'Universitas',
     location: 'Semarang',
+    logoUrl: '/assets/partner-undip.webp',
   },
   {
     name: 'Universitas Brawijaya',
     abbreviation: 'UB',
     category: 'Universitas',
     location: 'Malang',
+    logoUrl: '/assets/partner-brawijaya.webp',
   },
   {
     name: 'Universitas Gunadarma',
     abbreviation: 'UG',
     category: 'Universitas',
     location: 'Depok',
+    logoUrl: '/assets/partner-gunadarma.webp',
   },
   {
     name: 'Institut Teknologi Harapan Bangsa',
     abbreviation: 'ITHB',
     category: 'Institut',
     location: 'Bandung',
+    logoUrl: '/assets/partner-ithb.webp',
   },
   {
     name: 'Institut Teknologi Bacharuddin Jusuf Habibie',
     abbreviation: 'ITBJ Habibie',
     category: 'Institut',
     location: 'Parepare',
+    logoUrl: '/assets/partner-habibie.webp',
   },
   {
     name: 'UIN Sayyid Ali Rahmatullah',
     abbreviation: 'UIN SATU',
     category: 'Universitas',
     location: 'Tulungagung',
+    logoUrl: '/assets/partner-uin.webp',
   },
   {
     name: 'Universitas Bina Sarana Informatika',
     abbreviation: 'UBSI',
     category: 'Universitas',
     location: 'Jakarta',
+    logoUrl: '/assets/partner-bsi.webp',
   },
   {
     name: 'Universitas Muhammadiyah Surakarta',
     abbreviation: 'UMS',
     category: 'Universitas',
     location: 'Surakarta',
+    logoUrl: '/assets/partner-ums.webp',
   },
   {
     name: 'Politeknik Negeri Padang',
     abbreviation: 'PNP',
     category: 'Politeknik',
     location: 'Padang',
+    logoUrl: '/assets/partner-padang.webp',
   },
   {
     name: 'Universitas Pakuan',
     abbreviation: 'UNPAK',
     category: 'Universitas',
     location: 'Bogor',
+    logoUrl: '/assets/partner-pakuan.webp',
   },
   {
     name: 'Universitas Teknologi Bandung',
     abbreviation: 'UTB',
     category: 'Universitas',
     location: 'Bandung',
+    logoUrl: '/assets/partner-utb.webp',
   },
   {
-    name: 'Politeknik Negeri Bandung',
-    abbreviation: 'POLBAN',
-    category: 'Politeknik',
+    name: 'Universitas Multi Data Palembang',
+    abbreviation: 'UMDP',
+    category: 'Universitas',
+    location: 'Palembang',
+    logoUrl: '/assets/partner-mdp.webp',
+  },
+  {
+    name: 'Sekolah Tinggi Multimedia Yogyakarta',
+    abbreviation: 'STMM MMTC',
+    category: 'Institut',
+    location: 'Yogyakarta',
+    logoUrl: '/assets/partner-stmm.webp',
+  },
+  {
+    name: 'Yayasan Fauzan Adzima',
+    abbreviation: 'YFA',
+    category: 'Lembaga Mitra',
+    location: 'Sukajadi',
+    logoUrl: '/assets/partner-yayasan-fauzan.webp',
+  },
+  {
+    name: 'MDT Al Fauziyah',
+    abbreviation: 'MDT',
+    category: 'Lembaga Mitra',
     location: 'Bandung',
+    logoUrl: '/assets/partner-mdt.webp',
   },
   {
-    name: 'Universitas Padjadjaran',
-    abbreviation: 'UNPAD',
-    category: 'Universitas',
-    location: 'Jatinangor',
+    name: 'Ulinnuha Kids Center',
+    abbreviation: 'UKC',
+    category: 'Lembaga Mitra',
+    location: 'Jawa Barat',
+    logoUrl: '/assets/partner-ulinnuha.webp',
   },
   {
-    name: 'Universitas Pendidikan Indonesia',
-    abbreviation: 'UPI',
-    category: 'Universitas',
+    name: 'Athaf Yatim Foundation',
+    abbreviation: 'Athaf',
+    category: 'Lembaga Mitra',
+    location: 'Jawa Barat',
+    logoUrl: '/assets/partner-athaf.webp',
+  },
+  {
+    name: 'NTMY Creative Brand',
+    abbreviation: 'NTMY',
+    category: 'Lembaga Mitra',
     location: 'Bandung',
+    logoUrl: '/assets/partner-ntmy.webp',
   },
   {
-    name: 'Universitas Telkom',
-    abbreviation: 'Telkom University',
-    category: 'Universitas',
-    location: 'Bandung',
-  },
-  {
-    name: 'Universitas Sebelas Maret',
-    abbreviation: 'UNS',
-    category: 'Universitas',
-    location: 'Surakarta',
-  },
-  {
-    name: 'Politeknik Elektronika Negeri Surabaya',
-    abbreviation: 'PENS',
-    category: 'Politeknik',
-    location: 'Surabaya',
-  },
-  {
-    name: 'Universitas Negeri Jakarta',
-    abbreviation: 'UNJ',
-    category: 'Universitas',
-    location: 'Jakarta',
-  },
-  {
-    name: 'Politeknik Negeri Jakarta',
-    abbreviation: 'PNJ',
-    category: 'Politeknik',
-    location: 'Jakarta',
-  },
-  {
-    name: 'Lembaga Mitra Komunitas Mahasiswa Indonesia',
-    abbreviation: 'LMKMI',
+    name: 'PT Bank Rakyat Indonesia (Persero) Tbk',
+    abbreviation: 'Bank BRI',
     category: 'Lembaga Mitra',
     location: 'Nasional',
+    logoUrl: '/assets/partner-bri.svg',
   },
 ];
+
+export const VISION_MISSION: VisionMission = {
+  vision:
+    'Menjadi perusahaan yang inovatif dalam menghadirkan karya dan solusi serta kontribusi positif bagi masyarakat Indonesia hingga internasional.',
+  missions: [
+    'Mengembangkan bidang fashion, digital, kreatif, dan sosial secara profesional dan adaptif di era modern.',
+    'Menghadirkan layanan, karya, dan solusi yang bermanfaat bagi masyarakat, generasi muda, serta pelaku usaha.',
+    'Membangun kolaborasi dan pemberdayaan yang mendorong kreativitas, inovasi, dan perkembangan berkelanjutan.',
+    'Menjadikan Mahreen Indonesia sebagai ruang bertumbuh, berkarya, dan berbagi manfaat melalui setiap bidang yang dijalankan.',
+  ],
+};
 
 /**
  * Official Legal Records & Institutional Verification

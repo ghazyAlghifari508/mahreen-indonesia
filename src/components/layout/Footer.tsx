@@ -29,12 +29,11 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Brand Info (2 Columns on large) */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-9 h-9 rounded bg-midtrans-blue flex items-center justify-center text-white font-bold text-lg shadow-sm">
-                M
-              </div>
-              <span className="font-bold text-lg tracking-wider text-white">
-                MAHREEN INDONESIA
-              </span>
+              <img 
+                src="/assets/mahreen-logo-192.webp" 
+                alt="Mahreen Indonesia" 
+                className="h-10 w-auto object-contain brightness-0 invert opacity-95" 
+              />
             </div>
             <p className="text-xs text-midtrans-ice/70 leading-relaxed mb-4 max-w-sm">
               Ekosistem kreatif yang memberdayakan bisnis, mahasiswa, talenta muda, komunitas, 

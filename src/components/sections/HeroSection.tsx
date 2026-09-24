@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { Badge } from '../ui/Badge';
 
 export interface TransformationStage {
   id: string;
@@ -135,16 +134,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left Column (Editorial & Value Proposition) */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            {/* Campaign Tag Badge */}
-            <div className="mb-5">
-              <Badge
-                variant="azure"
-                size="md"
-                icon={<Sparkles size={14} className="text-white" />}
-                className="shadow-sm"
-              >
+            {/* Campaign Tag */}
+            <div className="mb-3">
+              <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.18em] block font-poppins">
                 BERKARYA UNTUK INDONESIA
-              </Badge>
+              </span>
             </div>
 
             {/* H1 Headline */}
@@ -185,17 +179,32 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="lg:col-span-5 flex justify-center w-full">
             <div className="w-full bg-[#FFFFFF] rounded-[8px] p-6 sm:p-7 text-[#123049] shadow-[0px_1px_40px_rgba(0,0,0,0.1)] border border-white/20 relative">
               {/* Card Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-[#EDF4F9] mb-4">
+              <div className="flex items-center justify-between pb-3 border-b border-[#EDF4F9] mb-3">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#007FE7]" />
                   <h2 className="text-[12px] font-bold uppercase tracking-[0.5px] text-[#123049] font-poppins">
                     ALUR PERJALANAN TALENTA
                   </h2>
                 </div>
-                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#054FBF] bg-[#EDF4F9] px-2.5 py-1 rounded-[17px] border border-[#007FE7]/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#007FE7] animate-pulse" />
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#054FBF] bg-[#EDF4F9] px-2.5 py-0.5 rounded-[2px] border border-[#007FE7]/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#007FE7]" />
                   Ekosistem Terintegrasi
                 </span>
+              </div>
+
+              {/* Authentic Photo Context */}
+              <div className="relative rounded-[4px] overflow-hidden mb-3 border border-[#EDF4F9]">
+                <img 
+                  src="/assets/team-meeting.webp" 
+                  alt="Sesi Kolaborasi Ide Mahreen Indonesia" 
+                  className="w-full h-28 sm:h-32 object-cover" 
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#002855]/80 via-transparent to-transparent flex items-end p-2.5">
+                  <span className="text-[11px] font-medium text-white/95 leading-tight">
+                    Sesi Kolaborasi &amp; Perancangan Ide Mahreen Indonesia
+                  </span>
+                </div>
               </div>
 
               {/* 3-Stage Transformation Stepper */}

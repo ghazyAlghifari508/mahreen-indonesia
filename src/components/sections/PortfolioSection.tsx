@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { 
-  FolderKanban, 
   ArrowUpRight, 
-  Trophy, 
-  Sparkles
+  Trophy
 } from 'lucide-react';
 import { PROJECTS_DATA, ALUMNI_AWARDEES } from '../../data/mahreenData';
 import { ProjectItem } from '../../types/mahreen';
-import Badge from '../ui/Badge';
 
 interface PortfolioSectionProps {
   onSelectProject: (project: ProjectItem) => void;
@@ -34,10 +31,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <Badge variant="azure" className="mb-3">
-            <FolderKanban className="w-3.5 h-3.5 mr-1 inline" />
-            REKAM JEJAK KARYA NYATA
-          </Badge>
+          <span className="text-[12px] font-bold text-[#007FE7] uppercase tracking-[0.15em] block mb-2 font-poppins">
+            BUKTI KARYA &amp; DAMPAK NYATA
+          </span>
           <h2 className="text-3xl md:text-4xl font-bold text-midtrans-slate tracking-tight mb-4">
             Portofolio Proyek Terverifikasi
           </h2>
@@ -73,7 +69,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
             <div
               key={project.id}
               onClick={() => onSelectProject(project)}
-              className="bg-white rounded-lg border border-slate-200/80 overflow-hidden shadow-midtrans-card hover:shadow-midtrans-hover hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col justify-between"
+              className="bg-white rounded-[6px] border border-slate-200/80 overflow-hidden shadow-midtrans-card hover:shadow-midtrans-hover hover:-translate-y-1 transition-all duration-200 cursor-pointer group flex flex-col justify-between"
             >
               <div>
                 {/* Image Banner */}
@@ -85,12 +81,12 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                     loading="lazy"
                   />
                   <div className="absolute top-3 left-3 flex space-x-1.5">
-                    <Badge variant="cobalt" className="text-[10px] py-0.5 px-2">
+                    <span className="text-[10px] font-bold bg-[#002855] text-white px-2 py-0.5 rounded-[2px]">
                       {project.pillar}
-                    </Badge>
+                    </span>
                   </div>
                   <div className="absolute top-3 right-3">
-                    <span className="text-[11px] font-bold bg-black/60 text-white px-2 py-0.5 rounded">
+                    <span className="text-[11px] font-bold bg-black/70 text-white px-2 py-0.5 rounded-[2px]">
                       {project.year}
                     </span>
                   </div>
@@ -113,7 +109,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                     {project.tags.slice(0, 3).map((tag, idx) => (
                       <span 
                         key={idx} 
-                        className="text-[10px] font-medium bg-midtrans-mist text-slate-700 px-2 py-0.5 rounded"
+                        className="text-[10px] font-medium bg-midtrans-mist text-slate-700 px-2 py-0.5 rounded-[2px]"
                       >
                         {tag}
                       </span>
@@ -131,8 +127,8 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
           ))}
         </div>
 
-        {/* Hall of Fame: Alumni Batch 1 Awardees */}
-        <div className="bg-white rounded-lg p-6 md:p-10 border border-slate-200 shadow-sm">
+        {/* Hall of Fame: Alumni Batch 1 Awardees with Real Photos */}
+        <div className="bg-white rounded-[8px] p-6 md:p-10 border border-slate-200 shadow-sm">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 mb-8 pb-4 border-b border-midtrans-mist">
             <div>
               <div className="flex items-center space-x-2">
@@ -142,35 +138,48 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
                 </h3>
               </div>
               <p className="text-xs md:text-sm text-midtrans-muted mt-1">
-                Catatan penghargaan nyata atas inovasi, kontribusi, dan kolaborasi talenta muda di program Mahreen.
+                Bukti capaian nyata yang diverifikasi langsung dari sesi penganugerahan Best Intern Awards Mahreen Indonesia.
               </p>
             </div>
-            <Badge variant="slate">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 mr-1 inline" />
-              Awardees Batch 1
-            </Badge>
+            <span className="text-xs font-bold text-[#054FBF] bg-midtrans-ice px-3 py-1 rounded-[2px] border border-midtrans-azure/20">
+              Dokumentasi Resmi Batch 1
+            </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {ALUMNI_AWARDEES.map((alumni, idx) => (
               <div 
                 key={idx}
-                className="bg-midtrans-ice/70 rounded p-4 border border-midtrans-azure/15 hover:border-midtrans-blue transition-colors"
+                className="bg-white rounded-[6px] border border-slate-200/80 overflow-hidden hover:border-midtrans-blue hover:shadow-midtrans-card transition-all duration-200 flex flex-col justify-between group"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <Badge variant="cobalt" className="text-[10px] py-0.5 px-2">
-                    {alumni.award}
-                  </Badge>
-                  <span className="text-[10px] font-bold text-midtrans-muted">
-                    {alumni.division}
-                  </span>
+                <div>
+                  {/* Real Award Poster Photo */}
+                  <div className="relative aspect-square bg-slate-900 overflow-hidden">
+                    <img 
+                      src={alumni.avatar} 
+                      alt={`Dokumentasi Penghargaan ${alumni.name}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between">
+                      <span className="text-[10px] font-bold bg-[#002855]/90 text-white px-2 py-0.5 rounded-[2px] backdrop-blur-xs">
+                        {alumni.award}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-4">
+                    <span className="text-[10px] font-bold text-[#007FE7] uppercase tracking-wider block mb-1">
+                      {alumni.role}
+                    </span>
+                    <h4 className="text-sm font-bold text-midtrans-slate mb-2 line-clamp-1">
+                      {alumni.name}
+                    </h4>
+                    <p className="text-[11px] text-midtrans-muted leading-relaxed italic line-clamp-3">
+                      "{alumni.citation}"
+                    </p>
+                  </div>
                 </div>
-                <h4 className="text-sm font-bold text-midtrans-slate mb-1">
-                  {alumni.name}
-                </h4>
-                <p className="text-[11px] text-midtrans-muted leading-relaxed italic">
-                  "{alumni.citation}"
-                </p>
               </div>
             ))}
           </div>
