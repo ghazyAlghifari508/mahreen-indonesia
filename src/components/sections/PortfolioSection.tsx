@@ -25,7 +25,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({
 
   return (
     <section 
-      id="portfolio" 
+      id="karya-nyata" 
       className="bg-midtrans-ice py-20 px-6 md:px-12 border-b border-midtrans-mist"
     >
       <div className="max-w-7xl mx-auto">

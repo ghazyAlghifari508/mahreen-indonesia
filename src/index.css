@@ -181,3 +181,23 @@ body {
 .grid-payment-home a.btn-link:hover {
   color: #002855;
 }
+
+/* Infinite Smooth Logo Marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-smooth {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-smooth:hover {
+  animation-play-state: paused;
+}

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import TopAnnouncementStrip from './components/layout/TopAnnouncementStrip';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import HeroSection from './components/sections/HeroSection';
@@ -41,10 +40,7 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-white text-midtrans-slate flex flex-col font-sans selection:bg-midtrans-blue selection:text-white">
-      {/* 01. Top Announcement Strip */}
-      <TopAnnouncementStrip onOpenBatch2Modal={handleOpenBatch2Modal} />
-
-      {/* 02. Header Navbar */}
+      {/* 01. Header Navbar */}
       <Navbar onOpenBatch2Modal={handleOpenBatch2Modal} />
 
       <main className="flex-1">

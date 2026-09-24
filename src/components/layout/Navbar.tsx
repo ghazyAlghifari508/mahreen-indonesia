@@ -20,6 +20,29 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      const navHeight = 76;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+    }
+    setMobileMenuOpen(false);
+  };
+
+  const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header
       className={`sticky top-0 z-50 w-full bg-[#002855] border-b border-white/10 ${className}`}
@@ -29,13 +52,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Pure Logo (Zero Box, Zero Border, Transparent PNG) */}
           <a
             href="#"
-            className="flex items-center py-2 focus:outline-none"
+            onClick={scrollToTop}
+            className="flex items-center py-2 focus:outline-none cursor-pointer"
             aria-label="Mahreen Indonesia - Beranda"
           >
             <img
               src="/assets/mahreen-logo-384.webp"
               alt="Mahreen Indonesia"
-              className="h-10 md:h-11 w-auto object-contain"
+              className="h-10 md:h-11 w-auto object-contain hover:opacity-90 transition-opacity"
             />
           </a>
 
@@ -48,7 +72,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a
                 key={item.href}
                 href={item.href}
-                className="text-white hover:text-[#007FE7] transition-colors py-1.5"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-white hover:text-[#007FE7] transition-colors py-1.5 cursor-pointer"
               >
                 {item.label}
               </a>
@@ -75,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
-              className="lg:hidden p-2 text-white hover:text-[#007FE7] transition-colors"
+              className="lg:hidden p-2 text-white hover:text-[#007FE7] transition-colors cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -91,8 +116,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-white hover:text-[#007FE7] py-1"
+                onClick={(e) => handleNavClick(e, item.href)}
+                className="text-white hover:text-[#007FE7] py-1 cursor-pointer"
               >
                 {item.label}
               </a>

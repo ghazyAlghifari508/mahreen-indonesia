@@ -34,7 +34,7 @@ export const InternshipJourneySection: React.FC<InternshipJourneySectionProps> =
 
   return (
     <section 
-      id="journey" 
+      id="solusi-talenta" 
       className="bg-[#FFFFFF] py-24 px-6 md:px-12 relative overflow-hidden border-b border-[#EDF4F9]"
     >
       {/* Midtrans Background Capsule Shape */}

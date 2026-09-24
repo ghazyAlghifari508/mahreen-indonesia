@@ -1,120 +1,117 @@
 import React from 'react';
-import { Target, ArrowRight } from 'lucide-react';
 import { PILLARS_DATA, VISION_MISSION } from '../../data/mahreenData';
 
 interface WhoWeAreSectionProps {
-  onSelectPillar: (pillarId: string) => void;
+  onSelectPillar?: (pillarId: string) => void;
 }
 
 export const WhoWeAreSection: React.FC<WhoWeAreSectionProps> = ({
   onSelectPillar,
 }) => {
-  // 4 Core Units from the Instagram slide
   const coreUnits = PILLARS_DATA.filter((p) => p.id !== 'internship');
+
+  const handleUnitClick = (id: string) => {
+    const el = document.getElementById('ruang-berkarya');
+    if (el) {
+      const navHeight = 76;
+      const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth',
+      });
+    }
+    onSelectPillar?.(id);
+  };
 
   return (
     <section 
       id="tentang" 
-      className="bg-white py-24 px-6 md:px-12 relative overflow-hidden border-b border-[#EDF4F9]"
+      className="bg-[#FFFFFF] py-20 px-6 md:px-12 border-b border-[#EDF4F9]"
     >
-      {/* Subtle background ambient glow */}
-      <div 
-        className="pointer-events-none absolute top-10 right-0 w-[450px] h-[450px] bg-[#007FE7]/5 rounded-full blur-3xl"
-        aria-hidden="true" 
-      />
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Editorial Header */}
-        <div className="max-w-3xl mb-16">
+      <div className="max-w-7xl mx-auto">
+        {/* Midtrans-style Section Title */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[12px] font-bold text-[#054FBF] uppercase tracking-[0.2em] block mb-2 font-poppins">
-            IDENTITAS &amp; FONDASI KAMI
+            IDENTITAS &amp; FONDASI RESMI
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#123049] tracking-tight font-poppins mb-4">
             WHO WE ARE
           </h2>
-          <p className="text-lg md:text-xl font-semibold text-[#007FE7] mb-4 font-poppins">
+          <p className="text-lg font-semibold text-[#007FE7] mb-3 font-poppins">
             Creative • Digital • Social Company
           </p>
           <p className="text-[#7686AB] text-base md:text-lg leading-relaxed font-poppins">
-            Mahreen Indonesia hadir sebagai perusahaan kreatif, digital, bisnis, dan sosial yang dibangun 
-            melalui inovasi, kreativitas, serta semangat untuk menghadirkan karya dan kontribusi yang 
-            berdampak bagi masyarakat Indonesia.
+            Mahreen Indonesia hadir sebagai ruang kolaboratif bagi generasi muda untuk bertumbuh, 
+            berkarya, dan menciptakan solusi nyata bagi masyarakat Indonesia.
           </p>
         </div>
 
-        {/* 4 Core Units Grid (Directly from Instagram Slide 2) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        {/* Midtrans Exact .grid-payment-home Structure (4 Cards) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {coreUnits.map((unit) => (
             <div
               key={unit.id}
-              onClick={() => {
-                const el = document.getElementById('ecosystem');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-                onSelectPillar(unit.id);
-              }}
-              className="bg-[#F7FCFF] hover:bg-white rounded-[8px] p-6 border border-[#EDF4F9] hover:border-[#054FBF] shadow-xs hover:shadow-[0px_10px_25px_rgba(5,79,191,0.08)] hover:-translate-y-1 transition-all duration-200 cursor-pointer flex flex-col justify-between group"
+              onClick={() => handleUnitClick(unit.id)}
+              className="grid-payment-home flex flex-col justify-between cursor-pointer border border-[#EDF4F9] hover:border-[#054FBF] group select-none"
             >
               <div>
-                {/* Official Pillar Logo */}
-                <div className="w-14 h-14 rounded-[4px] bg-white p-2 border border-[#EDF4F9] flex items-center justify-center mb-5 group-hover:border-[#054FBF]/30 transition-colors shadow-2xs">
-                  {unit.logoUrl ? (
-                    <img 
-                      src={unit.logoUrl} 
-                      alt={`Logo ${unit.name}`} 
-                      className="w-full h-full object-contain"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <span className="font-bold text-[#054FBF] text-lg">M</span>
-                  )}
+                {/* Heading with pure logo & title (Midtrans .heading-payment layout) */}
+                <div className="flex items-center space-x-4 mb-5 pb-3 border-b border-[#EDF4F9]">
+                  <div className="h-12 w-12 shrink-0 flex items-center justify-center">
+                    {unit.logoUrl ? (
+                      <img 
+                        src={unit.logoUrl} 
+                        alt={unit.name} 
+                        className="max-h-12 w-auto object-contain group-hover:scale-105 transition-transform" 
+                      />
+                    ) : (
+                      <span className="text-xl font-bold text-[#054FBF]">M</span>
+                    )}
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-bold text-[#007FE7] uppercase tracking-wider block font-poppins">
+                      {unit.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-[#123049] font-poppins mb-0 group-hover:text-[#054FBF] transition-colors leading-tight">
+                      {unit.name}
+                    </h3>
+                  </div>
                 </div>
 
-                <span className="text-[11px] font-bold text-[#007FE7] uppercase tracking-wider block mb-1">
-                  {unit.category}
-                </span>
-                <h3 className="text-lg font-bold text-[#123049] group-hover:text-[#054FBF] transition-colors mb-2 font-poppins">
-                  {unit.name}
-                </h3>
-                <p className="text-xs text-[#7686AB] leading-relaxed line-clamp-3 mb-4 font-poppins">
+                <p className="text-xs md:text-sm text-[#7686AB] leading-relaxed mb-6 font-poppins line-clamp-4">
                   {unit.description}
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold text-[#054FBF]">
-                <span>Eksplorasi Solusi</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              <div className="pt-2">
+                <span className="btn-link text-xs font-bold text-[#054FBF] font-poppins flex items-center group-hover:underline">
+                  Pelajari lebih lanjut &gt;
+                </span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Vision & Mission (Directly from Instagram Slide 1) */}
-        <div className="bg-[#002855] text-white rounded-[12px] p-8 md:p-12 shadow-[0px_15px_35px_rgba(0,40,85,0.2)] relative overflow-hidden">
-          {/* Subtle curved background overlay */}
-          <div 
-            className="pointer-events-none absolute -bottom-20 -right-20 w-80 h-80 bg-[#007FE7]/15 rounded-full blur-3xl"
-            aria-hidden="true" 
-          />
-
+        {/* Vision & Mission (Official Instagram Slide 1 in Clean Midtrans Layout) */}
+        <div className="bg-[#002855] text-white rounded-[20px] p-8 md:p-12 shadow-[0px_15px_35px_rgba(0,40,85,0.15)] relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative z-10">
-            {/* Vision Column */}
+            {/* Vision */}
             <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-white/15 pb-8 lg:pb-0 lg:pr-10">
-              <div className="flex items-center space-x-2 text-[#007FE7] mb-3">
-                <Target className="w-5 h-5 shrink-0" />
-                <span className="text-xs font-bold uppercase tracking-[0.2em]">VISI MAHREEN INDONESIA</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white leading-relaxed mb-4 font-poppins">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#007FE7] block mb-3 font-poppins">
+                VISI KAMI
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-white leading-relaxed mb-4 font-poppins">
                 "{VISION_MISSION.vision}"
               </h3>
               <p className="text-xs text-[#F7FCFF]/70 leading-relaxed font-poppins">
-                Didirikan berangkat dari proses riset dan observasi sejak 2024, Mahreen bertransformasi menjadi 
-                entitas berbadan hukum resmi pada 2026 untuk menghadirkan kebermanfaatan jangka panjang.
+                Membangun ekosistem berkelanjutan yang mempertemukan ide kreatif, inovasi digital, 
+                dan kepedulian sosial demi kebermanfaatan nyata bagi bangsa.
               </p>
             </div>
 
-            {/* Mission Column */}
-            <div className="lg:col-span-7 space-y-3.5">
-              <span className="text-xs font-bold text-[#007FE7] uppercase tracking-[0.2em] block mb-3 font-poppins">
+            {/* 4 Strategic Missions */}
+            <div className="lg:col-span-7 space-y-3">
+              <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#007FE7] block mb-3 font-poppins">
                 EMPAT MISI STRATEGIS
               </span>
               {VISION_MISSION.missions.map((misi, idx) => (
